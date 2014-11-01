@@ -1,0 +1,29 @@
+.TH KSSHASKPASS 1
+.SH NAME
+ksshaskpass \- prompts a user for a passphrase using KDE
+.SH SYNOPSIS
+.B kdesshaskpass
+.SH DESCRIPTION
+.B kshaskpass
+is a KDE-based passphrase dialog for use with OpenSSH.
+It is intended to be called by the
+.BR ssh\-add (1)
+program and not invoked directly.
+It allows
+.BR ssh\-add (1)
+to obtain a passphrase from a user, even if not connected to a terminal
+(assuming that an X display is available).
+This happens automatically in the case where
+.B ssh\-add
+is invoked from one's
+.B ~/.xsession
+or as one of the KDE startup programs, for example.
+.PP
+In order to be called automatically by
+.BR ssh\-add ,
+.B ksshaskpass
+should be installed as
+.IR /usr/bin/ssh\-askpass .
+.SH AUTHOR
+This manual page was written by Armin Berres <trigger@space-based.de>.
+It was based on that for gnome\-ssh\-askpass by Colin Watson <cjwatson@debian.org>.
