@@ -22,58 +22,59 @@
 
 #include <kwallet.h>
 #include <KPasswordDialog>
-#include <KApplication>
 #include <KAboutData>
-#include <KCmdLineArgs>
 #include <KLocalizedString>
+
+#include <QApplication>
+#include <QCommandLineParser>
 #include <QTextStream>
+#include <QCommandLineOption>
 
 int main(int argc, char **argv)
 {
   KAboutData about (
     "ksshaskpass",
-    0,
-    ki18n("Ksshaskpass"),
+    i18n("Ksshaskpass"),
     "0.5.2",
-    ki18n("KDE version of ssh-askpass"),
-    KAboutData::License_GPL,
-    ki18n("(c) 2006 Hans van Leeuwen\n(c) 2008-2010 Armin Berres"),
-    ki18n("Ksshaskpass allows you to interactively prompt users for a passphrase for ssh-add"),
+    i18n("KDE version of ssh-askpass"),
+    KAboutLicense::GPL,
+    i18n("(c) 2006 Hans van Leeuwen\n(c) 2008-2010 Armin Berres"),
+    i18n("Ksshaskpass allows you to interactively prompt users for a passphrase for ssh-add"),
     "http://www.kde-apps.org/content/show.php?action=content&content=50971",
     "armin@space-based.de"
   );
 
-  about.addAuthor(ki18n("Armin Berres"), ki18n("Current author"), "armin@space-based.de", 0);
-  about.addAuthor(ki18n("Hans van Leeuwen"), ki18n("Original author"), "hanz@hanz.nl", 0);
+  about.addAuthor(i18n("Armin Berres"), i18n("Current author"), "armin@space-based.de", 0);
+  about.addAuthor(i18n("Hans van Leeuwen"), i18n("Original author"), "hanz@hanz.nl", 0);
 
-  KCmdLineOptions options;
-  options.add("+[prompt]",ki18n("Prompt")); 
-  KCmdLineArgs::init(argc, argv, &about);
-  KCmdLineArgs::addCmdLineOptions( options );
-  KCmdLineArgs *args = KCmdLineArgs::parsedArgs();
+  QCommandLineParser parser;
+  QApplication app(argc, argv);
+  KAboutData::setApplicationData(about);
+  parser.addVersionOption();
+  parser.addHelpOption();
+  //PORTING SCRIPT: adapt aboutdata variable if necessary
+  about.setupCommandLine(&parser);
+  parser.process(app);
+  about.processCommandLine(&parser);
+  parser.addOption(QCommandLineOption(QStringList() <<  QLatin1String("+[prompt]"), i18n("Prompt")));
 
-  KApplication app;
-
-  // Disable Session Management. We don't need it.
-  app.disableSessionManagement();
-
-  QString walletFolder = about.appName();
+  QString walletFolder = app.applicationName();
   QString dialog = i18n("Please enter passphrase");  // Default dialog text.
   QString keyFile;
   QString password;
   bool wrongPassphrase = false;
 
   // Parse commandline arguments
-  if ( args->count() > 0 ) {
-    dialog = args->arg(0);
+  if ( parser.positionalArguments().count() > 0 ) {
+    dialog = parser.positionalArguments().at(0);
     keyFile = dialog.section(" ", -2).remove(":");
 
     // If the ssh-agent prompt starts with "Bad passphrase, try again for", then previously typed passphrase
     // or retrived passphrase from kwallet was wrong.
     // At least Debian's ssh-add has no i18n, so this should work for all languages as long as the string is unchanged.
-    wrongPassphrase = args->arg(0).startsWith("Bad passphrase, try again for");
+    wrongPassphrase = parser.positionalArguments().at(0).startsWith("Bad passphrase, try again for");
   }
-  args->clear();
+  
 
   // Open KWallet to see if a password was previously stored
   std::auto_ptr<KWallet::Wallet> wallet(KWallet::Wallet::openWallet( KWallet::Wallet::NetworkWallet(), 0 ));
@@ -99,14 +100,14 @@ int main(int argc, char **argv)
     KPasswordDialog kpd(0, flag);
 
     kpd.setPrompt(dialog);
-    kpd.setCaption(i18n("Ksshaskpass"));
+    kpd.setWindowTitle(i18n("Ksshaskpass"));
     // We don't want to dump core when the password dialog is shown, because it could contain the entered password.
     // KPasswordDialog::disableCoreDumps() seems to be gone in KDE 4 -- do it manually
     struct rlimit rlim;
     rlim.rlim_cur = rlim.rlim_max = 0;
     setrlimit(RLIMIT_CORE, &rlim);
 
-    if ( kpd.exec() == KDialog::Accepted ) {
+    if ( kpd.exec() == QDialog::Accepted ) {
       password = kpd.password();
       // If "Enable Keep" is enabled, open/create a folder in KWallet and store the password.
       if ( wallet.get() && kpd.keepPassword() ) {
