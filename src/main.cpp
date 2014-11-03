@@ -32,6 +32,8 @@
 
 int main(int argc, char **argv)
 {
+  KLocalizedString::setApplicationDomain("ksshaskpass");
+
   KAboutData about (
     "ksshaskpass",
     i18n("Ksshaskpass"),
