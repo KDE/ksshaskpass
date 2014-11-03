@@ -54,10 +54,11 @@ int main(int argc, char **argv)
   KAboutData::setApplicationData(about);
   parser.addVersionOption();
   parser.addHelpOption();
+  parser.addOption(QCommandLineOption(QStringList() <<  QLatin1String("+[prompt]"), i18n("Prompt")));
+
   about.setupCommandLine(&parser);
   parser.process(app);
   about.processCommandLine(&parser);
-  parser.addOption(QCommandLineOption(QStringList() <<  QLatin1String("+[prompt]"), i18n("Prompt")));
 
   QString walletFolder = app.applicationName();
   QString dialog = i18n("Please enter passphrase");  // Default dialog text.
