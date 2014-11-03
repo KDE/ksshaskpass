@@ -37,7 +37,7 @@ int main(int argc, char **argv)
   KAboutData about (
     "ksshaskpass",
     i18n("Ksshaskpass"),
-    "0.5.2",
+    "0.6.0",
     i18n("KDE version of ssh-askpass"),
     KAboutLicense::GPL,
     i18n("(c) 2006 Hans van Leeuwen\n(c) 2008-2010 Armin Berres"),
@@ -54,7 +54,6 @@ int main(int argc, char **argv)
   KAboutData::setApplicationData(about);
   parser.addVersionOption();
   parser.addHelpOption();
-  //PORTING SCRIPT: adapt aboutdata variable if necessary
   about.setupCommandLine(&parser);
   parser.process(app);
   about.processCommandLine(&parser);

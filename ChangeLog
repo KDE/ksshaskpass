@@ -1,3 +1,6 @@
+0.6.0
+  * Port to KF5
+
 0.5.3
 
   * Disable rpath of the binary.
