@@ -14,7 +14,7 @@
  *   You should have received a copy of the GNU General Public License     *
  *   along with this program; if not, write to the                         *
  *   Free Software Foundation, Inc.,                                       *
- *   51 Franklin Steet, Fifth Floor, Boston, MA  02111-1307, USA.          *
+ *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA          *
  ***************************************************************************/
 
 #include <sys/resource.h>
@@ -29,6 +29,7 @@
 #include <QCommandLineParser>
 #include <QTextStream>
 #include <QCommandLineOption>
+#include <QPointer>
 
 int main(int argc, char **argv)
 {
@@ -55,7 +56,7 @@ int main(int argc, char **argv)
     KAboutData::setApplicationData(about);
     parser.addVersionOption();
     parser.addHelpOption();
-    parser.addOption(QCommandLineOption(QStringList() <<  QLatin1String("+[prompt]"), i18n("Prompt")));
+    parser.addOption(QCommandLineOption(QStringList() <<  QLatin1String("+[prompt]"), i18nc("Name of a prompt for a password", "Prompt")));
 
     about.setupCommandLine(&parser);
     parser.process(app);
@@ -70,12 +71,12 @@ int main(int argc, char **argv)
     // Parse commandline arguments
     if (parser.positionalArguments().count() > 0) {
         dialog = parser.positionalArguments().at(0);
-        keyFile = dialog.section(" ", -2).remove(":");
+        keyFile = dialog.section(' ', -2).remove(':');
 
         // If the ssh-agent prompt starts with "Bad passphrase, try again for", then previously typed passphrase
         // or retrived passphrase from kwallet was wrong.
         // At least Debian's ssh-add has no i18n, so this should work for all languages as long as the string is unchanged.
-        wrongPassphrase = parser.positionalArguments().at(0).startsWith("Bad passphrase, try again for");
+        wrongPassphrase = parser.positionalArguments().at(0).startsWith(QLatin1String("Bad passphrase, try again for"));
     }
 
     // Open KWallet to see if a password was previously stored
@@ -99,20 +100,20 @@ int main(int argc, char **argv)
         if (wallet.get()) {
             flag = KPasswordDialog::ShowKeepPassword;
         }
-        KPasswordDialog kpd(0, flag);
+        QPointer<KPasswordDialog> kpd = new KPasswordDialog(0, flag);
 
-        kpd.setPrompt(dialog);
-        kpd.setWindowTitle(i18n("Ksshaskpass"));
+        kpd->setPrompt(dialog);
+        kpd->setWindowTitle(i18n("Ksshaskpass"));
         // We don't want to dump core when the password dialog is shown, because it could contain the entered password.
         // KPasswordDialog::disableCoreDumps() seems to be gone in KDE 4 -- do it manually
         struct rlimit rlim;
         rlim.rlim_cur = rlim.rlim_max = 0;
         setrlimit(RLIMIT_CORE, &rlim);
 
-        if (kpd.exec() == QDialog::Accepted) {
-            password = kpd.password();
+        if (kpd->exec() == QDialog::Accepted) {
+            password = kpd->password();
             // If "Enable Keep" is enabled, open/create a folder in KWallet and store the password.
-            if (wallet.get() && kpd.keepPassword()) {
+            if (wallet.get() && kpd->keepPassword()) {
                 if (!wallet->hasFolder(walletFolder)) {
                     wallet->createFolder(walletFolder);
                 }
