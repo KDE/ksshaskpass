@@ -34,6 +34,7 @@ int main(int argc, char **argv)
 {
     KLocalizedString::setApplicationDomain("ksshaskpass");
 
+    //TODO update it.
     KAboutData about(
         "ksshaskpass",
         i18n("Ksshaskpass"),
@@ -60,7 +61,7 @@ int main(int argc, char **argv)
     parser.process(app);
     about.processCommandLine(&parser);
 
-    QString walletFolder = app.applicationName();
+    const QString walletFolder = app.applicationName();
     QString dialog = i18n("Please enter passphrase");  // Default dialog text.
     QString keyFile;
     QString password;
