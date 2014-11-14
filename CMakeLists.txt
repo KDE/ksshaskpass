@@ -19,6 +19,10 @@ find_package(KF5 REQUIRED COMPONENTS
     WidgetsAddons
 )
 
+find_package(KF5DocTools)
+set_package_properties(KF5DocTools PROPERTIES TYPE OPTIONAL
+   PURPOSE "Required to build ksshaskpass manpage")
+
 set(ksshaskpass_SRCS src/main.cpp)
  
 add_executable(ksshaskpass ${ksshaskpass_SRCS})
@@ -32,4 +36,6 @@ target_link_libraries(ksshaskpass
 install(TARGETS ksshaskpass DESTINATION ${INSTALL_TARGETS_DEFAULT_ARGS})
 install(FILES src/ksshaskpass.desktop DESTINATION ${XDG_APPS_INSTALL_DIR})
 
-install(FILES doc/ksshaskpass.1 DESTINATION ${MAN_INSTALL_DIR}/man1)
+if (KF5DocTools_FOUND)
+add_subdirectory(doc)
+endif()
