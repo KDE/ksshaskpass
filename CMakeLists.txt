@@ -34,7 +34,7 @@ target_link_libraries(ksshaskpass
 )
 
 install(TARGETS ksshaskpass DESTINATION ${INSTALL_TARGETS_DEFAULT_ARGS})
-install(FILES src/ksshaskpass.desktop DESTINATION ${XDG_APPS_INSTALL_DIR})
+install(FILES src/org.kde.ksshaskpass.desktop DESTINATION ${XDG_APPS_INSTALL_DIR})
 
 if (KF5DocTools_FOUND)
 add_subdirectory(doc)
