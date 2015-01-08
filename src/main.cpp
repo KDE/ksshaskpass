@@ -39,7 +39,7 @@ int main(int argc, char **argv)
     KAboutData about(
         "ksshaskpass",
         i18n("Ksshaskpass"),
-        "0.6.0",
+        PROJECT_VERSION,
         i18n("KDE version of ssh-askpass"),
         KAboutLicense::GPL,
         i18n("(c) 2006 Hans van Leeuwen\n(c) 2008-2010 Armin Berres"),

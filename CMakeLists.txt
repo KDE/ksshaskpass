@@ -27,6 +27,7 @@ set_package_properties(KF5DocTools PROPERTIES TYPE OPTIONAL
 set(ksshaskpass_SRCS src/main.cpp)
  
 add_executable(ksshaskpass ${ksshaskpass_SRCS})
+target_compile_definitions(ksshaskpass PRIVATE -DPROJECT_VERSION="${PROJECT_VERSION}")
 target_link_libraries(ksshaskpass 
     KF5::CoreAddons
     KF5::I18n
