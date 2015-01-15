@@ -12,6 +12,7 @@ Name[x-test]=xxSSH AskPassxx
 Name[zh_CN]=SSH AskPass
 GenericName=ssh-add
 GenericName[de]=ssh-add
+GenericName[es]=ssh-add
 GenericName[nl]=ssh-add
 GenericName[pt]=ssh-add
 GenericName[pt_BR]=ssh-add
