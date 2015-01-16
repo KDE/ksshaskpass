@@ -1,6 +1,7 @@
 [Desktop Entry]
 Version=1.0
 Name=SSH AskPass
+Name[cs]=SSH AskPass
 Name[de]=SSH AskPass
 Name[nl]=SSH AskPass
 Name[pt]=SSH AskPass
@@ -11,6 +12,7 @@ Name[uk]=SSH AskPass
 Name[x-test]=xxSSH AskPassxx
 Name[zh_CN]=SSH AskPass
 GenericName=ssh-add
+GenericName[cs]=ssh-add
 GenericName[de]=ssh-add
 GenericName[es]=ssh-add
 GenericName[nl]=ssh-add
@@ -22,6 +24,7 @@ GenericName[uk]=ssh-add
 GenericName[x-test]=xxssh-addxx
 GenericName[zh_CN]=ssh-add
 Comment=Enter passphrase to authenticate to the ssh agent
+Comment[cs]=Zadejte heslo pro ověření agenta ssh
 Comment[de]=Geben Sie einen Kennsatz zur Authentifizierung am SSH-Agent eingeben
 Comment[nl]=Voer wachtzin in voor authenticatie bij de ssh-agent
 Comment[pt]=Indique a senha para se autenticar no agente do SSH
