@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.12)
-set(PROJECT_VERSION "5.2.1")
+set(PROJECT_VERSION "5.2.2")
 
 project(ksshaskpass)
  
