@@ -5,6 +5,11 @@
 
 <!-- lifted from man+troff by doclifter -->
 <refentry lang="&language;">
+<refentryinfo>
+<title>KDE User's Manual</title>
+<date>2014-11-07</date>
+<productname>ksshaskpass</productname>
+</refentryinfo>
 <refmeta>
 <refentrytitle>KSSHASKPASS</refentrytitle>
 <manvolnum>1</manvolnum>
