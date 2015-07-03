@@ -1,6 +1,7 @@
 [Desktop Entry]
 Version=1.0
 Name=SSH AskPass
+Name[ast]=SSH AskPass
 Name[bs]=SSH AskPass
 Name[ca]=SSH AskPass
 Name[cs]=SSH AskPass
@@ -34,6 +35,7 @@ Name[x-test]=xxSSH AskPassxx
 Name[zh_CN]=SSH AskPass
 Name[zh_TW]=SSH AskPass
 GenericName=ssh-add
+GenericName[ast]=ssh-add
 GenericName[bs]=ssh-add
 GenericName[ca]=ssh-add
 GenericName[cs]=ssh-add
