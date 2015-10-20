@@ -76,6 +76,7 @@ GenericName[zh_CN]=ssh-add
 GenericName[zh_TW]=ssh-add
 Comment=Enter passphrase to authenticate to the ssh agent
 Comment[ar]=أدخل عبارة المرور للاستيثاق مع وكيل SSH
+Comment[ast]=Introduz la fras de pasu p'autenticate col axente ssh
 Comment[bs]=Unesi lozinku za prijavu na ssh agenta
 Comment[ca]=Introduïu la frase de contrasenya per autenticar-se amb l'agent ssh
 Comment[cs]=Zadejte heslo pro ověření agenta ssh
