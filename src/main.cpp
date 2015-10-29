@@ -37,26 +37,26 @@ int main(int argc, char **argv)
 
     //TODO update it.
     KAboutData about(
-        "ksshaskpass",
+        QStringLiteral("ksshaskpass"),
         i18n("Ksshaskpass"),
         PROJECT_VERSION,
         i18n("KDE version of ssh-askpass"),
         KAboutLicense::GPL,
         i18n("(c) 2006 Hans van Leeuwen\n(c) 2008-2010 Armin Berres"),
         i18n("Ksshaskpass allows you to interactively prompt users for a passphrase for ssh-add"),
-        "http://www.kde-apps.org/content/show.php?action=content&content=50971",
-        "armin@space-based.de"
+        QStringLiteral("http://www.kde-apps.org/content/show.php?action=content&content=50971"),
+        QStringLiteral("armin@space-based.de")
     );
 
-    about.addAuthor(i18n("Armin Berres"), i18n("Current author"), "armin@space-based.de", 0);
-    about.addAuthor(i18n("Hans van Leeuwen"), i18n("Original author"), "hanz@hanz.nl", 0);
+    about.addAuthor(i18n("Armin Berres"), i18n("Current author"), QStringLiteral("armin@space-based.de"), 0);
+    about.addAuthor(i18n("Hans van Leeuwen"), i18n("Original author"), QStringLiteral("hanz@hanz.nl"), 0);
 
     QCommandLineParser parser;
     QApplication app(argc, argv);
     KAboutData::setApplicationData(about);
     parser.addVersionOption();
     parser.addHelpOption();
-    parser.addOption(QCommandLineOption(QStringList() <<  QLatin1String("+[prompt]"), i18nc("Name of a prompt for a password", "Prompt")));
+    parser.addOption(QCommandLineOption(QStringList() <<  QStringLiteral("+[prompt]"), i18nc("Name of a prompt for a password", "Prompt")));
 
     about.setupCommandLine(&parser);
     parser.process(app);
