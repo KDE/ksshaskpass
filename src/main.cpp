@@ -69,7 +69,7 @@ int main(int argc, char **argv)
     bool wrongPassphrase = false;
 
     // Parse commandline arguments
-    if (parser.positionalArguments().count() > 0) {
+    if (!parser.positionalArguments().isEmpty()) {
         dialog = parser.positionalArguments().at(0);
         keyFile = dialog.section(' ', -2).remove(':');
 
@@ -96,7 +96,7 @@ int main(int argc, char **argv)
     // Password could not be retrieved from wallet. Open password dialog
     if (password.isEmpty()) {
         // create the password dialog, but only show "Enable Keep" button, if the wallet is open
-        KPasswordDialog::KPasswordDialogFlag flag;
+        KPasswordDialog::KPasswordDialogFlag flag(KPasswordDialog::NoFlags);
         if (wallet.get()) {
             flag = KPasswordDialog::ShowKeepPassword;
         }
