@@ -1,6 +1,6 @@
 project(ksshaskpass)
 cmake_minimum_required(VERSION 2.8.12)
-set(PROJECT_VERSION "5.5.0")
+set(PROJECT_VERSION "5.5.1")
 
 find_package(Qt5 REQUIRED COMPONENTS Core)
 
