@@ -118,6 +118,17 @@ int main(int argc, char **argv)
 
         if (!retrievedPass.isEmpty()) {
             password = retrievedPass;
+        } else {
+            // There was a bug in previous versions of ksshaskpass that caused it to create keys with extra space
+            // appended to key file name. Try these keys too, and, if there's a match, ensure that it's properly
+            // replaced with proper one.
+            const QString keyFile2 = keyFile + " ";
+            wallet->readPassword(keyFile2, retrievedPass);
+            if (!retrievedPass.isEmpty()) {
+                qCWarning(LOG_KSSHASKPASS) << "Detected legacy key for " << keyFile << ", enabling workaround";
+                password = retrievedPass;
+                wallet->renameEntry(keyFile2, keyFile);
+            }
         }
     }
 
