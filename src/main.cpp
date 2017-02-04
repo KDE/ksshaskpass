@@ -30,6 +30,39 @@
 #include <QTextStream>
 #include <QCommandLineOption>
 #include <QPointer>
+#include <QRegularExpression>
+#include <QLoggingCategory>
+
+Q_LOGGING_CATEGORY(LOG_KSSHASKPASS, "ksshaskpass")
+
+// Try to understand what we're asked for by parsing the phrase. Unfortunately, sshaskpass interface does not
+// include any saner methods to pass the action or the name of the keyfile. Fortunately, at least Debian's ssh-add
+// has no i18n, so this should work for all languages as long as the string is unchanged.
+static void parsePrompt(const QString &prompt, QString& keyFile, bool& wrongPassphrase)
+{
+        // Case 1: asking for passphrase for a certain keyfile for the first time => we should try a password from the wallet
+        QRegularExpression re1("^Enter passphrase for (.*?)( \\(will confirm each use\\))?: $");
+        QRegularExpressionMatch match1 = re1.match(prompt);
+        if (match1.hasMatch()) {
+            keyFile = match1.captured(1);
+            wrongPassphrase = false;
+            return;
+        }
+
+        // Case 2: re-asking for passphrase for a certain keyfile => probably we've tried a password from the wallet, no point
+        // in trying it again
+        QRegularExpression re2("^Bad passphrase, try again for (.*?)( \\(will confirm each use\\))?: $");
+        QRegularExpressionMatch match2 = re2.match(prompt);
+        if (match2.hasMatch()) {
+            keyFile = match2.captured(1);
+            wrongPassphrase = true;
+            return;
+        }
+
+        // Case 3: nothing matched; either it was called by some sort of a script with a custom prompt (i.e. not ssh-add), or
+        // strings we're looking for were broken. Issue a warning and continue without keyFile.
+        qCWarning(LOG_KSSHASKPASS) << "Unable to extract keyFile from phrase" << prompt;
+}
 
 int main(int argc, char **argv)
 {
@@ -71,18 +104,13 @@ int main(int argc, char **argv)
     // Parse commandline arguments
     if (!parser.positionalArguments().isEmpty()) {
         dialog = parser.positionalArguments().at(0);
-        keyFile = dialog.section(' ', -2).remove(':');
-
-        // If the ssh-agent prompt starts with "Bad passphrase, try again for", then previously typed passphrase
-        // or retrived passphrase from kwallet was wrong.
-        // At least Debian's ssh-add has no i18n, so this should work for all languages as long as the string is unchanged.
-        wrongPassphrase = parser.positionalArguments().at(0).startsWith(QLatin1String("Bad passphrase, try again for"));
+        parsePrompt(dialog, keyFile, wrongPassphrase);
     }
 
     // Open KWallet to see if a password was previously stored
     std::auto_ptr<KWallet::Wallet> wallet(KWallet::Wallet::openWallet(KWallet::Wallet::NetworkWallet(), 0));
 
-    if ((!wrongPassphrase) && wallet.get() && wallet->hasFolder(walletFolder)) {
+    if ((!wrongPassphrase) && (!keyFile.isNull()) && wallet.get() && wallet->hasFolder(walletFolder)) {
         wallet->setFolder(walletFolder);
 
         QString retrievedPass;
@@ -113,7 +141,7 @@ int main(int argc, char **argv)
         if (kpd->exec() == QDialog::Accepted) {
             password = kpd->password();
             // If "Enable Keep" is enabled, open/create a folder in KWallet and store the password.
-            if (wallet.get() && kpd->keepPassword()) {
+            if ((!keyFile.isNull()) && wallet.get() && kpd->keepPassword()) {
                 if (!wallet->hasFolder(walletFolder)) {
                     wallet->createFolder(walletFolder);
                 }
