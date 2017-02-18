@@ -59,7 +59,16 @@ static void parsePrompt(const QString &prompt, QString& keyFile, bool& wrongPass
             return;
         }
 
-        // Case 3: nothing matched; either it was called by some sort of a script with a custom prompt (i.e. not ssh-add), or
+        // Case 3: password extraction from git, see bug 376228
+        QRegularExpression re3("^(Password|Username) for (.*?)[:] $");
+        QRegularExpressionMatch match3 = re3.match(prompt);
+        if (match3.hasMatch()) {
+            keyFile = match3.captured(2);
+            wrongPassphrase = false;
+            return;
+        }
+
+        // Case 4: nothing matched; either it was called by some sort of a script with a custom prompt (i.e. not ssh-add), or
         // strings we're looking for were broken. Issue a warning and continue without keyFile.
         qCWarning(LOG_KSSHASKPASS) << "Unable to extract keyFile from phrase" << prompt;
 }
