@@ -105,11 +105,9 @@ int main(int argc, char **argv)
     KAboutData::setApplicationData(about);
 
     QCommandLineParser parser;
-    parser.addVersionOption();
-    parser.addHelpOption();
+    about.setupCommandLine(&parser);
     parser.addOption(QCommandLineOption(QStringList() <<  QStringLiteral("+[prompt]"), i18nc("Name of a prompt for a password", "Prompt")));
 
-    about.setupCommandLine(&parser);
     parser.process(app);
     about.processCommandLine(&parser);
 
