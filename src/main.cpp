@@ -84,6 +84,7 @@ static void parsePrompt(const QString &prompt, QString& keyFile, bool& wrongPass
 
 int main(int argc, char **argv)
 {
+    QApplication app(argc, argv);
     KLocalizedString::setApplicationDomain("ksshaskpass");
 
     //TODO update it.
@@ -101,15 +102,12 @@ int main(int argc, char **argv)
 
     about.addAuthor(i18n("Armin Berres"), i18n("Current author"), QStringLiteral("armin@space-based.de"), 0);
     about.addAuthor(i18n("Hans van Leeuwen"), i18n("Original author"), QStringLiteral("hanz@hanz.nl"), 0);
+    KAboutData::setApplicationData(about);
 
     QCommandLineParser parser;
-    QApplication app(argc, argv);
-    KAboutData::setApplicationData(about);
-    parser.addVersionOption();
-    parser.addHelpOption();
+    about.setupCommandLine(&parser);
     parser.addOption(QCommandLineOption(QStringList() <<  QStringLiteral("+[prompt]"), i18nc("Name of a prompt for a password", "Prompt")));
 
-    about.setupCommandLine(&parser);
     parser.process(app);
     about.processCommandLine(&parser);
 
