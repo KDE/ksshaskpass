@@ -26,5 +26,5 @@ executable script with the following content in ~/.kde/Autostart/ (or maybe
 /----------------
 |#!/bin/sh
 |
-|SSH_ASKPASS=ksshaskpath ssh-add < /dev/null
+|SSH_ASKPASS=ksshaskpass ssh-add < /dev/null
 \----------------
