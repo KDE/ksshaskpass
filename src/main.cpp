@@ -70,7 +70,7 @@ static void parsePrompt(const QString &prompt, QString& keyFile, bool& wrongPass
         }
 
         // Case 3a: password extraction from git-lfs
-        QRegularExpression re3a("^(Password|Username) for \"(.*?)\"$");
+        QRegularExpression re3a(QStringLiteral("^(Password|Username) for \"(.*?)\"$"));
         QRegularExpressionMatch match3a = re3a.match(prompt);
         if (match3a.hasMatch()) {
             keyFile = match3a.captured(2);
