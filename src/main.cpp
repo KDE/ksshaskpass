@@ -32,6 +32,7 @@
 #include <QPointer>
 #include <QRegularExpression>
 #include <QLoggingCategory>
+#include <QDesktopWidget>
 
 Q_LOGGING_CATEGORY(LOG_KSSHASKPASS, "ksshaskpass")
 
@@ -64,6 +65,15 @@ static void parsePrompt(const QString &prompt, QString& keyFile, bool& wrongPass
         QRegularExpressionMatch match3 = re3.match(prompt);
         if (match3.hasMatch()) {
             keyFile = match3.captured(2);
+            wrongPassphrase = false;
+            return;
+        }
+
+        // Case 3a: password extraction from git-lfs
+        QRegularExpression re3a("^(Password|Username) for \"(.*?)\"$");
+        QRegularExpressionMatch match3a = re3a.match(prompt);
+        if (match3a.hasMatch()) {
+            keyFile = match3a.captured(2);
             wrongPassphrase = false;
             return;
         }
@@ -124,7 +134,8 @@ int main(int argc, char **argv)
     }
 
     // Open KWallet to see if a password was previously stored
-    std::auto_ptr<KWallet::Wallet> wallet(KWallet::Wallet::openWallet(KWallet::Wallet::NetworkWallet(), 0));
+    WId winId = QApplication::desktop()->winId();
+    std::auto_ptr<KWallet::Wallet> wallet(KWallet::Wallet::openWallet(KWallet::Wallet::NetworkWallet(), winId));
 
     if ((!wrongPassphrase) && (!keyFile.isNull()) && wallet.get() && wallet->hasFolder(walletFolder)) {
         wallet->setFolder(walletFolder);
