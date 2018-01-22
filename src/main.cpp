@@ -101,7 +101,7 @@ int main(int argc, char **argv)
     KAboutData about(
         QStringLiteral("ksshaskpass"),
         i18n("Ksshaskpass"),
-        QString::fromLatin1(PROJECT_VERSION),
+        QStringLiteral(PROJECT_VERSION),
         i18n("KDE version of ssh-askpass"),
         KAboutLicense::GPL,
         i18n("(c) 2006 Hans van Leeuwen\n(c) 2008-2010 Armin Berres"),
@@ -110,6 +110,8 @@ int main(int argc, char **argv)
         QStringLiteral("armin@space-based.de")
     );
 
+    about.addAuthor(i18n("Armin Berres"), i18n("Current author"), QStringLiteral("armin@space-based.de"));
+    about.addAuthor(i18n("Hans van Leeuwen"), i18n("Original author"), QStringLiteral("hanz@hanz.nl"));
     about.addAuthor(i18n("Armin Berres"), i18n("Current author"), QStringLiteral("armin@space-based.de"), QString());
     about.addAuthor(i18n("Hans van Leeuwen"), i18n("Original author"), QStringLiteral("hanz@hanz.nl"), QString());
     KAboutData::setApplicationData(about);
