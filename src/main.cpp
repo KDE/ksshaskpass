@@ -42,7 +42,7 @@ Q_LOGGING_CATEGORY(LOG_KSSHASKPASS, "ksshaskpass")
 static void parsePrompt(const QString &prompt, QString& keyFile, bool& wrongPassphrase)
 {
         // Case 1: asking for passphrase for a certain keyfile for the first time => we should try a password from the wallet
-        QRegularExpression re1("^Enter passphrase for (.*?)( \\(will confirm each use\\))?: $");
+        QRegularExpression re1(QStringLiteral("^Enter passphrase for (.*?)( \\(will confirm each use\\))?: $"));
         QRegularExpressionMatch match1 = re1.match(prompt);
         if (match1.hasMatch()) {
             keyFile = match1.captured(1);
@@ -52,7 +52,7 @@ static void parsePrompt(const QString &prompt, QString& keyFile, bool& wrongPass
 
         // Case 2: re-asking for passphrase for a certain keyfile => probably we've tried a password from the wallet, no point
         // in trying it again
-        QRegularExpression re2("^Bad passphrase, try again for (.*?)( \\(will confirm each use\\))?: $");
+        QRegularExpression re2(QStringLiteral("^Bad passphrase, try again for (.*?)( \\(will confirm each use\\))?: $"));
         QRegularExpressionMatch match2 = re2.match(prompt);
         if (match2.hasMatch()) {
             keyFile = match2.captured(1);
@@ -61,7 +61,7 @@ static void parsePrompt(const QString &prompt, QString& keyFile, bool& wrongPass
         }
 
         // Case 3: password extraction from git, see bug 376228
-        QRegularExpression re3("^(Password|Username) for (.*?)[:] $");
+        QRegularExpression re3(QStringLiteral("^(Password|Username) for (.*?)[:] $"));
         QRegularExpressionMatch match3 = re3.match(prompt);
         if (match3.hasMatch()) {
             keyFile = match3.captured(2);
@@ -70,7 +70,7 @@ static void parsePrompt(const QString &prompt, QString& keyFile, bool& wrongPass
         }
 
         // Case 3a: password extraction from git-lfs
-        QRegularExpression re3a("^(Password|Username) for \"(.*?)\"$");
+        QRegularExpression re3a(QStringLiteral("^(Password|Username) for \"(.*?)\"$"));
         QRegularExpressionMatch match3a = re3a.match(prompt);
         if (match3a.hasMatch()) {
             keyFile = match3a.captured(2);
@@ -79,7 +79,7 @@ static void parsePrompt(const QString &prompt, QString& keyFile, bool& wrongPass
         }
 
         // Case 4: password extraction from mercurial, see bug 380085
-        QRegularExpression re4("^(.*?)'s password: $");
+        QRegularExpression re4(QStringLiteral("^(.*?)'s password: $"));
         QRegularExpressionMatch match4 = re4.match(prompt);
         if (match4.hasMatch()) {
             keyFile = match4.captured(1);
@@ -101,7 +101,7 @@ int main(int argc, char **argv)
     KAboutData about(
         QStringLiteral("ksshaskpass"),
         i18n("Ksshaskpass"),
-        PROJECT_VERSION,
+        QStringLiteral(PROJECT_VERSION),
         i18n("KDE version of ssh-askpass"),
         KAboutLicense::GPL,
         i18n("(c) 2006 Hans van Leeuwen\n(c) 2008-2010 Armin Berres"),
@@ -110,8 +110,8 @@ int main(int argc, char **argv)
         QStringLiteral("armin@space-based.de")
     );
 
-    about.addAuthor(i18n("Armin Berres"), i18n("Current author"), QStringLiteral("armin@space-based.de"), 0);
-    about.addAuthor(i18n("Hans van Leeuwen"), i18n("Original author"), QStringLiteral("hanz@hanz.nl"), 0);
+    about.addAuthor(i18n("Armin Berres"), i18n("Current author"), QStringLiteral("armin@space-based.de"));
+    about.addAuthor(i18n("Hans van Leeuwen"), i18n("Original author"), QStringLiteral("hanz@hanz.nl"));
     KAboutData::setApplicationData(about);
 
     QCommandLineParser parser;
@@ -149,7 +149,7 @@ int main(int argc, char **argv)
             // There was a bug in previous versions of ksshaskpass that caused it to create keys with extra space
             // appended to key file name. Try these keys too, and, if there's a match, ensure that it's properly
             // replaced with proper one.
-            const QString keyFile2 = keyFile + " ";
+            const QString keyFile2 = keyFile + QLatin1Char(' ');
             wallet->readPassword(keyFile2, retrievedPass);
             if (!retrievedPass.isEmpty()) {
                 qCWarning(LOG_KSSHASKPASS) << "Detected legacy key for " << keyFile << ", enabling workaround";
