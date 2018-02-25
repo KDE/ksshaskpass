@@ -6,9 +6,6 @@ find_package(Qt5 REQUIRED COMPONENTS Core)
 
 find_package(ECM REQUIRED NO_MODULE)
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
-if (POLICY CMP0063)
-    cmake_policy(SET CMP0063 NEW)
-endif()
 
 include(KDEInstallDirs)
 include(KDECompilerSettings NO_POLICY_SCOPE)
