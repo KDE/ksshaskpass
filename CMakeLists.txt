@@ -2,9 +2,12 @@ project(ksshaskpass)
 cmake_minimum_required(VERSION 2.8.12)
 set(PROJECT_VERSION "5.13.80")
 
-find_package(Qt5 REQUIRED COMPONENTS Core)
+set(QT_MIN_VERSION "5.9.0")
+set(KF5_MIN_VERSION "5.42.0")
 
-find_package(ECM REQUIRED NO_MODULE)
+find_package(Qt5 ${QT_MIN_VERSION} REQUIRED COMPONENTS Core)
+
+find_package(ECM ${KF5_MIN_VERSION} REQUIRED NO_MODULE)
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
 
 include(KDEInstallDirs)
@@ -19,7 +22,7 @@ add_definitions(-DQT_NO_CAST_FROM_ASCII)
 add_definitions(-DQT_NO_CAST_TO_ASCII)
 add_definitions(-DQT_NO_NARROWING_CONVERSIONS_IN_CONNECT)
 
-find_package(KF5 REQUIRED COMPONENTS
+find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
     CoreAddons
     I18n
     Wallet
