@@ -195,7 +195,7 @@ int main(int argc, char **argv)
     }
 
     QTextStream out(stdout);
-    out << password;
+    out << password << "\n";
     return 0;
 }
 
