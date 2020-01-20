@@ -24,11 +24,13 @@
 #include <KPasswordDialog>
 #include <KAboutData>
 #include <KLocalizedString>
+#include <KMessageBox>
 
 #include <QApplication>
 #include <QCommandLineParser>
 #include <QTextStream>
 #include <QCommandLineOption>
+#include <QInputDialog>
 #include <QPointer>
 #include <QRegularExpression>
 #include <QLoggingCategory>
@@ -36,60 +38,214 @@
 
 Q_LOGGING_CATEGORY(LOG_KSSHASKPASS, "ksshaskpass")
 
+enum Type {
+        TypePassword,
+        TypeClearText,
+        TypeConfirm,
+};
+
 // Try to understand what we're asked for by parsing the phrase. Unfortunately, sshaskpass interface does not
-// include any saner methods to pass the action or the name of the keyfile. Fortunately, at least Debian's ssh-add
+// include any saner methods to pass the action or the name of the keyfile. Fortunately, openssh and git
 // has no i18n, so this should work for all languages as long as the string is unchanged.
-static void parsePrompt(const QString &prompt, QString& keyFile, bool& wrongPassphrase)
+static void parsePrompt(const QString &prompt, QString& identifier, bool& ignoreWallet, enum Type& type)
 {
-        // Case 1: asking for passphrase for a certain keyfile for the first time => we should try a password from the wallet
-        QRegularExpression re1(QStringLiteral("^Enter passphrase for (.*?)( \\(will confirm each use\\))?: $"));
-        QRegularExpressionMatch match1 = re1.match(prompt);
-        if (match1.hasMatch()) {
-            keyFile = match1.captured(1);
-            wrongPassphrase = false;
+        QRegularExpressionMatch match;
+
+        // openssh sshconnect2.c
+        // Case: password for authentication on remote ssh server
+        match = QRegularExpression(QStringLiteral("^(.*@.*)'s password( \\(JPAKE\\))?: $")).match(prompt);
+        if (match.hasMatch()) {
+            identifier = match.captured(1);
+            type = TypePassword;
+            ignoreWallet = false;
             return;
         }
 
-        // Case 2: re-asking for passphrase for a certain keyfile => probably we've tried a password from the wallet, no point
+        // openssh sshconnect2.c
+        // Case: password change request
+        match = QRegularExpression(QStringLiteral("^(Enter|Retype) (.*@.*)'s (old|new) password: $")).match(prompt);
+        if (match.hasMatch()) {
+            identifier = match.captured(2);
+            type = TypePassword;
+            ignoreWallet = true;
+            return;
+        }
+
+        // openssh sshconnect2.c and sshconnect1.c
+        // Case: asking for passphrase for a certain keyfile
+        match = QRegularExpression(QStringLiteral("^Enter passphrase for( RSA)? key '(.*)': $")).match(prompt);
+        if (match.hasMatch()) {
+            identifier = match.captured(2);
+            type = TypePassword;
+            ignoreWallet = false;
+            return;
+        }
+
+        // openssh ssh-add.c
+        // Case: asking for passphrase for a certain keyfile for the first time => we should try a password from the wallet
+        match = QRegularExpression(QStringLiteral("^Enter passphrase for (.*?)( \\(will confirm each use\\))?: $")).match(prompt);
+        if (match.hasMatch()) {
+            identifier = match.captured(1);
+            type = TypePassword;
+            ignoreWallet = false;
+            return;
+        }
+
+        // openssh ssh-add.c
+        // Case: re-asking for passphrase for a certain keyfile => probably we've tried a password from the wallet, no point
         // in trying it again
-        QRegularExpression re2(QStringLiteral("^Bad passphrase, try again for (.*?)( \\(will confirm each use\\))?: $"));
-        QRegularExpressionMatch match2 = re2.match(prompt);
-        if (match2.hasMatch()) {
-            keyFile = match2.captured(1);
-            wrongPassphrase = true;
+        match = QRegularExpression(QStringLiteral("^Bad passphrase, try again for (.*?)( \\(will confirm each use\\))?: $")).match(prompt);
+        if (match.hasMatch()) {
+            identifier = match.captured(1);
+            type = TypePassword;
+            ignoreWallet = true;
             return;
         }
 
-        // Case 3: password extraction from git, see bug 376228
-        QRegularExpression re3(QStringLiteral("^(Password|Username) for (.*?)[:] $"));
-        QRegularExpressionMatch match3 = re3.match(prompt);
-        if (match3.hasMatch()) {
-            keyFile = match3.captured(2);
-            wrongPassphrase = false;
+        // openssh ssh-pkcs11.c
+        // Case: asking for PIN for some token label
+        match = QRegularExpression(QStringLiteral("Enter PIN for '(.*)': $")).match(prompt);
+        if (match.hasMatch()) {
+            identifier = match.captured(1);
+            type = TypePassword;
+            ignoreWallet = false;
             return;
         }
 
-        // Case 3a: password extraction from git-lfs
-        QRegularExpression re3a(QStringLiteral("^(Password|Username) for \"(.*?)\"$"));
-        QRegularExpressionMatch match3a = re3a.match(prompt);
-        if (match3a.hasMatch()) {
-            keyFile = match3a.captured(2);
-            wrongPassphrase = false;
+        // openssh mux.c
+        match = QRegularExpression(QStringLiteral("^(Allow|Terminate) shared connection to (.*)\\? $")).match(prompt);
+        if (match.hasMatch()) {
+            identifier = match.captured(2);
+            type = TypeConfirm;
+            ignoreWallet = true;
             return;
         }
 
-        // Case 4: password extraction from mercurial, see bug 380085
-        QRegularExpression re4(QStringLiteral("^(.*?)'s password: $"));
-        QRegularExpressionMatch match4 = re4.match(prompt);
-        if (match4.hasMatch()) {
-            keyFile = match4.captured(1);
-            wrongPassphrase = false;
+        // openssh mux.c
+        match = QRegularExpression(QStringLiteral("^Open (.* on .*)?$")).match(prompt);
+        if (match.hasMatch()) {
+            identifier = match.captured(1);
+            type = TypeConfirm;
+            ignoreWallet = true;
+            return;
+        }
+
+        // openssh mux.c
+        match = QRegularExpression(QStringLiteral("^Allow forward to (.*:.*)\\? $")).match(prompt);
+        if (match.hasMatch()) {
+            identifier = match.captured(1);
+            type = TypeConfirm;
+            ignoreWallet = true;
+            return;
+        }
+
+        // openssh mux.c
+        match = QRegularExpression(QStringLiteral("^Disable further multiplexing on shared connection to (.*)? $")).match(prompt);
+        if (match.hasMatch()) {
+            identifier = match.captured(1);
+            type = TypeConfirm;
+            ignoreWallet = true;
+            return;
+        }
+
+        // openssh ssh-agent.c
+        match = QRegularExpression(QStringLiteral("^Allow use of key (.*)?\\nKey fingerprint .*\\.$")).match(prompt);
+        if (match.hasMatch()) {
+            identifier = match.captured(1);
+            type = TypeConfirm;
+            ignoreWallet = true;
+            return;
+        }
+
+        // openssh sshconnect.c
+        match = QRegularExpression(QStringLiteral("^Add key (.*) \\(.*\\) to agent\\?$")).match(prompt);
+        if (match.hasMatch()) {
+            identifier = match.captured(1);
+            type = TypeConfirm;
+            ignoreWallet = true;
+            return;
+        }
+
+        // git imap-send.c
+        // Case: asking for password by git imap-send
+        match = QRegularExpression(QStringLiteral("^Password \\((.*@.*)\\): $")).match(prompt);
+        if (match.hasMatch()) {
+            identifier = match.captured(1);
+            type = TypePassword;
+            ignoreWallet = false;
+            return;
+        }
+
+        // git credential.c
+        // Case: asking for username by git without specifying any other information
+        match = QRegularExpression(QStringLiteral("^Username: $")).match(prompt);
+        if (match.hasMatch()) {
+            identifier = QString();
+            type = TypeClearText;
+            ignoreWallet = true;
+            return;
+        }
+
+        // git credential.c
+        // Case: asking for password by git without specifying any other information
+        match = QRegularExpression(QStringLiteral("^Password: $")).match(prompt);
+        if (match.hasMatch()) {
+            identifier = QString();
+            type = TypePassword;
+            ignoreWallet = true;
+            return;
+        }
+
+        // git credential.c
+        // Case: asking for username by git for some identifier
+        match = QRegularExpression(QStringLiteral("^Username for '(.*)': $")).match(prompt);
+        if (match.hasMatch()) {
+            identifier = match.captured(1);
+            type = TypeClearText;
+            ignoreWallet = false;
+            return;
+        }
+
+        // git credential.c
+        // Case: asking for password by git for some identifier
+        match = QRegularExpression(QStringLiteral("^Password for '(.*)': $")).match(prompt);
+        if (match.hasMatch()) {
+            identifier = match.captured(1);
+            type = TypePassword;
+            ignoreWallet = false;
+            return;
+        }
+
+        // Case: username extraction from git-lfs
+        match = QRegularExpression(QStringLiteral("^Username for \"(.*?)\"$")).match(prompt);
+        if (match.hasMatch()) {
+            identifier = match.captured(1);
+            type = TypeClearText;
+            ignoreWallet = false;
+            return;
+        }
+
+        // Case: password extraction from git-lfs
+        match = QRegularExpression(QStringLiteral("^Password for \"(.*?)\"$")).match(prompt);
+        if (match.hasMatch()) {
+            identifier = match.captured(1);
+            type = TypePassword;
+            ignoreWallet = false;
+            return;
+        }
+
+        // Case: password extraction from mercurial, see bug 380085
+        match = QRegularExpression(QStringLiteral("^(.*?)'s password: $")).match(prompt);
+        if (match.hasMatch()) {
+            identifier = match.captured(1);
+            type = TypePassword;
+            ignoreWallet = false;
             return;
         }
 
         // Nothing matched; either it was called by some sort of a script with a custom prompt (i.e. not ssh-add), or
-        // strings we're looking for were broken. Issue a warning and continue without keyFile.
-        qCWarning(LOG_KSSHASKPASS) << "Unable to extract keyFile from phrase" << prompt;
+        // strings we're looking for were broken. Issue a warning and continue without identifier.
+        qCWarning(LOG_KSSHASKPASS) << "Unable to parse phrase" << prompt;
 }
 
 int main(int argc, char **argv)
@@ -104,7 +260,7 @@ int main(int argc, char **argv)
         QStringLiteral(PROJECT_VERSION),
         i18n("KDE version of ssh-askpass"),
         KAboutLicense::GPL,
-        i18n("(c) 2006 Hans van Leeuwen\n(c) 2008-2010 Armin Berres"),
+        i18n("(c) 2006 Hans van Leeuwen\n(c) 2008-2010 Armin Berres\n(c) 2013 Pali Rohár"),
         i18n("Ksshaskpass allows you to interactively prompt users for a passphrase for ssh-add"),
         QStringLiteral("http://www.kde-apps.org/content/show.php?action=content&content=50971"),
         QStringLiteral("armin@space-based.de")
@@ -112,8 +268,10 @@ int main(int argc, char **argv)
 
     about.addAuthor(i18n("Armin Berres"), i18n("Current author"), QStringLiteral("armin@space-based.de"));
     about.addAuthor(i18n("Hans van Leeuwen"), i18n("Original author"), QStringLiteral("hanz@hanz.nl"));
+    about.addAuthor(i18n("Pali Rohár"), i18n("Contributor"), QStringLiteral("pali.rohar@gmail.com"));
     about.addAuthor(i18n("Armin Berres"), i18n("Current author"), QStringLiteral("armin@space-based.de"), QString());
     about.addAuthor(i18n("Hans van Leeuwen"), i18n("Original author"), QStringLiteral("hanz@hanz.nl"), QString());
+    about.addAuthor(i18n("Pali Rohár"), i18n("Contributor"), QStringLiteral("pali.rohar@gmail.com"), QString());
     KAboutData::setApplicationData(about);
 
     QCommandLineParser parser;
@@ -125,77 +283,109 @@ int main(int argc, char **argv)
 
     const QString walletFolder = app.applicationName();
     QString dialog = i18n("Please enter passphrase");  // Default dialog text.
-    QString keyFile;
-    QString password;
-    bool wrongPassphrase = false;
+    QString identifier;
+    QString item;
+    bool ignoreWallet = false;
+    enum Type type = TypePassword;
 
     // Parse commandline arguments
     if (!parser.positionalArguments().isEmpty()) {
         dialog = parser.positionalArguments().at(0);
-        parsePrompt(dialog, keyFile, wrongPassphrase);
+        parsePrompt(dialog, identifier, ignoreWallet, type);
     }
 
-    // Open KWallet to see if a password was previously stored
+    // Open KWallet to see if an item was previously stored
     WId winId = QApplication::desktop()->winId();
-    std::auto_ptr<KWallet::Wallet> wallet(KWallet::Wallet::openWallet(KWallet::Wallet::NetworkWallet(), winId));
+    std::auto_ptr<KWallet::Wallet> wallet(ignoreWallet ? 0 : KWallet::Wallet::openWallet(KWallet::Wallet::NetworkWallet(), winId));
 
-    if ((!wrongPassphrase) && (!keyFile.isNull()) && wallet.get() && wallet->hasFolder(walletFolder)) {
+    if ((!ignoreWallet) && (!identifier.isNull()) && wallet.get() && wallet->hasFolder(walletFolder)) {
         wallet->setFolder(walletFolder);
 
-        QString retrievedPass;
-        wallet->readPassword(keyFile, retrievedPass);
-
-        if (!retrievedPass.isEmpty()) {
-            password = retrievedPass;
+        QString retrievedItem;
+        if (type != TypePassword) {
+            QByteArray retrievedBytes;
+            wallet->readEntry(identifier, retrievedBytes);
+            retrievedItem = QString::fromUtf8(retrievedBytes);
         } else {
+            wallet->readPassword(identifier, retrievedItem);
+        }
+
+        if (!retrievedItem.isEmpty()) {
+            item = retrievedItem;
+        } else if (type == TypePassword) {
             // There was a bug in previous versions of ksshaskpass that caused it to create keys with extra space
             // appended to key file name. Try these keys too, and, if there's a match, ensure that it's properly
             // replaced with proper one.
-            const QString keyFile2 = keyFile + QLatin1Char(' ');
-            wallet->readPassword(keyFile2, retrievedPass);
-            if (!retrievedPass.isEmpty()) {
-                qCWarning(LOG_KSSHASKPASS) << "Detected legacy key for " << keyFile << ", enabling workaround";
-                password = retrievedPass;
-                wallet->renameEntry(keyFile2, keyFile);
+            const QString keyFile = identifier + QLatin1Char(' ');
+            wallet->readPassword(keyFile, retrievedItem);
+            if (!retrievedItem.isEmpty()) {
+                qCWarning(LOG_KSSHASKPASS) << "Detected legacy key for " << identifier << ", enabling workaround";
+                item = retrievedItem;
+                wallet->renameEntry(keyFile, identifier);
             }
         }
     }
 
-    // Password could not be retrieved from wallet. Open password dialog
-    if (password.isEmpty()) {
-        // create the password dialog, but only show "Enable Keep" button, if the wallet is open
-        KPasswordDialog::KPasswordDialogFlag flag(KPasswordDialog::NoFlags);
-        if (wallet.get()) {
-            flag = KPasswordDialog::ShowKeepPassword;
-        }
-        QPointer<KPasswordDialog> kpd = new KPasswordDialog(nullptr, flag);
+    if (!item.isEmpty()) {
+        QTextStream(stdout) << item;
+        return 0;
+    }
 
-        kpd->setPrompt(dialog);
-        kpd->setWindowTitle(i18n("Ksshaskpass"));
-        // We don't want to dump core when the password dialog is shown, because it could contain the entered password.
-        // KPasswordDialog::disableCoreDumps() seems to be gone in KDE 4 -- do it manually
-        struct rlimit rlim;
-        rlim.rlim_cur = rlim.rlim_max = 0;
-        setrlimit(RLIMIT_CORE, &rlim);
-
-        if (kpd->exec() == QDialog::Accepted) {
-            password = kpd->password();
-            // If "Enable Keep" is enabled, open/create a folder in KWallet and store the password.
-            if ((!keyFile.isNull()) && wallet.get() && kpd->keepPassword()) {
-                if (!wallet->hasFolder(walletFolder)) {
-                    wallet->createFolder(walletFolder);
-                }
-                wallet->setFolder(walletFolder);
-                wallet->writePassword(keyFile, password);
+    // Item could not be retrieved from wallet. Open dialog
+    switch (type) {
+        case TypeConfirm: {
+            if (KMessageBox::questionYesNo(0, dialog, i18n("Ksshaskpass")) != KMessageBox::Yes) {
+                // dialog has been canceled
+                return 1;
             }
-        } else {
-            // dialog has been canceled
-            return 1;
+            item = QStringLiteral("yes\n");
+            break;
+        }
+        case TypeClearText: {
+            bool ok = false;
+            item = QInputDialog::getText(0, i18n("Ksshaskpass"), dialog, QLineEdit::Normal, QString(), &ok);
+            if (!ok) {
+                // dialog has been canceled
+                return 1;
+            }
+            break;
+        }
+        case TypePassword: {
+            // create the password dialog, but only show "Enable Keep" button, if the wallet is open
+            KPasswordDialog::KPasswordDialogFlag flag(KPasswordDialog::NoFlags);
+            if (wallet.get()) {
+                flag = KPasswordDialog::ShowKeepPassword;
+            }
+            QPointer<KPasswordDialog> kpd = new KPasswordDialog(nullptr, flag);
+
+            kpd->setPrompt(dialog);
+            kpd->setWindowTitle(i18n("Ksshaskpass"));
+            // We don't want to dump core when the password dialog is shown, because it could contain the entered password.
+            // KPasswordDialog::disableCoreDumps() seems to be gone in KDE 4 -- do it manually
+            struct rlimit rlim;
+            rlim.rlim_cur = rlim.rlim_max = 0;
+            setrlimit(RLIMIT_CORE, &rlim);
+
+            if (kpd->exec() == QDialog::Accepted) {
+                item = kpd->password();
+                // If "Enable Keep" is enabled, open/create a folder in KWallet and store the password.
+                if ((!identifier.isNull()) && wallet.get() && kpd->keepPassword()) {
+                    if (!wallet->hasFolder(walletFolder)) {
+                        wallet->createFolder(walletFolder);
+                    }
+                    wallet->setFolder(walletFolder);
+                    wallet->writePassword(identifier, item);
+                }
+            } else {
+                // dialog has been canceled
+                return 1;
+            }
+            break;
         }
     }
 
     QTextStream out(stdout);
-    out << password << "\n";
+    out << item << "\n";
     return 0;
 }
 
