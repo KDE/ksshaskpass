@@ -262,7 +262,7 @@ int main(int argc, char **argv)
         KAboutLicense::GPL,
         i18n("(c) 2006 Hans van Leeuwen\n(c) 2008-2010 Armin Berres\n(c) 2013 Pali Rohár"),
         i18n("Ksshaskpass allows you to interactively prompt users for a passphrase for ssh-add"),
-        QStringLiteral("http://www.kde-apps.org/content/show.php?action=content&content=50971"),
+        QStringLiteral("https://commits.kde.org/ksshaskpass"),
         QStringLiteral("armin@space-based.de")
     );
 
