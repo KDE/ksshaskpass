@@ -29,10 +29,6 @@ find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
 find_package(KF5DocTools)
 set_package_properties(KF5DocTools PROPERTIES TYPE OPTIONAL
    PURPOSE "Required to build ksshaskpass manpage")
-if (EXISTS "${CMAKE_SOURCE_DIR}/.git")
-   add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x060000)
-   add_definitions(-DKF_DISABLE_DEPRECATED_BEFORE_AND_AT=0x054200)
-endif()
 
 set(ksshaskpass_SRCS src/main.cpp)
  
