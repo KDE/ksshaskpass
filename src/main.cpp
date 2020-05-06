@@ -250,6 +250,8 @@ static void parsePrompt(const QString &prompt, QString& identifier, bool& ignore
 
 int main(int argc, char **argv)
 {
+    QGuiApplication::setAttribute(Qt::AA_UseHighDpiPixmaps, true);
+
     QApplication app(argc, argv);
     KLocalizedString::setApplicationDomain("ksshaskpass");
 
