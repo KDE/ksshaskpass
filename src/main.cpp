@@ -298,7 +298,7 @@ int main(int argc, char **argv)
 
     // Open KWallet to see if an item was previously stored
     WId winId = QApplication::desktop()->winId();
-    std::auto_ptr<KWallet::Wallet> wallet(ignoreWallet ? 0 : KWallet::Wallet::openWallet(KWallet::Wallet::NetworkWallet(), winId));
+    std::unique_ptr<KWallet::Wallet> wallet(ignoreWallet ? nullptr : KWallet::Wallet::openWallet(KWallet::Wallet::NetworkWallet(), winId));
 
     if ((!ignoreWallet) && (!identifier.isNull()) && wallet.get() && wallet->hasFolder(walletFolder)) {
         wallet->setFolder(walletFolder);
@@ -336,7 +336,7 @@ int main(int argc, char **argv)
     // Item could not be retrieved from wallet. Open dialog
     switch (type) {
         case TypeConfirm: {
-            if (KMessageBox::questionYesNo(0, dialog, i18n("Ksshaskpass")) != KMessageBox::Yes) {
+            if (KMessageBox::questionYesNo(nullptr, dialog, i18n("Ksshaskpass")) != KMessageBox::Yes) {
                 // dialog has been canceled
                 return 1;
             }
@@ -345,7 +345,7 @@ int main(int argc, char **argv)
         }
         case TypeClearText: {
             bool ok = false;
-            item = QInputDialog::getText(0, i18n("Ksshaskpass"), dialog, QLineEdit::Normal, QString(), &ok);
+            item = QInputDialog::getText(nullptr, i18n("Ksshaskpass"), dialog, QLineEdit::Normal, QString(), &ok);
             if (!ok) {
                 // dialog has been canceled
                 return 1;
