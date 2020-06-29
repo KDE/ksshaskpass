@@ -304,11 +304,17 @@ int main(int argc, char **argv)
         wallet->setFolder(walletFolder);
 
         QString retrievedItem;
-        wallet->readPassword(identifier, retrievedItem);
-
-        if (!retrievedItem.isNull()) {
-            item = retrievedItem;
+        if (type != TypePassword) {
+            QByteArray retrievedBytes;
+            wallet->readEntry(identifier, retrievedBytes);
+            retrievedItem = QString::fromUtf8(retrievedBytes);
         } else {
+            wallet->readPassword(identifier, retrievedItem);
+        }
+
+        if (!retrievedItem.isEmpty()) {
+            item = retrievedItem;
+        } else if (type == TypePassword) {
             // There was a bug in previous versions of ksshaskpass that caused it to create keys with extra space
             // appended to key file name. Try these keys too, and, if there's a match, ensure that it's properly
             // replaced with proper one.
@@ -322,7 +328,7 @@ int main(int argc, char **argv)
         }
     }
 
-    if (!item.isNull()) {
+    if (!item.isEmpty()) {
         QTextStream(stdout) << item;
         return 0;
     }
@@ -337,10 +343,15 @@ int main(int argc, char **argv)
             item = QStringLiteral("yes\n");
             break;
         }
-        case TypeClearText:
-            // Should use a dialog with visible input, but KPasswordDialog doesn't support that and
-            // other available dialog types don't have a "Keep" checkbox.
-            /* fallthrough */
+        case TypeClearText: {
+            bool ok = false;
+            item = QInputDialog::getText(nullptr, i18n("Ksshaskpass"), dialog, QLineEdit::Normal, QString(), &ok);
+            if (!ok) {
+                // dialog has been canceled
+                return 1;
+            }
+            break;
+        }
         case TypePassword: {
             // create the password dialog, but only show "Enable Keep" button, if the wallet is open
             KPasswordDialog::KPasswordDialogFlag flag(KPasswordDialog::NoFlags);
