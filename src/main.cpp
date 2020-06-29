@@ -303,27 +303,21 @@ int main(int argc, char **argv)
     if ((!ignoreWallet) && (!identifier.isNull()) && wallet.get() && wallet->hasFolder(walletFolder)) {
         wallet->setFolder(walletFolder);
 
-        QString retrievedItem;
-        if (type != TypePassword) {
-            QByteArray retrievedBytes;
-            wallet->readEntry(identifier, retrievedBytes);
-            retrievedItem = QString::fromUtf8(retrievedBytes);
-        } else {
-            wallet->readPassword(identifier, retrievedItem);
-        }
+        wallet->readPassword(identifier, item);
 
-        if (!retrievedItem.isEmpty()) {
-            item = retrievedItem;
-        } else if (type == TypePassword) {
-            // There was a bug in previous versions of ksshaskpass that caused it to create keys with extra space
-            // appended to key file name. Try these keys too, and, if there's a match, ensure that it's properly
+        if (item.isEmpty()) {
+            // There was a bug in previous versions of ksshaskpass that caused it to create keys with single quotes
+            // around the identifier and even older versions have an extra space appended to the identifier.
+            // key file name. Try these keys too, and, if there's a match, ensure that it's properly
             // replaced with proper one.
-            const QString keyFile = identifier + QLatin1Char(' ');
-            wallet->readPassword(keyFile, retrievedItem);
-            if (!retrievedItem.isEmpty()) {
-                qCWarning(LOG_KSSHASKPASS) << "Detected legacy key for " << identifier << ", enabling workaround";
-                item = retrievedItem;
-                wallet->renameEntry(keyFile, identifier);
+            for(auto templ : QStringList{QStringLiteral("'%0'"), QStringLiteral("%0 "), QStringLiteral("'%0' ")}) {
+                const QString keyFile = templ.arg(identifier);
+                wallet->readPassword(keyFile, item);
+                if (!item.isEmpty()) {
+                    qCWarning(LOG_KSSHASKPASS) << "Detected legacy key for " << identifier << ", enabling workaround";
+                    wallet->renameEntry(keyFile, identifier);
+                    break;
+                }
             }
         }
     }
@@ -343,15 +337,10 @@ int main(int argc, char **argv)
             item = QStringLiteral("yes\n");
             break;
         }
-        case TypeClearText: {
-            bool ok = false;
-            item = QInputDialog::getText(nullptr, i18n("Ksshaskpass"), dialog, QLineEdit::Normal, QString(), &ok);
-            if (!ok) {
-                // dialog has been canceled
-                return 1;
-            }
-            break;
-        }
+        case TypeClearText:
+            // Should use a dialog with visible input, but KPasswordDialog doesn't support that and
+            // other available dialog types don't have a "Keep" checkbox.
+            /* fallthrough */
         case TypePassword: {
             // create the password dialog, but only show "Enable Keep" button, if the wallet is open
             KPasswordDialog::KPasswordDialogFlag flag(KPasswordDialog::NoFlags);
