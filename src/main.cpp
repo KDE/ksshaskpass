@@ -306,7 +306,7 @@ int main(int argc, char **argv)
         QString retrievedItem;
         wallet->readPassword(identifier, retrievedItem);
 
-        if (!retrievedItem.isEmpty()) {
+        if (!retrievedItem.isNull()) {
             item = retrievedItem;
         } else {
             // There was a bug in previous versions of ksshaskpass that caused it to create keys with extra space
@@ -322,7 +322,7 @@ int main(int argc, char **argv)
         }
     }
 
-    if (!item.isEmpty()) {
+    if (!item.isNull()) {
         QTextStream(stdout) << item;
         return 0;
     }
