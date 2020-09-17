@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 2.8.12)
 set(PROJECT_VERSION "5.19.80")
 
 set(QT_MIN_VERSION "5.14.0")
-set(KF5_MIN_VERSION "5.66.0")
+set(KF5_MIN_VERSION "5.74")
 
 find_package(Qt5 ${QT_MIN_VERSION} REQUIRED COMPONENTS Core)
 
