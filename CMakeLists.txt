@@ -55,7 +55,7 @@ if(ECM_VERSION VERSION_GREATER_EQUAL 5.79)
     kde_configure_git_pre_commit_hook(CHECKS CLANG_FORMAT)
 endif()
 
-install(TARGETS ksshaskpass DESTINATION ${INSTALL_TARGETS_DEFAULT_ARGS})
+install(TARGETS ksshaskpass DESTINATION ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
 
 if (KF5DocTools_FOUND)
     add_subdirectory(doc)
