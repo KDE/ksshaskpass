@@ -16,9 +16,7 @@ include(KDECMakeSettings)
 include(FeatureSummary)
 include(ECMQtDeclareLoggingCategory)
 include(KDEClangFormat)
-if(ECM_VERSION VERSION_GREATER_EQUAL 5.79)
-    include(KDEGitCommitHooks)
-endif()
+include(KDEGitCommitHooks)
 
 add_definitions(-DQT_NO_NARROWING_CONVERSIONS_IN_CONNECT)
 
@@ -50,9 +48,7 @@ target_link_libraries(ksshaskpass
 # add clang-format target for all our real source files
 file(GLOB_RECURSE ALL_CLANG_FORMAT_SOURCE_FILES *.cpp *.h)
 kde_clang_format(${ALL_CLANG_FORMAT_SOURCE_FILES})
-if(ECM_VERSION VERSION_GREATER_EQUAL 5.79)
-    kde_configure_git_pre_commit_hook(CHECKS CLANG_FORMAT)
-endif()
+kde_configure_git_pre_commit_hook(CHECKS CLANG_FORMAT)
 
 install(TARGETS ksshaskpass DESTINATION ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
 
