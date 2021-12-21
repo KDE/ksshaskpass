@@ -39,8 +39,8 @@ static void parsePrompt(const QString &prompt, QString &identifier, bool &ignore
     QRegularExpressionMatch match;
 
     // openssh sshconnect2.c
-    // Case: password for authentication on remote ssh server
-    match = QRegularExpression(QStringLiteral("^(.*@.*)'s password( \\(JPAKE\\))?: $")).match(prompt);
+    // Case: password for authentication on remote ssh server, also supports PAM format
+    match = QRegularExpression(QStringLiteral("^\\(?(.*@.*?)\\)?('s)? [pP]assword( \\(JPAKE\\))?: $")).match(prompt);
     if (match.hasMatch()) {
         identifier = match.captured(1);
         type = TypePassword;
