@@ -70,6 +70,15 @@ static void parsePrompt(PromptType promptType, const QString &prompt, QString &i
         return;
     }
 
+    // Case: password for authentication on remote ssh server, also supports PAM format
+    match = QRegularExpression(QStringLiteral("^\\((.*@.*)\\) Password: $")).match(prompt);
+    if (match.hasMatch()) {
+        identifier = match.captured(1);
+        displayType = DisplayType::Password;
+        ignoreKeychain = false;
+        return;
+    }
+
     // openssh sshconnect2.c
     // Case: password change request
     match = QRegularExpression(QStringLiteral("^(Enter|Retype) (.*@.*)'s (old|new) password: $")).match(prompt);
