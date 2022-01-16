@@ -3,11 +3,8 @@ cmake_minimum_required(VERSION 3.16)
 set(PROJECT_VERSION "5.24.80")
 
 set(QT_MIN_VERSION "5.15.0")
-set(KF5_MIN_VERSION "5.86")
+set(KF5_MIN_VERSION "5.90")
 set(KDE_COMPILERSETTINGS_LEVEL "5.82")
-
-find_package(Qt5 ${QT_MIN_VERSION} REQUIRED COMPONENTS Core)
-
 find_package(ECM ${KF5_MIN_VERSION} REQUIRED NO_MODULE)
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
 
@@ -18,6 +15,9 @@ include(FeatureSummary)
 include(ECMQtDeclareLoggingCategory)
 include(KDEClangFormat)
 include(KDEGitCommitHooks)
+
+find_package(Qt${QT_MAJOR_VERSION}  ${QT_MIN_VERSION} REQUIRED COMPONENTS Core)
+
 
 add_definitions(-DQT_NO_NARROWING_CONVERSIONS_IN_CONNECT)
 
