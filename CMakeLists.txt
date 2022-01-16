@@ -33,7 +33,7 @@ set_package_properties(KF5DocTools PROPERTIES TYPE OPTIONAL
    PURPOSE "Required to build ksshaskpass manpage")
 
 add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x050f00)
-add_definitions(-DKF_DISABLE_DEPRECATED_BEFORE_AND_AT=0x054200)
+add_definitions(-DKF_DISABLE_DEPRECATED_BEFORE_AND_AT=0x055a00)
 
 set(ksshaskpass_SRCS src/main.cpp)
  
