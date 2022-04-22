@@ -16,7 +16,6 @@
 #include <QApplication>
 #include <QCommandLineOption>
 #include <QCommandLineParser>
-#include <QDesktopWidget>
 #include <QInputDialog>
 #include <QLoggingCategory>
 #include <QPointer>
@@ -283,8 +282,7 @@ int main(int argc, char **argv)
     }
 
     // Open KWallet to see if an item was previously stored
-    WId winId = QApplication::desktop()->winId();
-    std::unique_ptr<KWallet::Wallet> wallet(ignoreWallet ? nullptr : KWallet::Wallet::openWallet(KWallet::Wallet::NetworkWallet(), winId));
+    std::unique_ptr<KWallet::Wallet> wallet(ignoreWallet ? nullptr : KWallet::Wallet::openWallet(KWallet::Wallet::NetworkWallet(), 0));
 
     if ((!ignoreWallet) && (!identifier.isNull()) && wallet.get() && wallet->hasFolder(walletFolder)) {
         wallet->setFolder(walletFolder);
