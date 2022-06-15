@@ -10,3 +10,5 @@ Dependencies:
     'frameworks/kwallet': '@stable'
     'frameworks/kwidgetsaddons': '@stable'
     'frameworks/kdoctools': '@stable'
+Options:
+  require-passing-tests-on: [ 'Linux', 'FreeBSD']
