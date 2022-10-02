@@ -1,0 +1,103 @@
+# Translation of ksshaskpass.po to Euskara/Basque (eu).
+# Copyright (C) 2017, The Free Software Foundation.
+# Copyright (C) 2018-2020, This file is copyright:
+# This file is distributed under the same license as the plasma-desktop package.
+# KDE euskaratzeko proiektuaren arduraduna <xalba@euskalnet.net>.
+#
+# Translators:
+# Iñigo Salvador Azurmendi <xalba@euskalnet.net>, 2017, 2020.
+msgid ""
+msgstr ""
+"Project-Id-Version: plasma-desktop\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-04-23 00:47+0000\n"
+"PO-Revision-Date: 2020-01-22 20:32+0100\n"
+"Last-Translator: Iñigo Salvador Azurmendi <xalba@euskalnet.net>\n"
+"Language-Team: Basque <kde-i18n-eu@kde.org>\n"
+"Language: eu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 19.12.1\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Iñigo Salvador Azurmendi"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "xalba@euskalnet.net"
+
+#: main.cpp:247 main.cpp:317 main.cpp:337
+#, kde-format
+msgid "Ksshaskpass"
+msgstr "Ksshaskpass"
+
+#: main.cpp:249
+#, kde-format
+msgid "KDE version of ssh-askpass"
+msgstr "ssh-askpass, KDEren bertsioa"
+
+#: main.cpp:251
+#, kde-format
+msgid ""
+"(c) 2006 Hans van Leeuwen\n"
+"(c) 2008-2010 Armin Berres\n"
+"(c) 2013 Pali Rohár"
+msgstr ""
+"(c) 2006 Hans van Leeuwen\n"
+"(c) 2008-2010 Armin Berres\n"
+"(c) 2013 Pali Rohár"
+
+#: main.cpp:252
+#, kde-format
+msgid ""
+"Ksshaskpass allows you to interactively prompt users for a passphrase for "
+"ssh-add"
+msgstr ""
+"Ksshaskpass erabiliz erabiltzaileei 'ssh-add'-rentzako pasaesaldia era "
+"elkarreragilean eskatu ahalko diezu"
+
+#: main.cpp:256 main.cpp:259
+#, kde-format
+msgid "Armin Berres"
+msgstr "Armin Berres"
+
+#: main.cpp:256 main.cpp:259
+#, kde-format
+msgid "Current author"
+msgstr "Uneko egilea"
+
+#: main.cpp:257 main.cpp:260
+#, kde-format
+msgid "Hans van Leeuwen"
+msgstr "Hans van Leeuwen"
+
+#: main.cpp:257 main.cpp:260
+#, kde-format
+msgid "Original author"
+msgstr "Jatorrizko egilea"
+
+#: main.cpp:258 main.cpp:261
+#, kde-format
+msgid "Pali Rohár"
+msgstr "Pali Rohár"
+
+#: main.cpp:258 main.cpp:261
+#, kde-format
+msgid "Contributor"
+msgstr "Kolaboratzailea"
+
+#: main.cpp:266
+#, kde-format
+msgctxt "Name of a prompt for a password"
+msgid "Prompt"
+msgstr "Gonbita"
+
+#: main.cpp:272
+#, kde-format
+msgid "Please enter passphrase"
+msgstr "Sartu pasaesaldia"
