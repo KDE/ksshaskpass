@@ -56,4 +56,7 @@ install(TARGETS ksshaskpass DESTINATION ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
 if (KF5DocTools_FOUND)
     add_subdirectory(doc)
 endif()
+
+ki18n_install(po)
+
 feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)
