@@ -1,6 +1,6 @@
 project(ksshaskpass)
 cmake_minimum_required(VERSION 3.16)
-set(PROJECT_VERSION "5.26.0")
+set(PROJECT_VERSION "5.26.1")
 
 set(QT_MIN_VERSION "5.15.2")
 set(KF5_MIN_VERSION "5.98.0")
