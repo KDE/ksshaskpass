@@ -12,6 +12,7 @@
 #include <KMessageBox>
 #include <KPasswordDialog>
 #include <kwallet.h>
+#include <kwidgetsaddons_version.h>
 
 #include <QApplication>
 #include <QCommandLineOption>
@@ -314,7 +315,16 @@ int main(int argc, char **argv)
     // Item could not be retrieved from wallet. Open dialog
     switch (type) {
     case TypeConfirm: {
+#if KWIDGETSADDONS_VERSION >= QT_VERSION_CHECK(5, 100, 0)
+        if (KMessageBox::questionTwoActions(nullptr,
+                                            dialog,
+                                            i18n("Ksshaskpass"),
+                                            KGuiItem(i18nc("@action:button", "Accept"), QStringLiteral("dialog-ok")),
+                                            KStandardGuiItem::cancel())
+            != KMessageBox::PrimaryAction) {
+#else
         if (KMessageBox::questionYesNo(nullptr, dialog, i18n("Ksshaskpass")) != KMessageBox::Yes) {
+#endif
             // dialog has been canceled
             return 1;
         }
