@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-04-23 00:47+0000\n"
+"POT-Creation-Date: 2022-12-07 00:48+0000\n"
 "PO-Revision-Date: 2020-04-03 23:49+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -27,17 +27,17 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "kde@peremen.name"
 
-#: main.cpp:247 main.cpp:317 main.cpp:337
+#: main.cpp:248 main.cpp:321 main.cpp:326 main.cpp:347
 #, kde-format
 msgid "Ksshaskpass"
 msgstr "Ksshaskpass"
 
-#: main.cpp:249
+#: main.cpp:250
 #, kde-format
 msgid "KDE version of ssh-askpass"
 msgstr "KDE용 ssh-askpass"
 
-#: main.cpp:251
+#: main.cpp:252
 #, kde-format
 msgid ""
 "(c) 2006 Hans van Leeuwen\n"
@@ -48,7 +48,7 @@ msgstr ""
 "(c) 2008-2010 Armin Berres\n"
 "(c) 2013 Pali Rohár"
 
-#: main.cpp:252
+#: main.cpp:253
 #, kde-format
 msgid ""
 "Ksshaskpass allows you to interactively prompt users for a passphrase for "
@@ -56,43 +56,49 @@ msgid ""
 msgstr ""
 "Ksshaskpass를 통하여 ssh-add 명령의 암호를 인터랙티브하게 입력할 수 있습니다"
 
-#: main.cpp:256 main.cpp:259
+#: main.cpp:257 main.cpp:260
 #, kde-format
 msgid "Armin Berres"
 msgstr "Armin Berres"
 
-#: main.cpp:256 main.cpp:259
+#: main.cpp:257 main.cpp:260
 #, kde-format
 msgid "Current author"
 msgstr "현재 작성자"
 
-#: main.cpp:257 main.cpp:260
+#: main.cpp:258 main.cpp:261
 #, kde-format
 msgid "Hans van Leeuwen"
 msgstr "Hans van Leeuwen"
 
-#: main.cpp:257 main.cpp:260
+#: main.cpp:258 main.cpp:261
 #, kde-format
 msgid "Original author"
 msgstr "원 작성자"
 
-#: main.cpp:258 main.cpp:261
+#: main.cpp:259 main.cpp:262
 #, kde-format
 msgid "Pali Rohár"
 msgstr "Pali Rohár"
 
-#: main.cpp:258 main.cpp:261
+#: main.cpp:259 main.cpp:262
 #, kde-format
 msgid "Contributor"
 msgstr "기여자"
 
-#: main.cpp:266
+#: main.cpp:267
 #, kde-format
 msgctxt "Name of a prompt for a password"
 msgid "Prompt"
 msgstr "질문"
 
-#: main.cpp:272
+#: main.cpp:273
 #, kde-format
 msgid "Please enter passphrase"
 msgstr "암호를 입력하십시오"
+
+#: main.cpp:322
+#, kde-format
+msgctxt "@action:button"
+msgid "Accept"
+msgstr ""

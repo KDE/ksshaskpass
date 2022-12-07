@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ksshaskpass\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-04-23 00:47+0000\n"
+"POT-Creation-Date: 2022-12-07 00:48+0000\n"
 "PO-Revision-Date: 2021-06-27 15:23+0530\n"
 "Last-Translator: Raghavendra Kamath <raghu@raghukamath.com>\n"
 "Language-Team: kde-hindi\n"
@@ -28,17 +28,17 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "lumarzeli30@gmail.com, raghu@raghukamath.com"
 
-#: main.cpp:247 main.cpp:317 main.cpp:337
+#: main.cpp:248 main.cpp:321 main.cpp:326 main.cpp:347
 #, kde-format
 msgid "Ksshaskpass"
 msgstr "केएसएसएचआस्कपास"
 
-#: main.cpp:249
+#: main.cpp:250
 #, kde-format
 msgid "KDE version of ssh-askpass"
 msgstr "एसएसएच-आस्कपास का केडीई संस्करण"
 
-#: main.cpp:251
+#: main.cpp:252
 #, kde-format
 msgid ""
 "(c) 2006 Hans van Leeuwen\n"
@@ -49,7 +49,7 @@ msgstr ""
 "(c) २००८-२०१० आर्मिन बेरेस\n"
 "(c) २०१३ पाली रोहैर"
 
-#: main.cpp:252
+#: main.cpp:253
 #, kde-format
 msgid ""
 "Ksshaskpass allows you to interactively prompt users for a passphrase for "
@@ -57,43 +57,49 @@ msgid ""
 msgstr ""
 "केएसएसएचआस्कपास आपको एसएसएच-एड के लिए उपयोक्ताओं से कूटशब्द माँगने की अनुमति देता है।"
 
-#: main.cpp:256 main.cpp:259
+#: main.cpp:257 main.cpp:260
 #, kde-format
 msgid "Armin Berres"
 msgstr "आर्मिन बेरेस"
 
-#: main.cpp:256 main.cpp:259
+#: main.cpp:257 main.cpp:260
 #, kde-format
 msgid "Current author"
 msgstr "वर्तमान लेखक"
 
-#: main.cpp:257 main.cpp:260
+#: main.cpp:258 main.cpp:261
 #, kde-format
 msgid "Hans van Leeuwen"
 msgstr "हान्स वान ल्यूवेन"
 
-#: main.cpp:257 main.cpp:260
+#: main.cpp:258 main.cpp:261
 #, kde-format
 msgid "Original author"
 msgstr "मूल लेखक"
 
-#: main.cpp:258 main.cpp:261
+#: main.cpp:259 main.cpp:262
 #, kde-format
 msgid "Pali Rohár"
 msgstr "पाली रोहैर"
 
-#: main.cpp:258 main.cpp:261
+#: main.cpp:259 main.cpp:262
 #, kde-format
 msgid "Contributor"
 msgstr "सहयोगी"
 
-#: main.cpp:266
+#: main.cpp:267
 #, kde-format
 msgctxt "Name of a prompt for a password"
 msgid "Prompt"
 msgstr "संकेत"
 
-#: main.cpp:272
+#: main.cpp:273
 #, kde-format
 msgid "Please enter passphrase"
 msgstr "कृपया कूटशब्द डालें"
+
+#: main.cpp:322
+#, kde-format
+msgctxt "@action:button"
+msgid "Accept"
+msgstr ""
