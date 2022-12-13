@@ -99,4 +99,4 @@ msgstr "Indique por favor a senha"
 #, kde-format
 msgctxt "@action:button"
 msgid "Accept"
-msgstr ""
+msgstr "Aceitar"
