@@ -15,6 +15,7 @@ include(FeatureSummary)
 include(ECMQtDeclareLoggingCategory)
 include(KDEClangFormat)
 include(KDEGitCommitHooks)
+include(ECMDeprecationSettings)
 
 find_package(Qt${QT_MAJOR_VERSION}  ${QT_MIN_VERSION} REQUIRED COMPONENTS Core)
 
@@ -32,8 +33,9 @@ find_package(KF5DocTools)
 set_package_properties(KF5DocTools PROPERTIES TYPE OPTIONAL
    PURPOSE "Required to build ksshaskpass manpage")
 
-add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x050f00)
-add_definitions(-DKF_DISABLE_DEPRECATED_BEFORE_AND_AT=0x055a00)
+ecm_set_disabled_deprecation_versions(QT 5.15.2
+    KF 5.101
+)
 
 set(ksshaskpass_SRCS src/main.cpp)
  
