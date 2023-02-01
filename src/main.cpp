@@ -28,6 +28,7 @@ enum Type {
     TypePassword,
     TypeClearText,
     TypeConfirm,
+    TypeConfirmCancel,
 };
 
 // Try to understand what we're asked for by parsing the phrase. Unfortunately, sshaskpass interface does not
@@ -152,6 +153,28 @@ static void parsePrompt(const QString &prompt, QString &identifier, bool &ignore
         return;
     }
 
+    // openssh ssh-agent.c
+    // Case: asking to press the button on the security key device
+    // First match group is key type like "ED25519-SK", second is SHA digest of key, like ssh-add -l prints
+    match = QRegularExpression(QStringLiteral("^Confirm user presence for key (.*?) (.*)$")).match(prompt);
+    if (match.hasMatch()) {
+        identifier = match.captured(2);
+        type = TypeConfirmCancel;
+        ignoreWallet = true;
+        return;
+    }
+
+    // openssh ssh-agent.c
+    // Case: asking to provide the PIN of the security key device
+    // match after "for" is key type, match after "key" is SHA digest of key
+    match = QRegularExpression(QStringLiteral("^Enter PIN( and confirm user presence)? for (.*?) key (.*?): $")).match(prompt);
+    if (match.hasMatch()) {
+        identifier = QStringLiteral("PIN:") + match.captured(3);
+        type = TypePassword;
+        ignoreWallet = true;
+        return;
+    }
+
     // git imap-send.c
     // Case: asking for password by git imap-send
     match = QRegularExpression(QStringLiteral("^Password \\((.*@.*)\\): $")).match(prompt);
@@ -234,6 +257,18 @@ static void parsePrompt(const QString &prompt, QString &identifier, bool &ignore
     qCWarning(LOG_KSSHASKPASS) << "Unable to parse phrase" << prompt;
 }
 
+void cancelDialog(QWidget *parent, const QString &text, const QString &title)
+{
+    QDialog *d = new QDialog(parent);
+    d->setWindowTitle(title);
+    d->setObjectName(QStringLiteral("information"));
+
+    QDialogButtonBox *buttonBox = new QDialogButtonBox(d);
+    buttonBox->setStandardButtons(QDialogButtonBox::Cancel);
+
+    KMessageBox::createKMessageBox(d, buttonBox, QMessageBox::Information, text, QStringList(), QString(), nullptr, KMessageBox::Notify);
+}
+
 int main(int argc, char **argv)
 {
     QApplication app(argc, argv);
@@ -307,6 +342,11 @@ int main(int argc, char **argv)
 
     // Item could not be retrieved from wallet. Open dialog
     switch (type) {
+    case TypeConfirmCancel: {
+        cancelDialog(nullptr, dialog, i18n("Ksshaskpass"));
+        // dialog can only be canceled
+        return 1;
+    }
     case TypeConfirm: {
         if (KMessageBox::questionTwoActions(nullptr,
                                             dialog,
