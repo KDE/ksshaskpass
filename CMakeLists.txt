@@ -3,9 +3,9 @@ cmake_minimum_required(VERSION 3.16)
 set(PROJECT_VERSION "5.27.80")
 
 set(QT_MIN_VERSION "5.15.2")
-set(KF5_MIN_VERSION "5.102.0")
+set(KF6_MIN_VERSION "5.102.0")
 set(KDE_COMPILERSETTINGS_LEVEL "5.82")
-find_package(ECM ${KF5_MIN_VERSION} REQUIRED NO_MODULE)
+find_package(ECM ${KF6_MIN_VERSION} REQUIRED NO_MODULE)
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
 
 include(KDEInstallDirs)
@@ -22,15 +22,15 @@ find_package(Qt${QT_MAJOR_VERSION}  ${QT_MIN_VERSION} REQUIRED COMPONENTS Core)
 
 add_definitions(-DQT_NO_NARROWING_CONVERSIONS_IN_CONNECT)
 
-find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
+find_package(KF6 ${KF6_MIN_VERSION} REQUIRED COMPONENTS
     CoreAddons
     I18n
     Wallet
     WidgetsAddons
 )
 
-find_package(KF5DocTools)
-set_package_properties(KF5DocTools PROPERTIES TYPE OPTIONAL
+find_package(KF6DocTools)
+set_package_properties(KF6DocTools PROPERTIES TYPE OPTIONAL
    PURPOSE "Required to build ksshaskpass manpage")
 
 ecm_set_disabled_deprecation_versions(QT 5.15.2
@@ -42,10 +42,10 @@ set(ksshaskpass_SRCS src/main.cpp)
 add_executable(ksshaskpass ${ksshaskpass_SRCS})
 target_compile_definitions(ksshaskpass PRIVATE -DPROJECT_VERSION="${PROJECT_VERSION}")
 target_link_libraries(ksshaskpass 
-    KF5::CoreAddons
-    KF5::I18n
-    KF5::Wallet
-    KF5::WidgetsAddons
+    KF6::CoreAddons
+    KF6::I18n
+    KF6::Wallet
+    KF6::WidgetsAddons
 )
 
 # add clang-format target for all our real source files
@@ -55,7 +55,7 @@ kde_configure_git_pre_commit_hook(CHECKS CLANG_FORMAT)
 
 install(TARGETS ksshaskpass DESTINATION ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
 
-if (KF5DocTools_FOUND)
+if (KF6DocTools_FOUND)
     add_subdirectory(doc)
 endif()
 
