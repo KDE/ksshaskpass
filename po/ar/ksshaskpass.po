@@ -37,7 +37,7 @@ msgstr "Ksshaskpass"
 #: main.cpp:250
 #, kde-format
 msgid "KDE version of ssh-askpass"
-msgstr "إصدارة كدي من ssh-askpass"
+msgstr "إصدارة كِيدِي من ssh-askpass"
 
 #: main.cpp:252
 #, kde-format
