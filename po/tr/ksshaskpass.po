@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ksshaskpass\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-07 00:48+0000\n"
+"POT-Creation-Date: 2023-03-15 02:12+0000\n"
 "PO-Revision-Date: 2022-12-07 17:08+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -27,7 +27,7 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "kaanozdincer@gmail.com, emir_sari@icloud.com"
 
-#: main.cpp:248 main.cpp:321 main.cpp:326 main.cpp:347
+#: main.cpp:248 main.cpp:318 main.cpp:323 main.cpp:344
 #, kde-format
 msgid "Ksshaskpass"
 msgstr "Ksshaskpass"
@@ -57,48 +57,48 @@ msgstr ""
 "Ksshaskpass; kullanıcıları ssh-add için, bir parolayla etkileşimli olarak "
 "yönlendirmenizi sağlar"
 
-#: main.cpp:257 main.cpp:260
+#: main.cpp:257
 #, kde-format
 msgid "Armin Berres"
 msgstr "Armin Berres"
 
-#: main.cpp:257 main.cpp:260
+#: main.cpp:257
 #, kde-format
 msgid "Current author"
 msgstr "Şu Anki Yazar"
 
-#: main.cpp:258 main.cpp:261
+#: main.cpp:258
 #, kde-format
 msgid "Hans van Leeuwen"
 msgstr "Hans van Leeuwen"
 
-#: main.cpp:258 main.cpp:261
+#: main.cpp:258
 #, kde-format
 msgid "Original author"
 msgstr "Özgün Yazar"
 
-#: main.cpp:259 main.cpp:262
+#: main.cpp:259
 #, kde-format
 msgid "Pali Rohár"
 msgstr "Pali Rohár"
 
-#: main.cpp:259 main.cpp:262
+#: main.cpp:259
 #, kde-format
 msgid "Contributor"
 msgstr "Katkıda Bulunan"
 
-#: main.cpp:267
+#: main.cpp:264
 #, kde-format
 msgctxt "Name of a prompt for a password"
 msgid "Prompt"
 msgstr "Ekran"
 
-#: main.cpp:273
+#: main.cpp:270
 #, kde-format
 msgid "Please enter passphrase"
 msgstr "Lütfen parola metnini girin"
 
-#: main.cpp:322
+#: main.cpp:319
 #, kde-format
 msgctxt "@action:button"
 msgid "Accept"

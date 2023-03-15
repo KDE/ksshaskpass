@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kde5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-07 00:48+0000\n"
+"POT-Creation-Date: 2023-03-15 02:12+0000\n"
 "PO-Revision-Date: 2015-02-24 20:27+0100\n"
 "Last-Translator: Samir Ribić <megaribi@epn.ba>\n"
 "Language-Team: Bosnian\n"
@@ -29,7 +29,7 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "samir.ribic@etf.unsa.ba"
 
-#: main.cpp:248 main.cpp:321 main.cpp:326 main.cpp:347
+#: main.cpp:248 main.cpp:318 main.cpp:323 main.cpp:344
 #, kde-format
 msgid "Ksshaskpass"
 msgstr "ksshaskpass"
@@ -61,48 +61,48 @@ msgstr ""
 "Ksshaskpass vam omogućava da interaktivno pita korisnike za lozinku za ssh-"
 "add"
 
-#: main.cpp:257 main.cpp:260
+#: main.cpp:257
 #, kde-format
 msgid "Armin Berres"
 msgstr "Armin Berres"
 
-#: main.cpp:257 main.cpp:260
+#: main.cpp:257
 #, kde-format
 msgid "Current author"
 msgstr "Trenutni autor"
 
-#: main.cpp:258 main.cpp:261
+#: main.cpp:258
 #, kde-format
 msgid "Hans van Leeuwen"
 msgstr "Hans van Leeuwen"
 
-#: main.cpp:258 main.cpp:261
+#: main.cpp:258
 #, kde-format
 msgid "Original author"
 msgstr "Prvobitni autor"
 
-#: main.cpp:259 main.cpp:262
+#: main.cpp:259
 #, kde-format
 msgid "Pali Rohár"
 msgstr ""
 
-#: main.cpp:259 main.cpp:262
+#: main.cpp:259
 #, kde-format
 msgid "Contributor"
 msgstr ""
 
-#: main.cpp:267
+#: main.cpp:264
 #, kde-format
 msgctxt "Name of a prompt for a password"
 msgid "Prompt"
 msgstr "Pitaj"
 
-#: main.cpp:273
+#: main.cpp:270
 #, kde-format
 msgid "Please enter passphrase"
 msgstr "Molim unesite lozinku"
 
-#: main.cpp:322
+#: main.cpp:319
 #, kde-format
 msgctxt "@action:button"
 msgid "Accept"
