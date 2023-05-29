@@ -21,7 +21,7 @@ include(KDEClangFormat)
 include(KDEGitCommitHooks)
 include(ECMDeprecationSettings)
 
-find_package(Qt${QT_MAJOR_VERSION}  ${QT_MIN_VERSION} REQUIRED COMPONENTS Core)
+find_package(Qt6  ${QT_MIN_VERSION} REQUIRED COMPONENTS Core)
 
 
 add_definitions(-DQT_NO_NARROWING_CONVERSIONS_IN_CONNECT)
