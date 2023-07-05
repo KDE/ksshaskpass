@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-15 02:12+0000\n"
+"POT-Creation-Date: 2023-07-05 02:51+0000\n"
 "PO-Revision-Date: 2022-12-07 11:14+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
@@ -27,17 +27,17 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "freekdekruijf@kde.nl"
 
-#: main.cpp:248 main.cpp:318 main.cpp:323 main.cpp:344
+#: main.cpp:244 main.cpp:313 main.cpp:336
 #, kde-format
 msgid "Ksshaskpass"
 msgstr "Ksshaskpass"
 
-#: main.cpp:250
+#: main.cpp:246
 #, kde-format
 msgid "KDE version of ssh-askpass"
 msgstr "KDE versie van ssh-askpass"
 
-#: main.cpp:252
+#: main.cpp:248
 #, kde-format
 msgid ""
 "(c) 2006 Hans van Leeuwen\n"
@@ -48,7 +48,7 @@ msgstr ""
 "(c) 2008-2010 Armin Berres\n"
 "(c) 2013 Pali Rohár"
 
-#: main.cpp:253
+#: main.cpp:249
 #, kde-format
 msgid ""
 "Ksshaskpass allows you to interactively prompt users for a passphrase for "
@@ -57,48 +57,48 @@ msgstr ""
 "Ksshaskpass stelt u in staat om gebruikers interactief te vragen naar een "
 "wachtzin voor ssh-add"
 
-#: main.cpp:257
+#: main.cpp:253
 #, kde-format
 msgid "Armin Berres"
 msgstr "Armin Berres"
 
-#: main.cpp:257
+#: main.cpp:253
 #, kde-format
 msgid "Current author"
 msgstr "Huidige auteur"
 
-#: main.cpp:258
+#: main.cpp:254
 #, kde-format
 msgid "Hans van Leeuwen"
 msgstr "Hans van Leeuwen"
 
-#: main.cpp:258
+#: main.cpp:254
 #, kde-format
 msgid "Original author"
 msgstr "Oorspronkelijke auteur"
 
-#: main.cpp:259
+#: main.cpp:255
 #, kde-format
 msgid "Pali Rohár"
 msgstr "Pali Rohár"
 
-#: main.cpp:259
+#: main.cpp:255
 #, kde-format
 msgid "Contributor"
 msgstr "Medewerker"
 
-#: main.cpp:264
+#: main.cpp:260
 #, kde-format
 msgctxt "Name of a prompt for a password"
 msgid "Prompt"
 msgstr "Prompt"
 
-#: main.cpp:270
+#: main.cpp:266
 #, kde-format
 msgid "Please enter passphrase"
 msgstr "Voer wachtzin in"
 
-#: main.cpp:319
+#: main.cpp:314
 #, kde-format
 msgctxt "@action:button"
 msgid "Accept"
