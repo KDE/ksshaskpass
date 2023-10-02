@@ -1,28 +1,29 @@
 # Elkana Bardugo <ttv200@gmail.com>, 2017. #zanata
+# SPDX-FileCopyrightText: 2023 Yaron Shahrabani <sh.yaron@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: ksshaskpass\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-07-05 02:51+0000\n"
-"PO-Revision-Date: 2017-05-16 12:23-0400\n"
-"Last-Translator: Elkana Bardugo <ttv200@gmail.com>\n"
-"Language-Team: Hebrew\n"
+"PO-Revision-Date: 2023-10-01 22:16+0300\n"
+"Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
+"Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Zanata 3.9.6\n"
+"X-Generator: Lokalize 23.08.1\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr ""
+msgstr "צוות התרגום של KDE ישראל"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr ""
+msgstr "kde-l10n-he@kde.org"
 
 #: main.cpp:244 main.cpp:313 main.cpp:336
 #, kde-format
@@ -35,54 +36,52 @@ msgid "KDE version of ssh-askpass"
 msgstr "גרסת KDE של ssh-askpass"
 
 #: main.cpp:248
-#, fuzzy, kde-format
-#| msgid ""
-#| "(c) 2006 Hans van Leeuwen\n"
-#| "(c) 2008-2010 Armin Berres"
+#, kde-format
 msgid ""
 "(c) 2006 Hans van Leeuwen\n"
 "(c) 2008-2010 Armin Berres\n"
 "(c) 2013 Pali Rohár"
 msgstr ""
-"(c) 2006 Hans van Leeuwen\n"
-"(c) 2008-2010 Armin Berres"
+"(c) 2006 האנס ואן ליוון\n"
+"(c) 2008-2010 ארמין ברס\n"
+"(c) 2013 פאלי רוהאר"
 
 #: main.cpp:249
 #, kde-format
 msgid ""
 "Ksshaskpass allows you to interactively prompt users for a passphrase for "
 "ssh-add"
-msgstr "‏Ksshaskpass מאפשר לך לבקש את הסיסמה מהמשתמשים ב־ssh-add"
+msgstr "‏Ksshaskpass מאפשר לך לבקש את הסיסמה מהמשתמשים למילת צופן ל־ssh-add"
 
 #: main.cpp:253
 #, kde-format
 msgid "Armin Berres"
-msgstr "Armin Berres"
+msgstr "ארמין ברס"
 
 #: main.cpp:253
 #, kde-format
 msgid "Current author"
-msgstr "מחבר נוכחי"
+msgstr "יוצר נוכחי"
 
 #: main.cpp:254
 #, kde-format
 msgid "Hans van Leeuwen"
-msgstr "Hans van Leeuwen"
+msgstr "האנס ואן ליוון"
 
 #: main.cpp:254
 #, kde-format
 msgid "Original author"
-msgstr "מחבר מקורי"
+msgstr "יוצר מקורי"
 
 #: main.cpp:255
 #, kde-format
 msgid "Pali Rohár"
-msgstr ""
+msgstr "פאלי רוהאר"
 
 #: main.cpp:255
 #, kde-format
 msgid "Contributor"
-msgstr ""
+msgstr "מתנדב"
 
 #: main.cpp:260
 #, kde-format
@@ -93,10 +92,10 @@ msgstr "בקשה"
 #: main.cpp:266
 #, kde-format
 msgid "Please enter passphrase"
-msgstr "אנא הקלד סיסמה"
+msgstr "נא להקליד סיסמה"
 
 #: main.cpp:314
 #, kde-format
 msgctxt "@action:button"
 msgid "Accept"
-msgstr ""
+msgstr "אישור"
