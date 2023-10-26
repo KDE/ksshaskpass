@@ -237,7 +237,7 @@ static void parsePrompt(const QString &prompt, QString &identifier, bool &ignore
 int main(int argc, char **argv)
 {
     QApplication app(argc, argv);
-    KLocalizedString::setApplicationDomain("ksshaskpass");
+    KLocalizedString::setApplicationDomain(QByteArrayLiteral("ksshaskpass"));
 
     // TODO update it.
     KAboutData about(QStringLiteral("ksshaskpass"),
