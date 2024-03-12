@@ -58,6 +58,7 @@ kde_clang_format(${ALL_CLANG_FORMAT_SOURCE_FILES})
 kde_configure_git_pre_commit_hook(CHECKS CLANG_FORMAT)
 
 install(TARGETS ksshaskpass DESTINATION ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
+install(FILES org.kde.ksshaskpass.desktop DESTINATION ${KDE_INSTALL_APPDIR})
 
 if (KF6DocTools_FOUND)
     add_subdirectory(doc)

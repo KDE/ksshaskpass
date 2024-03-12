@@ -1,0 +1,8 @@
+# SPDX-License-Identifier: CC0-1.0
+# SPDX-FileCopyrightText: 2024 Nicolas Fella <nicolas.fella@gmx.de>
+[Desktop Entry]
+Type=Application
+Name=SSH Credentials
+Exec=ksshhaskpass
+NoDisplay=true
+Icon=dialog-password
