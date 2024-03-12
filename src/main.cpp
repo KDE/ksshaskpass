@@ -194,10 +194,10 @@ static void parsePrompt(PromptType promptType, const QString &prompt, QString &i
     qCWarning(LOG_KSSHASKPASS) << "Unable to parse phrase" << prompt;
 }
 
-void cancelDialog(QWidget *parent, const QString &text, const QString &title)
+void cancelDialog(QWidget *parent, const QString &text)
 {
     QDialog *d = new QDialog(parent);
-    d->setWindowTitle(title);
+    d->setWindowTitle(i18nc("@title:window", "Enter SSH Credentials"));
     d->setObjectName(QStringLiteral("information"));
 
     QDialogButtonBox *buttonBox = new QDialogButtonBox(d);
@@ -213,7 +213,7 @@ int main(int argc, char **argv)
 
     // TODO update it.
     KAboutData about(QStringLiteral("ksshaskpass"),
-                     i18n("Ksshaskpass"),
+                     i18n("SSH Credentials"),
                      QStringLiteral(PROJECT_VERSION),
                      i18n("KDE version of ssh-askpass"),
                      KAboutLicense::GPL,
@@ -288,14 +288,14 @@ int main(int argc, char **argv)
     // Item could not be retrieved from wallet. Open dialog
     switch (displayType) {
     case DisplayType::ConfirmCancel: {
-        cancelDialog(nullptr, dialog, i18n("Ksshaskpass"));
+        cancelDialog(nullptr, dialog);
         // dialog can only be canceled
         return 1;
     }
     case DisplayType::Confirm: {
         if (KMessageBox::questionTwoActions(nullptr,
                                             dialog,
-                                            i18n("Ksshaskpass"),
+                                            i18nc("@title:window", "Enter SSH Credentials"),
                                             KGuiItem(i18nc("@action:button", "Accept"), QStringLiteral("dialog-ok")),
                                             KStandardGuiItem::cancel())
             != KMessageBox::PrimaryAction) {
@@ -318,7 +318,7 @@ int main(int argc, char **argv)
         QPointer<KPasswordDialog> kpd = new KPasswordDialog(nullptr, flag);
 
         kpd->setPrompt(dialog);
-        kpd->setWindowTitle(i18n("Ksshaskpass"));
+        kpd->setWindowTitle(i18nc("@title:window", "Enter SSH Credentials"));
         // We don't want to dump core when the password dialog is shown, because it could contain the entered password.
         // KPasswordDialog::disableCoreDumps() seems to be gone in KDE 4 -- do it manually
         struct rlimit rlim;
