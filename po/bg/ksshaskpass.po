@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ksshaskpass\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-05 02:51+0000\n"
+"POT-Creation-Date: 2024-03-13 00:39+0000\n"
 "PO-Revision-Date: 2023-08-09 09:51+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: \n"
@@ -29,17 +29,17 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "mkondarev@yahoo.de"
 
-#: main.cpp:244 main.cpp:313 main.cpp:336
+#: main.cpp:279 main.cpp:346 main.cpp:353 main.cpp:376
 #, kde-format
 msgid "Ksshaskpass"
 msgstr "Ksshaskpass"
 
-#: main.cpp:246
+#: main.cpp:281
 #, kde-format
 msgid "KDE version of ssh-askpass"
 msgstr "KDE версия на ssh-askpass"
 
-#: main.cpp:248
+#: main.cpp:283
 #, kde-format
 msgid ""
 "(c) 2006 Hans van Leeuwen\n"
@@ -50,7 +50,7 @@ msgstr ""
 "(c) 2008-2010 Armin Berres\n"
 "(c) 2013 Pali Rohár"
 
-#: main.cpp:249
+#: main.cpp:284
 #, kde-format
 msgid ""
 "Ksshaskpass allows you to interactively prompt users for a passphrase for "
@@ -59,48 +59,48 @@ msgstr ""
 "Ksshaskpass ви позволява интерактивно да изисквате от потребителите парола "
 "за ssh-add"
 
-#: main.cpp:253
+#: main.cpp:288
 #, kde-format
 msgid "Armin Berres"
 msgstr "Armin Berres"
 
-#: main.cpp:253
+#: main.cpp:288
 #, kde-format
 msgid "Current author"
 msgstr "Настоящ автор"
 
-#: main.cpp:254
+#: main.cpp:289
 #, kde-format
 msgid "Hans van Leeuwen"
 msgstr "Hans van Leeuwen"
 
-#: main.cpp:254
+#: main.cpp:289
 #, kde-format
 msgid "Original author"
 msgstr "Първоначален автор"
 
-#: main.cpp:255
+#: main.cpp:290
 #, kde-format
 msgid "Pali Rohár"
 msgstr "Pali Rohár"
 
-#: main.cpp:255
+#: main.cpp:290
 #, kde-format
 msgid "Contributor"
 msgstr "Принос"
 
-#: main.cpp:260
+#: main.cpp:295
 #, kde-format
 msgctxt "Name of a prompt for a password"
 msgid "Prompt"
 msgstr "Запитване"
 
-#: main.cpp:266
+#: main.cpp:301
 #, kde-format
 msgid "Please enter passphrase"
 msgstr "Моля, въведете парола"
 
-#: main.cpp:314
+#: main.cpp:354
 #, kde-format
 msgctxt "@action:button"
 msgid "Accept"

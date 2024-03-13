@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kde5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-05 02:51+0000\n"
+"POT-Creation-Date: 2024-03-13 00:39+0000\n"
 "PO-Revision-Date: 2015-02-24 20:27+0100\n"
 "Last-Translator: Samir Ribić <megaribi@epn.ba>\n"
 "Language-Team: Bosnian\n"
@@ -29,17 +29,17 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "samir.ribic@etf.unsa.ba"
 
-#: main.cpp:244 main.cpp:313 main.cpp:336
+#: main.cpp:279 main.cpp:346 main.cpp:353 main.cpp:376
 #, kde-format
 msgid "Ksshaskpass"
 msgstr "ksshaskpass"
 
-#: main.cpp:246
+#: main.cpp:281
 #, kde-format
 msgid "KDE version of ssh-askpass"
 msgstr "KDE verzija ssh-askpass"
 
-#: main.cpp:248
+#: main.cpp:283
 #, fuzzy, kde-format
 #| msgid ""
 #| "(c) 2006 Hans van Leeuwen\n"
@@ -52,7 +52,7 @@ msgstr ""
 "(c) 2006 Hans van Leeuwen\n"
 "(c) 2008-2010 Armin Berres"
 
-#: main.cpp:249
+#: main.cpp:284
 #, kde-format
 msgid ""
 "Ksshaskpass allows you to interactively prompt users for a passphrase for "
@@ -61,48 +61,48 @@ msgstr ""
 "Ksshaskpass vam omogućava da interaktivno pita korisnike za lozinku za ssh-"
 "add"
 
-#: main.cpp:253
+#: main.cpp:288
 #, kde-format
 msgid "Armin Berres"
 msgstr "Armin Berres"
 
-#: main.cpp:253
+#: main.cpp:288
 #, kde-format
 msgid "Current author"
 msgstr "Trenutni autor"
 
-#: main.cpp:254
+#: main.cpp:289
 #, kde-format
 msgid "Hans van Leeuwen"
 msgstr "Hans van Leeuwen"
 
-#: main.cpp:254
+#: main.cpp:289
 #, kde-format
 msgid "Original author"
 msgstr "Prvobitni autor"
 
-#: main.cpp:255
+#: main.cpp:290
 #, kde-format
 msgid "Pali Rohár"
 msgstr ""
 
-#: main.cpp:255
+#: main.cpp:290
 #, kde-format
 msgid "Contributor"
 msgstr ""
 
-#: main.cpp:260
+#: main.cpp:295
 #, kde-format
 msgctxt "Name of a prompt for a password"
 msgid "Prompt"
 msgstr "Pitaj"
 
-#: main.cpp:266
+#: main.cpp:301
 #, kde-format
 msgid "Please enter passphrase"
 msgstr "Molim unesite lozinku"
 
-#: main.cpp:314
+#: main.cpp:354
 #, kde-format
 msgctxt "@action:button"
 msgid "Accept"

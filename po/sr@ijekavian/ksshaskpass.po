@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ksshaskpass\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-05 02:51+0000\n"
+"POT-Creation-Date: 2024-03-13 00:39+0000\n"
 "PO-Revision-Date: 2015-01-17 13:25+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -28,17 +28,17 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "caslav.ilic@gmx.net"
 
-#: main.cpp:244 main.cpp:313 main.cpp:336
+#: main.cpp:279 main.cpp:346 main.cpp:353 main.cpp:376
 #, kde-format
 msgid "Ksshaskpass"
 msgstr "К‑ССХ‑упитник"
 
-#: main.cpp:246
+#: main.cpp:281
 #, kde-format
 msgid "KDE version of ssh-askpass"
 msgstr "КДЕ верзија ССХ‑упитника"
 
-#: main.cpp:248
+#: main.cpp:283
 #, fuzzy, kde-format
 #| msgid ""
 #| "(c) 2006 Hans van Leeuwen\n"
@@ -51,7 +51,7 @@ msgstr ""
 "© 2006, Ханс ван Леувен\n"
 "© 2008–2010, Армин Берес"
 
-#: main.cpp:249
+#: main.cpp:284
 #, kde-format
 msgid ""
 "Ksshaskpass allows you to interactively prompt users for a passphrase for "
@@ -59,48 +59,48 @@ msgid ""
 msgstr ""
 "К‑ССХ‑упитник омогућава интерактивно тражење лозинке за ssh-add од корисника"
 
-#: main.cpp:253
+#: main.cpp:288
 #, kde-format
 msgid "Armin Berres"
 msgstr "Армин Берес"
 
-#: main.cpp:253
+#: main.cpp:288
 #, kde-format
 msgid "Current author"
 msgstr "Тренутни аутор"
 
-#: main.cpp:254
+#: main.cpp:289
 #, kde-format
 msgid "Hans van Leeuwen"
 msgstr "Ханс ван Леувен"
 
-#: main.cpp:254
+#: main.cpp:289
 #, kde-format
 msgid "Original author"
 msgstr "Првобитни аутор"
 
-#: main.cpp:255
+#: main.cpp:290
 #, kde-format
 msgid "Pali Rohár"
 msgstr ""
 
-#: main.cpp:255
+#: main.cpp:290
 #, kde-format
 msgid "Contributor"
 msgstr ""
 
-#: main.cpp:260
+#: main.cpp:295
 #, kde-format
 msgctxt "Name of a prompt for a password"
 msgid "Prompt"
 msgstr "Упит"
 
-#: main.cpp:266
+#: main.cpp:301
 #, kde-format
 msgid "Please enter passphrase"
 msgstr "Унесите лозинку"
 
-#: main.cpp:314
+#: main.cpp:354
 #, kde-format
 msgctxt "@action:button"
 msgid "Accept"
