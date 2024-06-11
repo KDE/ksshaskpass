@@ -233,15 +233,6 @@ static void parsePrompt(const QString &prompt, QString &identifier, bool &ignore
         return;
     }
 
-    // Case: password extraction from mercurial, see bug 380085
-    match = QRegularExpression(QStringLiteral("^(.*?)'s password: $")).match(prompt);
-    if (match.hasMatch()) {
-        identifier = match.captured(1);
-        type = TypePassword;
-        ignoreWallet = false;
-        return;
-    }
-
     // Nothing matched; either it was called by some sort of a script with a custom prompt (i.e. not ssh-add), or
     // strings we're looking for were broken. Issue a warning and continue without identifier.
     qCWarning(LOG_KSSHASKPASS) << "Unable to parse phrase" << prompt;
