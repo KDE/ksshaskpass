@@ -40,7 +40,7 @@ static void parsePrompt(const QString &prompt, QString &identifier, bool &ignore
 
     // openssh sshconnect2.c
     // Case: password for authentication on remote ssh server
-    match = QRegularExpression(QStringLiteral("^(.*@.*)'s password( \\(JPAKE\\))?: $")).match(prompt);
+    match = QRegularExpression(QStringLiteral("^(.*@.*)'s password: $")).match(prompt);
     if (match.hasMatch()) {
         identifier = match.captured(1);
         type = TypePassword;
@@ -172,16 +172,6 @@ static void parsePrompt(const QString &prompt, QString &identifier, bool &ignore
         identifier = QStringLiteral("PIN:") + match.captured(3);
         type = TypePassword;
         ignoreWallet = true;
-        return;
-    }
-
-    // git imap-send.c
-    // Case: asking for password by git imap-send
-    match = QRegularExpression(QStringLiteral("^Password \\((.*@.*)\\): $")).match(prompt);
-    if (match.hasMatch()) {
-        identifier = match.captured(1);
-        type = TypePassword;
-        ignoreWallet = false;
         return;
     }
 
