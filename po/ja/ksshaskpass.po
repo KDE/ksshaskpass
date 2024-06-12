@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ksshaskpass\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-13 00:39+0000\n"
+"POT-Creation-Date: 2024-06-12 00:40+0000\n"
 "PO-Revision-Date: 2015-01-15 22:34-0800\n"
 "Last-Translator: Japanese KDE translation team <kde-jp@kde.org>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -24,17 +24,17 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
 
-#: main.cpp:279 main.cpp:346 main.cpp:353 main.cpp:376
+#: main.cpp:260 main.cpp:327 main.cpp:334 main.cpp:357
 #, kde-format
 msgid "Ksshaskpass"
 msgstr ""
 
-#: main.cpp:281
+#: main.cpp:262
 #, kde-format
 msgid "KDE version of ssh-askpass"
 msgstr ""
 
-#: main.cpp:283
+#: main.cpp:264
 #, kde-format
 msgid ""
 "(c) 2006 Hans van Leeuwen\n"
@@ -42,55 +42,55 @@ msgid ""
 "(c) 2013 Pali Rohár"
 msgstr ""
 
-#: main.cpp:284
+#: main.cpp:265
 #, kde-format
 msgid ""
 "Ksshaskpass allows you to interactively prompt users for a passphrase for "
 "ssh-add"
 msgstr ""
 
-#: main.cpp:288
+#: main.cpp:269
 #, kde-format
 msgid "Armin Berres"
 msgstr ""
 
-#: main.cpp:288
+#: main.cpp:269
 #, kde-format
 msgid "Current author"
 msgstr ""
 
-#: main.cpp:289
+#: main.cpp:270
 #, kde-format
 msgid "Hans van Leeuwen"
 msgstr ""
 
-#: main.cpp:289
+#: main.cpp:270
 #, kde-format
 msgid "Original author"
 msgstr ""
 
-#: main.cpp:290
+#: main.cpp:271
 #, kde-format
 msgid "Pali Rohár"
 msgstr ""
 
-#: main.cpp:290
+#: main.cpp:271
 #, kde-format
 msgid "Contributor"
 msgstr ""
 
-#: main.cpp:295
+#: main.cpp:276
 #, kde-format
 msgctxt "Name of a prompt for a password"
 msgid "Prompt"
 msgstr ""
 
-#: main.cpp:301
+#: main.cpp:282
 #, kde-format
 msgid "Please enter passphrase"
 msgstr ""
 
-#: main.cpp:354
+#: main.cpp:335
 #, kde-format
 msgctxt "@action:button"
 msgid "Accept"
