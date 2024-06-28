@@ -24,18 +24,39 @@
 
 Q_LOGGING_CATEGORY(LOG_KSSHASKPASS, "ksshaskpass")
 
-enum Type {
-    TypePassword,
-    TypeClearText,
-    TypeConfirm,
-    TypeConfirmCancel,
+constexpr const char *PROMPT_TYPE_ENV_VAR = "SSH_ASKPASS_PROMPT";
+
+// Standard prompt types defined by openssh.
+enum class PromptType {
+    Confirm,
+    Entry,
+    None,
 };
 
-// Try to understand what we're asked for by parsing the phrase. Unfortunately, sshaskpass interface does not
-// include any saner methods to pass the action or the name of the keyfile. Fortunately, openssh and git
-// has no i18n, so this should work for all languages as long as the string is unchanged.
-static void parsePrompt(const QString &prompt, QString &identifier, bool &ignoreWallet, enum Type &type)
+// Implemented UI display types.
+enum class DisplayType {
+    Password,
+    ClearText,
+    Confirm,
+    ConfirmCancel,
+};
+
+static void parsePrompt(PromptType promptType, const QString &prompt, QString &identifier, bool &ignoreWallet, DisplayType &displayType)
 {
+    if (promptType == PromptType::Confirm) {
+        displayType = DisplayType::Confirm;
+        ignoreWallet = true;
+        return;
+    }
+
+    if (promptType == PromptType::None) {
+        displayType = DisplayType::ConfirmCancel;
+        ignoreWallet = true;
+        return;
+    }
+
+    // "Entry" prompt type: password or text input. We parse several known prompts from openssh and git (which have no i18n)
+    // to extract credential names and determine whether to use cleartext.
     QRegularExpressionMatch match;
 
     // openssh sshconnect2.c
@@ -43,7 +64,7 @@ static void parsePrompt(const QString &prompt, QString &identifier, bool &ignore
     match = QRegularExpression(QStringLiteral("^(.*@.*)'s password: $")).match(prompt);
     if (match.hasMatch()) {
         identifier = match.captured(1);
-        type = TypePassword;
+        displayType = DisplayType::Password;
         ignoreWallet = false;
         return;
     }
@@ -53,7 +74,7 @@ static void parsePrompt(const QString &prompt, QString &identifier, bool &ignore
     match = QRegularExpression(QStringLiteral("^(Enter|Retype) (.*@.*)'s (old|new) password: $")).match(prompt);
     if (match.hasMatch()) {
         identifier = match.captured(2);
-        type = TypePassword;
+        displayType = DisplayType::Password;
         ignoreWallet = true;
         return;
     }
@@ -63,7 +84,7 @@ static void parsePrompt(const QString &prompt, QString &identifier, bool &ignore
     match = QRegularExpression(QStringLiteral("^Enter passphrase for( RSA)? key '(.*)': $")).match(prompt);
     if (match.hasMatch()) {
         identifier = match.captured(2);
-        type = TypePassword;
+        displayType = DisplayType::Password;
         ignoreWallet = false;
         return;
     }
@@ -73,7 +94,7 @@ static void parsePrompt(const QString &prompt, QString &identifier, bool &ignore
     match = QRegularExpression(QStringLiteral("^Enter passphrase for (.*?)( \\(will confirm each use\\))?: $")).match(prompt);
     if (match.hasMatch()) {
         identifier = match.captured(1);
-        type = TypePassword;
+        displayType = DisplayType::Password;
         ignoreWallet = false;
         return;
     }
@@ -84,7 +105,7 @@ static void parsePrompt(const QString &prompt, QString &identifier, bool &ignore
     match = QRegularExpression(QStringLiteral("^Bad passphrase, try again for (.*?)( \\(will confirm each use\\))?: $")).match(prompt);
     if (match.hasMatch()) {
         identifier = match.captured(1);
-        type = TypePassword;
+        displayType = DisplayType::Password;
         ignoreWallet = true;
         return;
     }
@@ -94,73 +115,8 @@ static void parsePrompt(const QString &prompt, QString &identifier, bool &ignore
     match = QRegularExpression(QStringLiteral("Enter PIN for '(.*)': $")).match(prompt);
     if (match.hasMatch()) {
         identifier = match.captured(1);
-        type = TypePassword;
+        displayType = DisplayType::Password;
         ignoreWallet = false;
-        return;
-    }
-
-    // openssh mux.c
-    match = QRegularExpression(QStringLiteral("^(Allow|Terminate) shared connection to (.*)\\? $")).match(prompt);
-    if (match.hasMatch()) {
-        identifier = match.captured(2);
-        type = TypeConfirm;
-        ignoreWallet = true;
-        return;
-    }
-
-    // openssh mux.c
-    match = QRegularExpression(QStringLiteral("^Open (.* on .*)?$")).match(prompt);
-    if (match.hasMatch()) {
-        identifier = match.captured(1);
-        type = TypeConfirm;
-        ignoreWallet = true;
-        return;
-    }
-
-    // openssh mux.c
-    match = QRegularExpression(QStringLiteral("^Allow forward to (.*:.*)\\? $")).match(prompt);
-    if (match.hasMatch()) {
-        identifier = match.captured(1);
-        type = TypeConfirm;
-        ignoreWallet = true;
-        return;
-    }
-
-    // openssh mux.c
-    match = QRegularExpression(QStringLiteral("^Disable further multiplexing on shared connection to (.*)? $")).match(prompt);
-    if (match.hasMatch()) {
-        identifier = match.captured(1);
-        type = TypeConfirm;
-        ignoreWallet = true;
-        return;
-    }
-
-    // openssh ssh-agent.c
-    match = QRegularExpression(QStringLiteral("^Allow use of key (.*)?\\nKey fingerprint .*\\.$")).match(prompt);
-    if (match.hasMatch()) {
-        identifier = match.captured(1);
-        type = TypeConfirm;
-        ignoreWallet = true;
-        return;
-    }
-
-    // openssh sshconnect.c
-    match = QRegularExpression(QStringLiteral("^Add key (.*) \\(.*\\) to agent\\?$")).match(prompt);
-    if (match.hasMatch()) {
-        identifier = match.captured(1);
-        type = TypeConfirm;
-        ignoreWallet = true;
-        return;
-    }
-
-    // openssh ssh-agent.c
-    // Case: asking to press the button on the security key device
-    // First match group is key type like "ED25519-SK", second is SHA digest of key, like ssh-add -l prints
-    match = QRegularExpression(QStringLiteral("^Confirm user presence for key (.*?) (.*)$")).match(prompt);
-    if (match.hasMatch()) {
-        identifier = match.captured(2);
-        type = TypeConfirmCancel;
-        ignoreWallet = true;
         return;
     }
 
@@ -170,7 +126,7 @@ static void parsePrompt(const QString &prompt, QString &identifier, bool &ignore
     match = QRegularExpression(QStringLiteral("^Enter PIN( and confirm user presence)? for (.*?) key (.*?): $")).match(prompt);
     if (match.hasMatch()) {
         identifier = QStringLiteral("PIN:") + match.captured(3);
-        type = TypePassword;
+        displayType = DisplayType::Password;
         ignoreWallet = true;
         return;
     }
@@ -180,7 +136,7 @@ static void parsePrompt(const QString &prompt, QString &identifier, bool &ignore
     match = QRegularExpression(QStringLiteral("^Username: $")).match(prompt);
     if (match.hasMatch()) {
         identifier = QString();
-        type = TypeClearText;
+        displayType = DisplayType::ClearText;
         ignoreWallet = true;
         return;
     }
@@ -190,7 +146,7 @@ static void parsePrompt(const QString &prompt, QString &identifier, bool &ignore
     match = QRegularExpression(QStringLiteral("^Password: $")).match(prompt);
     if (match.hasMatch()) {
         identifier = QString();
-        type = TypePassword;
+        displayType = DisplayType::Password;
         ignoreWallet = true;
         return;
     }
@@ -200,7 +156,7 @@ static void parsePrompt(const QString &prompt, QString &identifier, bool &ignore
     match = QRegularExpression(QStringLiteral("^Username for '(.*)': $")).match(prompt);
     if (match.hasMatch()) {
         identifier = match.captured(1);
-        type = TypeClearText;
+        displayType = DisplayType::ClearText;
         ignoreWallet = false;
         return;
     }
@@ -210,7 +166,7 @@ static void parsePrompt(const QString &prompt, QString &identifier, bool &ignore
     match = QRegularExpression(QStringLiteral("^Password for '(.*)': $")).match(prompt);
     if (match.hasMatch()) {
         identifier = match.captured(1);
-        type = TypePassword;
+        displayType = DisplayType::Password;
         ignoreWallet = false;
         return;
     }
@@ -219,7 +175,7 @@ static void parsePrompt(const QString &prompt, QString &identifier, bool &ignore
     match = QRegularExpression(QStringLiteral("^Username for \"(.*?)\"$")).match(prompt);
     if (match.hasMatch()) {
         identifier = match.captured(1);
-        type = TypeClearText;
+        displayType = DisplayType::ClearText;
         ignoreWallet = false;
         return;
     }
@@ -228,7 +184,7 @@ static void parsePrompt(const QString &prompt, QString &identifier, bool &ignore
     match = QRegularExpression(QStringLiteral("^Password for \"(.*?)\"$")).match(prompt);
     if (match.hasMatch()) {
         identifier = match.captured(1);
-        type = TypePassword;
+        displayType = DisplayType::Password;
         ignoreWallet = false;
         return;
     }
@@ -278,17 +234,25 @@ int main(int argc, char **argv)
     parser.process(app);
     about.processCommandLine(&parser);
 
+    const QString promptTypeString = qEnvironmentVariable(PROMPT_TYPE_ENV_VAR);
+    PromptType promptType = PromptType::Entry;
+    if (promptTypeString == QLatin1String("confirm")) {
+        promptType = PromptType::Confirm;
+    } else if (promptTypeString == QLatin1String("none")) {
+        promptType = PromptType::None;
+    }
+
     const QString walletFolder = app.applicationName();
     QString dialog = i18n("Please enter passphrase"); // Default dialog text.
     QString identifier;
     QString item;
     bool ignoreWallet = false;
-    enum Type type = TypePassword;
+    DisplayType displayType = DisplayType::Password;
 
     // Parse commandline arguments
     if (!parser.positionalArguments().isEmpty()) {
         dialog = parser.positionalArguments().at(0);
-        parsePrompt(dialog, identifier, ignoreWallet, type);
+        parsePrompt(promptType, dialog, identifier, ignoreWallet, displayType);
     }
 
     // Open KWallet to see if an item was previously stored
@@ -322,13 +286,13 @@ int main(int argc, char **argv)
     }
 
     // Item could not be retrieved from wallet. Open dialog
-    switch (type) {
-    case TypeConfirmCancel: {
+    switch (displayType) {
+    case DisplayType::ConfirmCancel: {
         cancelDialog(nullptr, dialog, i18n("Ksshaskpass"));
         // dialog can only be canceled
         return 1;
     }
-    case TypeConfirm: {
+    case DisplayType::Confirm: {
         if (KMessageBox::questionTwoActions(nullptr,
                                             dialog,
                                             i18n("Ksshaskpass"),
@@ -341,11 +305,11 @@ int main(int argc, char **argv)
         item = QStringLiteral("yes\n");
         break;
     }
-    case TypeClearText:
+    case DisplayType::ClearText:
         // Should use a dialog with visible input, but KPasswordDialog doesn't support that and
         // other available dialog types don't have a "Keep" checkbox.
         /* fallthrough */
-    case TypePassword: {
+    case DisplayType::Password: {
         // create the password dialog, but only show "Enable Keep" button, if the wallet is open
         KPasswordDialog::KPasswordDialogFlag flag(KPasswordDialog::NoFlags);
         if (wallet.get()) {
