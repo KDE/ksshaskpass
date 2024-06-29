@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ksshaskpass\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-12 00:40+0000\n"
+"POT-Creation-Date: 2024-06-29 00:40+0000\n"
 "PO-Revision-Date: 2022-12-15 11:05-0300\n"
 "Last-Translator: Luiz Fernando Ranghetti <elchevive@opensuse.org>\n"
 "Language-Team: Portuguese <kde-i18n-pt_BR@kde.org>\n"
@@ -29,17 +29,17 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "alvarenga@kde.org"
 
-#: main.cpp:260 main.cpp:327 main.cpp:334 main.cpp:357
+#: main.cpp:216 main.cpp:291 main.cpp:298 main.cpp:321
 #, kde-format
 msgid "Ksshaskpass"
 msgstr "Ksshaskpass"
 
-#: main.cpp:262
+#: main.cpp:218
 #, kde-format
 msgid "KDE version of ssh-askpass"
 msgstr "Versão do ssh-askpass para o KDE"
 
-#: main.cpp:264
+#: main.cpp:220
 #, kde-format
 msgid ""
 "(c) 2006 Hans van Leeuwen\n"
@@ -50,7 +50,7 @@ msgstr ""
 "(c) 2008-2010 Armin Berres\n"
 "(c) 2013 Pali Rohár"
 
-#: main.cpp:265
+#: main.cpp:221
 #, kde-format
 msgid ""
 "Ksshaskpass allows you to interactively prompt users for a passphrase for "
@@ -59,48 +59,48 @@ msgstr ""
 "O Ksshaskpass permite-lhe solicitar a senha de forma interativa para os "
 "usuários do ssh-add"
 
-#: main.cpp:269
+#: main.cpp:225
 #, kde-format
 msgid "Armin Berres"
 msgstr "Armin Berres"
 
-#: main.cpp:269
+#: main.cpp:225
 #, kde-format
 msgid "Current author"
 msgstr "Autor atual"
 
-#: main.cpp:270
+#: main.cpp:226
 #, kde-format
 msgid "Hans van Leeuwen"
 msgstr "Hans van Leeuwen"
 
-#: main.cpp:270
+#: main.cpp:226
 #, kde-format
 msgid "Original author"
 msgstr "Autor original"
 
-#: main.cpp:271
+#: main.cpp:227
 #, kde-format
 msgid "Pali Rohár"
 msgstr "Pali Rohár"
 
-#: main.cpp:271
+#: main.cpp:227
 #, kde-format
 msgid "Contributor"
 msgstr "Colaborador"
 
-#: main.cpp:276
+#: main.cpp:232
 #, kde-format
 msgctxt "Name of a prompt for a password"
 msgid "Prompt"
 msgstr "Linha de comando"
 
-#: main.cpp:282
+#: main.cpp:246
 #, kde-format
 msgid "Please enter passphrase"
 msgstr "Digite a senha"
 
-#: main.cpp:335
+#: main.cpp:299
 #, kde-format
 msgctxt "@action:button"
 msgid "Accept"

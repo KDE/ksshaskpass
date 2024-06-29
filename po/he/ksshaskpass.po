@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ksshaskpass\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-12 00:40+0000\n"
+"POT-Creation-Date: 2024-06-29 00:40+0000\n"
 "PO-Revision-Date: 2023-10-01 22:16+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -26,17 +26,17 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "kde-l10n-he@kde.org"
 
-#: main.cpp:260 main.cpp:327 main.cpp:334 main.cpp:357
+#: main.cpp:216 main.cpp:291 main.cpp:298 main.cpp:321
 #, kde-format
 msgid "Ksshaskpass"
 msgstr "Ksshaskpass"
 
-#: main.cpp:262
+#: main.cpp:218
 #, kde-format
 msgid "KDE version of ssh-askpass"
 msgstr "גרסת KDE של ssh-askpass"
 
-#: main.cpp:264
+#: main.cpp:220
 #, kde-format
 msgid ""
 "(c) 2006 Hans van Leeuwen\n"
@@ -47,55 +47,55 @@ msgstr ""
 "(c) 2008-2010 ארמין ברס\n"
 "(c) 2013 פאלי רוהאר"
 
-#: main.cpp:265
+#: main.cpp:221
 #, kde-format
 msgid ""
 "Ksshaskpass allows you to interactively prompt users for a passphrase for "
 "ssh-add"
 msgstr "‏Ksshaskpass מאפשר לך לבקש את הסיסמה מהמשתמשים למילת צופן ל־ssh-add"
 
-#: main.cpp:269
+#: main.cpp:225
 #, kde-format
 msgid "Armin Berres"
 msgstr "ארמין ברס"
 
-#: main.cpp:269
+#: main.cpp:225
 #, kde-format
 msgid "Current author"
 msgstr "יוצר נוכחי"
 
-#: main.cpp:270
+#: main.cpp:226
 #, kde-format
 msgid "Hans van Leeuwen"
 msgstr "האנס ואן ליוון"
 
-#: main.cpp:270
+#: main.cpp:226
 #, kde-format
 msgid "Original author"
 msgstr "יוצר מקורי"
 
-#: main.cpp:271
+#: main.cpp:227
 #, kde-format
 msgid "Pali Rohár"
 msgstr "פאלי רוהאר"
 
-#: main.cpp:271
+#: main.cpp:227
 #, kde-format
 msgid "Contributor"
 msgstr "מתנדב"
 
-#: main.cpp:276
+#: main.cpp:232
 #, kde-format
 msgctxt "Name of a prompt for a password"
 msgid "Prompt"
 msgstr "בקשה"
 
-#: main.cpp:282
+#: main.cpp:246
 #, kde-format
 msgid "Please enter passphrase"
 msgstr "נא להקליד סיסמה"
 
-#: main.cpp:335
+#: main.cpp:299
 #, kde-format
 msgctxt "@action:button"
 msgid "Accept"
