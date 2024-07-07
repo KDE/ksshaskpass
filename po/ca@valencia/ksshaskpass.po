@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ksshaskpass\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-29 00:40+0000\n"
+"POT-Creation-Date: 2024-07-07 00:40+0000\n"
 "PO-Revision-Date: 2023-05-16 14:26+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -32,10 +32,16 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "alviboi@gmail.com,txemaq@gmail.com"
 
-#: main.cpp:216 main.cpp:291 main.cpp:298 main.cpp:321
+#: main.cpp:200 main.cpp:298 main.cpp:321
 #, kde-format
-msgid "Ksshaskpass"
-msgstr "Ksshaskpass"
+msgctxt "@title:window"
+msgid "Enter SSH Credentials"
+msgstr ""
+
+#: main.cpp:216
+#, kde-format
+msgid "SSH Credentials"
+msgstr ""
 
 #: main.cpp:218
 #, kde-format
@@ -108,3 +114,6 @@ msgstr "Introduïu la frase de pas"
 msgctxt "@action:button"
 msgid "Accept"
 msgstr "Accepta"
+
+#~ msgid "Ksshaskpass"
+#~ msgstr "Ksshaskpass"

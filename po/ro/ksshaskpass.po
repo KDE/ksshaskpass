@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-29 00:40+0000\n"
+"POT-Creation-Date: 2024-07-07 00:40+0000\n"
 "PO-Revision-Date: 2024-02-18 14:36+0000\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
@@ -28,10 +28,16 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "sergiu@cip.md"
 
-#: main.cpp:216 main.cpp:291 main.cpp:298 main.cpp:321
+#: main.cpp:200 main.cpp:298 main.cpp:321
 #, kde-format
-msgid "Ksshaskpass"
-msgstr "Ksshaskpass"
+msgctxt "@title:window"
+msgid "Enter SSH Credentials"
+msgstr ""
+
+#: main.cpp:216
+#, kde-format
+msgid "SSH Credentials"
+msgstr ""
 
 #: main.cpp:218
 #, kde-format
@@ -104,3 +110,6 @@ msgstr "Introduceți fraza secretă"
 msgctxt "@action:button"
 msgid "Accept"
 msgstr "Acceptă"
+
+#~ msgid "Ksshaskpass"
+#~ msgstr "Ksshaskpass"

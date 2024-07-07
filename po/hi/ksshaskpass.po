@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ksshaskpass\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-29 00:40+0000\n"
+"POT-Creation-Date: 2024-07-07 00:40+0000\n"
 "PO-Revision-Date: 2021-06-27 15:23+0530\n"
 "Last-Translator: Raghavendra Kamath <raghu@raghukamath.com>\n"
 "Language-Team: kde-hindi\n"
@@ -28,10 +28,16 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "lumarzeli30@gmail.com, raghu@raghukamath.com"
 
-#: main.cpp:216 main.cpp:291 main.cpp:298 main.cpp:321
+#: main.cpp:200 main.cpp:298 main.cpp:321
 #, kde-format
-msgid "Ksshaskpass"
-msgstr "केएसएसएचआस्कपास"
+msgctxt "@title:window"
+msgid "Enter SSH Credentials"
+msgstr ""
+
+#: main.cpp:216
+#, kde-format
+msgid "SSH Credentials"
+msgstr ""
 
 #: main.cpp:218
 #, kde-format
@@ -103,3 +109,6 @@ msgstr "कृपया कूटशब्द डालें"
 msgctxt "@action:button"
 msgid "Accept"
 msgstr ""
+
+#~ msgid "Ksshaskpass"
+#~ msgstr "केएसएसएचआस्कपास"

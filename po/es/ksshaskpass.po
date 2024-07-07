@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ksshaskpass\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-29 00:40+0000\n"
+"POT-Creation-Date: 2024-07-07 00:40+0000\n"
 "PO-Revision-Date: 2022-12-07 03:44+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
@@ -29,10 +29,16 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "ecuadra@eloihr.net"
 
-#: main.cpp:216 main.cpp:291 main.cpp:298 main.cpp:321
+#: main.cpp:200 main.cpp:298 main.cpp:321
 #, kde-format
-msgid "Ksshaskpass"
-msgstr "Ksshaskpass"
+msgctxt "@title:window"
+msgid "Enter SSH Credentials"
+msgstr ""
+
+#: main.cpp:216
+#, kde-format
+msgid "SSH Credentials"
+msgstr ""
 
 #: main.cpp:218
 #, kde-format
@@ -105,3 +111,6 @@ msgstr "Por favor, introduzca la contraseña larga"
 msgctxt "@action:button"
 msgid "Accept"
 msgstr "Aceptar"
+
+#~ msgid "Ksshaskpass"
+#~ msgstr "Ksshaskpass"
