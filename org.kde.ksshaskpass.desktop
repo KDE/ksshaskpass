@@ -3,6 +3,16 @@
 [Desktop Entry]
 Type=Application
 Name=SSH Credentials
+Name[bg]=Идентификационни данни за SSH
+Name[ca]=Credencials de SSH
+Name[es]=Credenciales SSH
+Name[eu]=SSH egiaztagiriak
+Name[nl]=SSH-credentials
+Name[sl]=Poverilnice SSH
+Name[sv]=SSH-inloggningsinformation
+Name[tr]=SSH Kimlik Bilgileri
+Name[uk]=Реєстраційні дані SSH
+Name[x-test]=xxSSH Credentialsxx
 Exec=ksshhaskpass
 NoDisplay=true
 Icon=dialog-password
