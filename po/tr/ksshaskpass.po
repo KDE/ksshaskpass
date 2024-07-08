@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
 #
-# Emir SARI <emir_sari@icloud.com>, 2022.
+# SPDX-FileCopyrightText: 2022, 2024 Emir SARI <emir_sari@icloud.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: ksshaskpass\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-13 00:39+0000\n"
-"PO-Revision-Date: 2022-12-07 17:08+0300\n"
+"PO-Revision-Date: 2024-07-07 17:01+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 22.08.3\n"
+"X-Generator: Lokalize 24.07.70\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -44,9 +44,9 @@ msgid ""
 "(c) 2008-2010 Armin Berres\n"
 "(c) 2013 Pali Rohár"
 msgstr ""
-"(c) 2006 Hans van Leeuwen\n"
-"(c) 2008-2010 Armin Berres\n"
-"(c) 2013 Pali Rohár"
+"© 2006 Hans van Leeuwen\n"
+"© 2008–2010 Armin Berres\n"
+"© 2013 Pali Rohár"
 
 #: main.cpp:284
 #, kde-format
@@ -54,7 +54,7 @@ msgid ""
 "Ksshaskpass allows you to interactively prompt users for a passphrase for "
 "ssh-add"
 msgstr ""
-"Ksshaskpass; kullanıcıları ssh-add için, bir parolayla etkileşimli olarak "
+"Ksshaskpass; kullanıcıları ssh-add için bir parolayla etkileşimli olarak "
 "yönlendirmenizi sağlar"
 
 #: main.cpp:288
@@ -65,7 +65,7 @@ msgstr "Armin Berres"
 #: main.cpp:288
 #, kde-format
 msgid "Current author"
-msgstr "Şu Anki Yazar"
+msgstr "Şu Anki yazar"
 
 #: main.cpp:289
 #, kde-format
@@ -75,7 +75,7 @@ msgstr "Hans van Leeuwen"
 #: main.cpp:289
 #, kde-format
 msgid "Original author"
-msgstr "Özgün Yazar"
+msgstr "Özgün yazar"
 
 #: main.cpp:290
 #, kde-format
@@ -85,7 +85,7 @@ msgstr "Pali Rohár"
 #: main.cpp:290
 #, kde-format
 msgid "Contributor"
-msgstr "Katkıda Bulunan"
+msgstr "Katkıcı"
 
 #: main.cpp:295
 #, kde-format
