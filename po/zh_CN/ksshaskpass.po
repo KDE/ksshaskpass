@@ -107,6 +107,3 @@ msgstr "请输入密码"
 msgctxt "@action:button"
 msgid "Accept"
 msgstr "接受"
-
-#~ msgid "Ksshaskpass"
-#~ msgstr "Ksshaskpass"

@@ -111,6 +111,3 @@ msgstr "Skriv inn passfrase"
 msgctxt "@action:button"
 msgid "Accept"
 msgstr "Godta"
-
-#~ msgid "Ksshaskpass"
-#~ msgstr "Ksshaskpass"
