@@ -31,12 +31,12 @@ msgstr "kde-china@kde.org, i@guoyunhe.me, tds00@qq.com"
 #, kde-format
 msgctxt "@title:window"
 msgid "Enter SSH Credentials"
-msgstr ""
+msgstr "输入 SSH 身份验证信息"
 
 #: main.cpp:216
 #, kde-format
 msgid "SSH Credentials"
-msgstr ""
+msgstr "SSH 身份验证信息"
 
 #: main.cpp:218
 #, kde-format
