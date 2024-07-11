@@ -17,6 +17,7 @@ Name[sv]=SSH-inloggningsinformation
 Name[tr]=SSH Kimlik Bilgileri
 Name[uk]=Реєстраційні дані SSH
 Name[x-test]=xxSSH Credentialsxx
+Name[zh_CN]=SSH 身份验证信息
 Exec=ksshhaskpass
 NoDisplay=true
 Icon=dialog-password
