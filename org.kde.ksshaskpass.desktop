@@ -5,6 +5,7 @@ Type=Application
 Name=SSH Credentials
 Name[bg]=Идентификационни данни за SSH
 Name[ca]=Credencials de SSH
+Name[ca@valencia]=Credencials de SSH
 Name[cs]=Přihlašovací údaje SSH
 Name[es]=Credenciales SSH
 Name[eu]=SSH egiaztagiriak
