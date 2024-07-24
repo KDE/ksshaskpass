@@ -3,42 +3,42 @@
 #
 # Franklin, 2015.
 # Yi-Jyun Pan <pan93412@gmail.com>, 2020.
-# Kisaragi Hiu <mail@kisaragi-hiu.com>, 2023.
+# SPDX-FileCopyrightText: 2023, 2024 Kisaragi Hiu <mail@kisaragi-hiu.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-07-07 00:40+0000\n"
-"PO-Revision-Date: 2023-03-06 22:02+0900\n"
+"PO-Revision-Date: 2024-07-23 22:53+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
-"Language-Team: Traditional Chinese <zh-l10n@linux.org.tw>\n"
+"Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 22.12.2\n"
+"X-Generator: Lokalize 24.04.70\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Franklin Weng, pan93412"
+msgstr "Franklin Weng, pan93412, Kisaragi Hiu"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "franklin@goodhorse.idv.tw, pan93412@gmail.com"
+msgstr "franklin@goodhorse.idv.tw, pan93412@gmail.com, mail@kisaragi-hiu.com"
 
 #: main.cpp:200 main.cpp:298 main.cpp:321
 #, kde-format
 msgctxt "@title:window"
 msgid "Enter SSH Credentials"
-msgstr ""
+msgstr "輸入 SSH 認證資訊"
 
 #: main.cpp:216
 #, kde-format
 msgid "SSH Credentials"
-msgstr ""
+msgstr "SSH 認證資訊"
 
 #: main.cpp:218
 #, kde-format
@@ -61,7 +61,7 @@ msgstr ""
 msgid ""
 "Ksshaskpass allows you to interactively prompt users for a passphrase for "
 "ssh-add"
-msgstr "ksshaskpass 讓您可以在 ssh-add 時提示使用者"
+msgstr "Ksshaskpass 讓您可以提示使用者提供 ssh-add 的密碼"
 
 #: main.cpp:225
 #, kde-format
@@ -99,10 +99,12 @@ msgctxt "Name of a prompt for a password"
 msgid "Prompt"
 msgstr "提示"
 
+# 原文 passphrase / password 的差別是因為希望鼓勵不要真的只是用單詞 (word) 當密碼。華語翻譯成「密碼」的時候並沒有這個問題。If the original text used "secret code" they wouldn't need to use the word "passphrase" either. English didn't, but Mandarin did.
+# --Kisaragi
 #: main.cpp:246
 #, kde-format
 msgid "Please enter passphrase"
-msgstr "請輸入密碼片語"
+msgstr "請輸入密碼"
 
 #: main.cpp:299
 #, kde-format
