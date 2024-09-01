@@ -131,6 +131,16 @@ static void parsePrompt(PromptType promptType, const QString &prompt, QString &i
         return;
     }
 
+    // google-authenticator-libpam pam_google_authenticator.c
+    // Case: OTP verification code request from remote ssh server through PAM module
+    match = QRegularExpression(QStringLiteral("Verification code: $")).match(prompt);
+    if (match.hasMatch()) {
+        identifier = QString();
+        displayType = DisplayType::ClearText;
+        ignoreWallet = true;
+        return;
+    }
+
     // git credential.c
     // Case: asking for username by git without specifying any other information
     match = QRegularExpression(QStringLiteral("^Username: $")).match(prompt);
