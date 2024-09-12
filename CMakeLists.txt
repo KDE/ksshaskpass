@@ -3,7 +3,7 @@ project(ksshaskpass)
 set(PROJECT_VERSION "6.1.90")
 
 set(QT_MIN_VERSION "6.7.0")
-set(KF6_MIN_VERSION "6.2.0")
+set(KF6_MIN_VERSION "6.5.0")
 set(KDE_COMPILERSETTINGS_LEVEL "5.82")
 
 set(CMAKE_CXX_STANDARD 20)
