@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ksshaskpass\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-07-07 00:40+0000\n"
+"POT-Creation-Date: 2024-09-16 00:41+0000\n"
 "PO-Revision-Date: 2024-07-07 12:10+0200\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
@@ -29,23 +29,23 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "ecuadra@eloihr.net"
 
-#: main.cpp:200 main.cpp:298 main.cpp:321
+#: main.cpp:210 main.cpp:308 main.cpp:331
 #, kde-format
 msgctxt "@title:window"
 msgid "Enter SSH Credentials"
 msgstr "Introduzca las credenciales SSH"
 
-#: main.cpp:216
+#: main.cpp:226
 #, kde-format
 msgid "SSH Credentials"
 msgstr "Credenciales SSH"
 
-#: main.cpp:218
+#: main.cpp:228
 #, kde-format
 msgid "KDE version of ssh-askpass"
 msgstr "Versión de ssh-askpass para KDE"
 
-#: main.cpp:220
+#: main.cpp:230
 #, kde-format
 msgid ""
 "(c) 2006 Hans van Leeuwen\n"
@@ -56,7 +56,7 @@ msgstr ""
 "© 2008-2010 Armin Berres\n"
 "© 2013 Pali Rohár"
 
-#: main.cpp:221
+#: main.cpp:231
 #, kde-format
 msgid ""
 "Ksshaskpass allows you to interactively prompt users for a passphrase for "
@@ -65,48 +65,48 @@ msgstr ""
 "Ksshaskpass le permite solicitar de forma interactiva una contraseña larga "
 "para ssh-add a los usuarios"
 
-#: main.cpp:225
+#: main.cpp:235
 #, kde-format
 msgid "Armin Berres"
 msgstr "Armin Berres"
 
-#: main.cpp:225
+#: main.cpp:235
 #, kde-format
 msgid "Current author"
 msgstr "Autor actual"
 
-#: main.cpp:226
+#: main.cpp:236
 #, kde-format
 msgid "Hans van Leeuwen"
 msgstr "Hans van Leeuwen"
 
-#: main.cpp:226
+#: main.cpp:236
 #, kde-format
 msgid "Original author"
 msgstr "Autor original"
 
-#: main.cpp:227
+#: main.cpp:237
 #, kde-format
 msgid "Pali Rohár"
 msgstr "Pali Rohár"
 
-#: main.cpp:227
+#: main.cpp:237
 #, kde-format
 msgid "Contributor"
 msgstr "Colaborador"
 
-#: main.cpp:232
+#: main.cpp:242
 #, kde-format
 msgctxt "Name of a prompt for a password"
 msgid "Prompt"
 msgstr "Mensaje"
 
-#: main.cpp:246
+#: main.cpp:256
 #, kde-format
 msgid "Please enter passphrase"
 msgstr "Por favor, introduzca la contraseña larga"
 
-#: main.cpp:299
+#: main.cpp:309
 #, kde-format
 msgctxt "@action:button"
 msgid "Accept"
