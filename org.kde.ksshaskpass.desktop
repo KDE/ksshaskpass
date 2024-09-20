@@ -3,6 +3,7 @@
 [Desktop Entry]
 Type=Application
 Name=SSH Credentials
+Name[ar]=بيانات اعتماد SSH
 Name[bg]=Идентификационни данни за SSH
 Name[ca]=Credencials de SSH
 Name[ca@valencia]=Credencials de SSH
