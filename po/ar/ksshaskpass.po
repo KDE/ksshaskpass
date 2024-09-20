@@ -1,14 +1,14 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
-#
 # Safa Alfulaij <safa1996alfulaij@gmail.com>, 2015.
-# Zayed Al-Saidi <zayed.alsaidi@gmail.com>, 2021, 2022.
+# SPDX-FileCopyrightText: 2021, 2022, 2024 Zayed Al-Saidi <zayed.alsaidi@gmail.com>
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-16 00:41+0000\n"
-"PO-Revision-Date: 2022-12-22 11:08+0400\n"
+"PO-Revision-Date: 2024-09-19 13:02+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -17,6 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -32,12 +33,12 @@ msgstr "safa1996alfulaij@gmail.com"
 #, kde-format
 msgctxt "@title:window"
 msgid "Enter SSH Credentials"
-msgstr ""
+msgstr "أدخل بيانات اعتماد SSH"
 
 #: main.cpp:226
 #, kde-format
 msgid "SSH Credentials"
-msgstr ""
+msgstr "بيانات اعتماد SSH"
 
 #: main.cpp:228
 #, kde-format
@@ -65,7 +66,7 @@ msgstr "يسمح Ksshaskpass لك بطلب عبارة مرور ssh-add من ال
 #: main.cpp:235
 #, kde-format
 msgid "Armin Berres"
-msgstr "Armin Berres"
+msgstr "أرمين بيريس"
 
 #: main.cpp:235
 #, kde-format
@@ -75,7 +76,7 @@ msgstr "المؤلّف الحاليّ"
 #: main.cpp:236
 #, kde-format
 msgid "Hans van Leeuwen"
-msgstr "Hans van Leeuwen"
+msgstr "هانز فان ليوين"
 
 #: main.cpp:236
 #, kde-format
