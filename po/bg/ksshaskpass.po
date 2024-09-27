@@ -111,6 +111,3 @@ msgstr "Моля, въведете парола"
 msgctxt "@action:button"
 msgid "Accept"
 msgstr "Приемане"
-
-#~ msgid "Ksshaskpass"
-#~ msgstr "Ksshaskpass"
