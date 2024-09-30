@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: ksshaskpass\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-07-07 00:40+0000\n"
-"PO-Revision-Date: 2024-01-05 21:19+0100\n"
+"PO-Revision-Date: 2024-09-29 20:58+0200\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
 "Language: hu\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 23.08.4\n"
+"X-Generator: Lokalize 24.08.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -31,12 +31,12 @@ msgstr "ulysses@fsf.hu"
 #, kde-format
 msgctxt "@title:window"
 msgid "Enter SSH Credentials"
-msgstr ""
+msgstr "Adja meg az SSH hitelesítési adatokat"
 
 #: main.cpp:216
 #, kde-format
 msgid "SSH Credentials"
-msgstr ""
+msgstr "SSH hitelesítési adatok"
 
 #: main.cpp:218
 #, kde-format
