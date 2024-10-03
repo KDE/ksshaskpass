@@ -32,6 +32,6 @@ Name[uk]=Реєстраційні дані SSH
 Name[x-test]=xxSSH Credentialsxx
 Name[zh_CN]=SSH 身份验证信息
 Name[zh_TW]=SSH 認證資訊
-Exec=ksshhaskpass
+Exec=ksshaskpass
 NoDisplay=true
 Icon=dialog-password
