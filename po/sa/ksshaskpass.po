@@ -32,12 +32,12 @@ msgstr "skkalwar999@gmail.com"
 #, kde-format
 msgctxt "@title:window"
 msgid "Enter SSH Credentials"
-msgstr ""
+msgstr "SSH प्रमाणपत्राणि प्रविशन्तु"
 
 #: main.cpp:226
 #, kde-format
 msgid "SSH Credentials"
-msgstr ""
+msgstr "SSH प्रमाणपत्रम्"
 
 #: main.cpp:228
 #, kde-format
@@ -110,6 +110,3 @@ msgstr "कृपया गुप्तवाक्यं प्रविशत�
 msgctxt "@action:button"
 msgid "Accept"
 msgstr "स्वीकरोतु"
-
-#~ msgid "Ksshaskpass"
-#~ msgstr "Ksshaskpass"
