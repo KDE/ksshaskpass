@@ -37,8 +37,8 @@ find_package(KF6DocTools)
 set_package_properties(KF6DocTools PROPERTIES TYPE OPTIONAL
    PURPOSE "Required to build ksshaskpass manpage")
 
-ecm_set_disabled_deprecation_versions(QT 6.7.0
-    KF 6.5.0
+ecm_set_disabled_deprecation_versions(QT 6.8.1
+    KF 6.9.0
 )
 
 set(ksshaskpass_SRCS src/main.cpp)
