@@ -1,15 +1,15 @@
 # Spanish translations for ksshaskpass.po package.
-# Copyright (C) 2015 This_file_is_part_of_KDE
+# Copyright (C) 2015-2025 This file is copyright:
 # This file is distributed under the same license as the ksshaskpass package.
-#
 # Automatically generated, 2015.
-# SPDX-FileCopyrightText: 2015, 2020, 2022, 2024 Eloy Cuadra <ecuadra@eloihr.net>
+#
+# SPDX-FileCopyrightText: 2015, 2020, 2022, 2024, 2025 Eloy Cuadra <ecuadra@eloihr.net>
 msgid ""
 msgstr ""
 "Project-Id-Version: ksshaskpass\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-16 00:41+0000\n"
-"PO-Revision-Date: 2024-07-07 12:10+0200\n"
+"PO-Revision-Date: 2025-05-18 14:21+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -111,6 +111,3 @@ msgstr "Por favor, introduzca la contraseña larga"
 msgctxt "@action:button"
 msgid "Accept"
 msgstr "Aceptar"
-
-#~ msgid "Ksshaskpass"
-#~ msgstr "Ksshaskpass"
