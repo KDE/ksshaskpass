@@ -1,3 +1,7 @@
+0.6.4
+  * Switch password backend from KWallet to QtKeychain
+    (allows reading/storing password from/into different password managers)
+
 0.6.0
   * Port to KF5
 

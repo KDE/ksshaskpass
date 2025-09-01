@@ -3,6 +3,7 @@ project(ksshaskpass)
 set(PROJECT_VERSION "6.5.80")
 
 set(QT_MIN_VERSION "6.9.0")
+set(QT_KEYCHAIN_MIN_VERSION "0.15.0")
 set(KF6_MIN_VERSION "6.18.0")
 set(KDE_COMPILERSETTINGS_LEVEL "5.82")
 
@@ -23,13 +24,13 @@ include(ECMDeprecationSettings)
 
 find_package(Qt6  ${QT_MIN_VERSION} REQUIRED COMPONENTS Core)
 
+find_package(Qt6Keychain ${QT_KEYCHAIN_MIN_VERSION} REQUIRED)
 
 add_definitions(-DQT_NO_NARROWING_CONVERSIONS_IN_CONNECT)
 
 find_package(KF6 ${KF6_MIN_VERSION} REQUIRED COMPONENTS
     CoreAddons
     I18n
-    Wallet
     WidgetsAddons
 )
 
@@ -45,11 +46,11 @@ set(ksshaskpass_SRCS src/main.cpp)
  
 add_executable(ksshaskpass ${ksshaskpass_SRCS})
 target_compile_definitions(ksshaskpass PRIVATE -DPROJECT_VERSION="${PROJECT_VERSION}")
-target_link_libraries(ksshaskpass 
+target_link_libraries(ksshaskpass
     KF6::CoreAddons
     KF6::I18n
-    KF6::Wallet
     KF6::WidgetsAddons
+    Qt6Keychain::Qt6Keychain
 )
 
 # add clang-format target for all our real source files
