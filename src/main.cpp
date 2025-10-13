@@ -14,7 +14,6 @@
 #include <kwallet.h>
 
 #include <QApplication>
-#include <QCommandLineOption>
 #include <QCommandLineParser>
 #include <QInputDialog>
 #include <QLoggingCategory>
@@ -39,6 +38,7 @@ enum class DisplayType {
     ClearText,
     Confirm,
     ConfirmCancel,
+    UnknownSshHost
 };
 
 static void parsePrompt(PromptType promptType, const QString &prompt, QString &identifier, bool &ignoreWallet, DisplayType &displayType)
@@ -199,6 +199,18 @@ static void parsePrompt(PromptType promptType, const QString &prompt, QString &i
         return;
     }
 
+    // Case: unknown SSH host
+    match = QRegularExpression(QStringLiteral("^The authenticity of host '([^']+)(?: \\(([^)]+)\\))?' can't be established\\.\n"
+                                              "([A-Z0-9_-]+) key fingerprint is ([A-Za-z0-9:+/=]+)\\.\n"
+                                              "This key is not known by any other names\\.\n"
+                                              "Are you sure you want to continue connecting \\(yes/no/\\[fingerprint\\]\\)\\?\\s*$"))
+                .match(prompt);
+    if (match.hasMatch()) {
+        displayType = DisplayType::UnknownSshHost;
+        ignoreWallet = true;
+        return;
+    }
+
     // Nothing matched; either it was called by some sort of a script with a custom prompt (i.e. not ssh-add), or
     // strings we're looking for were broken. Issue a warning and continue without identifier.
     qCWarning(LOG_KSSHASKPASS) << "Unable to parse phrase" << prompt;
@@ -315,10 +327,30 @@ int main(int argc, char **argv)
         item = QStringLiteral("yes\n");
         break;
     }
+    case DisplayType::UnknownSshHost: {
+        auto cancelButton = KStandardGuiItem::cancel();
+        cancelButton.setText("No");
+
+        // update dialog for readability purposes
+        dialog.remove("(yes/no/[fingerprint])");
+        dialog.replace("Are you sure", "\nAre you sure");
+
+        if (KMessageBox::questionTwoActions(nullptr,
+                                            dialog,
+                                            i18nc("@title:window", "Unknown SSH Host Key"),
+                                            KGuiItem(i18nc("@action:button", "Yes"), QStringLiteral("dialog-ok")),
+                                            cancelButton)
+            != KMessageBox::PrimaryAction) {
+            // dialog has been canceled
+            return 1;
+        }
+        item = QStringLiteral("yes\n");
+        break;
+    }
     case DisplayType::ClearText:
-        // Should use a dialog with visible input, but KPasswordDialog doesn't support that and
-        // other available dialog types don't have a "Keep" checkbox.
-        /* fallthrough */
+    // Should use a dialog with visible input, but KPasswordDialog doesn't support that and
+    // other available dialog types don't have a "Keep" checkbox.
+    /* fallthrough */
     case DisplayType::Password: {
         // create the password dialog, but only show "Enable Keep" button, if the wallet is open
         KPasswordDialog::KPasswordDialogFlag flag(KPasswordDialog::NoFlags);
