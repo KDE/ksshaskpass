@@ -123,4 +123,4 @@ msgstr ""
 #, kde-format
 msgctxt "@action:button"
 msgid "Yes"
-msgstr ""
+msgstr "Ano"
