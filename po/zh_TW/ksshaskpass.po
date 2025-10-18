@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-10-14 00:43+0000\n"
+"POT-Creation-Date: 2025-10-18 00:43+0000\n"
 "PO-Revision-Date: 2024-07-23 22:53+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -29,23 +29,23 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "franklin@goodhorse.idv.tw, pan93412@gmail.com, mail@kisaragi-hiu.com"
 
-#: main.cpp:222 main.cpp:320 main.cpp:363
+#: main.cpp:237 main.cpp:347 main.cpp:390
 #, kde-format
 msgctxt "@title:window"
 msgid "Enter SSH Credentials"
 msgstr "輸入 SSH 認證資訊"
 
-#: main.cpp:238
+#: main.cpp:253
 #, kde-format
 msgid "SSH Credentials"
 msgstr "SSH 認證資訊"
 
-#: main.cpp:240
+#: main.cpp:255
 #, kde-format
 msgid "KDE version of ssh-askpass"
 msgstr "ssh-askpass KDE 版本"
 
-#: main.cpp:242
+#: main.cpp:257
 #, kde-format
 msgid ""
 "(c) 2006 Hans van Leeuwen\n"
@@ -56,44 +56,44 @@ msgstr ""
 "(c) 2008-2010 Armin Berres\n"
 "(c) 2013 Pali Rohár"
 
-#: main.cpp:243
+#: main.cpp:258
 #, kde-format
 msgid ""
 "Ksshaskpass allows you to interactively prompt users for a passphrase for "
 "ssh-add"
 msgstr "Ksshaskpass 讓您可以提示使用者提供 ssh-add 的密碼"
 
-#: main.cpp:247
+#: main.cpp:262
 #, kde-format
 msgid "Armin Berres"
 msgstr "Armin Berres"
 
-#: main.cpp:247
+#: main.cpp:262
 #, kde-format
 msgid "Current author"
 msgstr "目前的作者"
 
-#: main.cpp:248
+#: main.cpp:263
 #, kde-format
 msgid "Hans van Leeuwen"
 msgstr "Hans van Leeuwen"
 
-#: main.cpp:248
+#: main.cpp:263
 #, kde-format
 msgid "Original author"
 msgstr "原始作者"
 
-#: main.cpp:249
+#: main.cpp:264
 #, kde-format
 msgid "Pali Rohár"
 msgstr "Pali Rohár"
 
-#: main.cpp:249
+#: main.cpp:264
 #, kde-format
 msgid "Contributor"
 msgstr "貢獻者"
 
-#: main.cpp:254
+#: main.cpp:269
 #, kde-format
 msgctxt "Name of a prompt for a password"
 msgid "Prompt"
@@ -101,24 +101,24 @@ msgstr "提示"
 
 # 原文 passphrase / password 的差別是因為希望鼓勵不要真的只是用單詞 (word) 當密碼。華語翻譯成「密碼」的時候並沒有這個問題。If the original text used "secret code" they wouldn't need to use the word "passphrase" either. English didn't, but Mandarin did.
 # --Kisaragi
-#: main.cpp:268
+#: main.cpp:282
 #, kde-format
 msgid "Please enter passphrase"
 msgstr "請輸入密碼"
 
-#: main.cpp:321
+#: main.cpp:348
 #, kde-format
 msgctxt "@action:button"
 msgid "Accept"
 msgstr "接受"
 
-#: main.cpp:340
+#: main.cpp:367
 #, kde-format
 msgctxt "@title:window"
 msgid "Unknown SSH Host Key"
 msgstr ""
 
-#: main.cpp:341
+#: main.cpp:368
 #, kde-format
 msgctxt "@action:button"
 msgid "Yes"

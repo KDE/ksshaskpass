@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-desktop\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-10-14 00:43+0000\n"
+"POT-Creation-Date: 2025-10-18 00:43+0000\n"
 "PO-Revision-Date: 2024-07-07 11:15+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -30,23 +30,23 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "xalba@ni.eus"
 
-#: main.cpp:222 main.cpp:320 main.cpp:363
+#: main.cpp:237 main.cpp:347 main.cpp:390
 #, kde-format
 msgctxt "@title:window"
 msgid "Enter SSH Credentials"
 msgstr "Sartu SSH egiaztagiriak"
 
-#: main.cpp:238
+#: main.cpp:253
 #, kde-format
 msgid "SSH Credentials"
 msgstr "SSH egiaztagiriak"
 
-#: main.cpp:240
+#: main.cpp:255
 #, kde-format
 msgid "KDE version of ssh-askpass"
 msgstr "ssh-askpass, KDEren bertsioa"
 
-#: main.cpp:242
+#: main.cpp:257
 #, kde-format
 msgid ""
 "(c) 2006 Hans van Leeuwen\n"
@@ -57,7 +57,7 @@ msgstr ""
 "(c) 2008-2010 Armin Berres\n"
 "(c) 2013 Pali Rohár"
 
-#: main.cpp:243
+#: main.cpp:258
 #, kde-format
 msgid ""
 "Ksshaskpass allows you to interactively prompt users for a passphrase for "
@@ -66,60 +66,60 @@ msgstr ""
 "Ksshaskpass erabiliz erabiltzaileei 'ssh-add'-rentzako pasaesaldia era "
 "elkarreragilean eskatu ahalko diezu"
 
-#: main.cpp:247
+#: main.cpp:262
 #, kde-format
 msgid "Armin Berres"
 msgstr "Armin Berres"
 
-#: main.cpp:247
+#: main.cpp:262
 #, kde-format
 msgid "Current author"
 msgstr "Uneko egilea"
 
-#: main.cpp:248
+#: main.cpp:263
 #, kde-format
 msgid "Hans van Leeuwen"
 msgstr "Hans van Leeuwen"
 
-#: main.cpp:248
+#: main.cpp:263
 #, kde-format
 msgid "Original author"
 msgstr "Jatorrizko egilea"
 
-#: main.cpp:249
+#: main.cpp:264
 #, kde-format
 msgid "Pali Rohár"
 msgstr "Pali Rohár"
 
-#: main.cpp:249
+#: main.cpp:264
 #, kde-format
 msgid "Contributor"
 msgstr "Kolaboratzailea"
 
-#: main.cpp:254
+#: main.cpp:269
 #, kde-format
 msgctxt "Name of a prompt for a password"
 msgid "Prompt"
 msgstr "Gonbita"
 
-#: main.cpp:268
+#: main.cpp:282
 #, kde-format
 msgid "Please enter passphrase"
 msgstr "Sartu pasaesaldia"
 
-#: main.cpp:321
+#: main.cpp:348
 #, kde-format
 msgctxt "@action:button"
 msgid "Accept"
 msgstr "Onartu"
 
-#: main.cpp:340
+#: main.cpp:367
 #, kde-format
 msgctxt "@title:window"
 msgid "Unknown SSH Host Key"
 msgstr ""
 
-#: main.cpp:341
+#: main.cpp:368
 #, kde-format
 msgctxt "@action:button"
 msgid "Yes"

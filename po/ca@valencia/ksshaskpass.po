@@ -4,13 +4,13 @@
 # version 3 or later versions approved by the membership of KDE e.V.
 #
 # SPDX-FileCopyrightText: 2015, 2020, 2021, 2022, 2023, 2024, 2025 Josep M. Ferrer <txemaq@gmail.com>
-# Antoni Bella Pérez <antonibella5@yahoo.com>, 2017, 2020.
-# Alfredo Vicente <alviboi@gmail.com>, 2019.
+# SPDX-FileCopyrightText: 2017, 2020 Antoni Bella Pérez <antonibella5@yahoo.com>
+# SPDX-FileCopyrightText: 2019 Alfredo Vicente <alviboi@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: ksshaskpass\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-10-14 00:43+0000\n"
+"POT-Creation-Date: 2025-10-18 00:43+0000\n"
 "PO-Revision-Date: 2025-10-14 09:27+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -32,23 +32,23 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "alviboi@gmail.com,txemaq@gmail.com"
 
-#: main.cpp:222 main.cpp:320 main.cpp:363
+#: main.cpp:237 main.cpp:347 main.cpp:390
 #, kde-format
 msgctxt "@title:window"
 msgid "Enter SSH Credentials"
 msgstr "Entrada de credencials de SSH"
 
-#: main.cpp:238
+#: main.cpp:253
 #, kde-format
 msgid "SSH Credentials"
 msgstr "Credencials de SSH"
 
-#: main.cpp:240
+#: main.cpp:255
 #, kde-format
 msgid "KDE version of ssh-askpass"
 msgstr "Versió del «ssh-askpass» de KDE"
 
-#: main.cpp:242
+#: main.cpp:257
 #, kde-format
 msgid ""
 "(c) 2006 Hans van Leeuwen\n"
@@ -59,7 +59,7 @@ msgstr ""
 "(c) 2008-2010 Armin Berres\n"
 "(c) 2013 Pali Rohár"
 
-#: main.cpp:243
+#: main.cpp:258
 #, kde-format
 msgid ""
 "Ksshaskpass allows you to interactively prompt users for a passphrase for "
@@ -68,60 +68,60 @@ msgstr ""
 "Ksshaskpass permet demanar interactivament als usuaris una frase de pas per "
 "a «ssh-add»"
 
-#: main.cpp:247
+#: main.cpp:262
 #, kde-format
 msgid "Armin Berres"
 msgstr "Armin Berres"
 
-#: main.cpp:247
+#: main.cpp:262
 #, kde-format
 msgid "Current author"
 msgstr "Autoria actual"
 
-#: main.cpp:248
+#: main.cpp:263
 #, kde-format
 msgid "Hans van Leeuwen"
 msgstr "Hans van Leeuwen"
 
-#: main.cpp:248
+#: main.cpp:263
 #, kde-format
 msgid "Original author"
 msgstr "Autor original"
 
-#: main.cpp:249
+#: main.cpp:264
 #, kde-format
 msgid "Pali Rohár"
 msgstr "Pali Rohár"
 
-#: main.cpp:249
+#: main.cpp:264
 #, kde-format
 msgid "Contributor"
 msgstr "Col·laborador"
 
-#: main.cpp:254
+#: main.cpp:269
 #, kde-format
 msgctxt "Name of a prompt for a password"
 msgid "Prompt"
 msgstr "Indicador"
 
-#: main.cpp:268
+#: main.cpp:282
 #, kde-format
 msgid "Please enter passphrase"
 msgstr "Introduïu la frase de pas"
 
-#: main.cpp:321
+#: main.cpp:348
 #, kde-format
 msgctxt "@action:button"
 msgid "Accept"
 msgstr "Accepta"
 
-#: main.cpp:340
+#: main.cpp:367
 #, kde-format
 msgctxt "@title:window"
 msgid "Unknown SSH Host Key"
-msgstr "Clau desconeguda de màquina SSH"
+msgstr "Clau desconeguda de l'amfitrió SSH"
 
-#: main.cpp:341
+#: main.cpp:368
 #, kde-format
 msgctxt "@action:button"
 msgid "Yes"
