@@ -112,10 +112,10 @@ msgstr "接受"
 #, kde-format
 msgctxt "@title:window"
 msgid "Unknown SSH Host Key"
-msgstr ""
+msgstr "未知 SSH 主机密钥"
 
 #: main.cpp:368
 #, kde-format
 msgctxt "@action:button"
 msgid "Yes"
-msgstr ""
+msgstr "是"
