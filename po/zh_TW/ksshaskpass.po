@@ -3,13 +3,13 @@
 #
 # Franklin, 2015.
 # Yi-Jyun Pan <pan93412@gmail.com>, 2020.
-# SPDX-FileCopyrightText: 2023, 2024 Kisaragi Hiu <mail@kisaragi-hiu.com>
+# SPDX-FileCopyrightText: 2023, 2024, 2025 Kisaragi Hiu <mail@kisaragi-hiu.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-10-18 00:43+0000\n"
-"PO-Revision-Date: 2024-07-23 22:53+0900\n"
+"PO-Revision-Date: 2025-11-13 21:56+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 24.04.70\n"
+"X-Generator: Lokalize 25.11.70\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -116,13 +116,13 @@ msgstr "接受"
 #, kde-format
 msgctxt "@title:window"
 msgid "Unknown SSH Host Key"
-msgstr ""
+msgstr "未知的 SSH 主機金鑰"
 
 #: main.cpp:368
 #, kde-format
 msgctxt "@action:button"
 msgid "Yes"
-msgstr ""
+msgstr "是"
 
 #~ msgid "Ksshaskpass"
 #~ msgstr "Ksshaskpass"
