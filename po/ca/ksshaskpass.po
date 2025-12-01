@@ -114,6 +114,3 @@ msgstr "Introduïu la frase de pas"
 msgctxt "@action:button"
 msgid "Accept"
 msgstr "Accepta"
-
-#~ msgid "Ksshaskpass"
-#~ msgstr "Ksshaskpass"
