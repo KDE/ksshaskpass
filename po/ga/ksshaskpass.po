@@ -1,0 +1,100 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR This file is copyright:
+# This file is distributed under the same license as the ksshaskpass package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: ksshaskpass\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2025-11-17 16:18+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <kde-i18n-doc@kde.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr ""
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr ""
+
+#: main.cpp:248 main.cpp:321 main.cpp:326 main.cpp:347
+#, kde-format
+msgid "Ksshaskpass"
+msgstr ""
+
+#: main.cpp:250
+#, kde-format
+msgid "KDE version of ssh-askpass"
+msgstr ""
+
+#: main.cpp:252
+#, kde-format
+msgid ""
+"(c) 2006 Hans van Leeuwen\n"
+"(c) 2008-2010 Armin Berres\n"
+"(c) 2013 Pali Rohár"
+msgstr ""
+
+#: main.cpp:253
+#, kde-format
+msgid ""
+"Ksshaskpass allows you to interactively prompt users for a passphrase for "
+"ssh-add"
+msgstr ""
+
+#: main.cpp:257 main.cpp:260
+#, kde-format
+msgid "Armin Berres"
+msgstr ""
+
+#: main.cpp:257 main.cpp:260
+#, kde-format
+msgid "Current author"
+msgstr ""
+
+#: main.cpp:258 main.cpp:261
+#, kde-format
+msgid "Hans van Leeuwen"
+msgstr ""
+
+#: main.cpp:258 main.cpp:261
+#, kde-format
+msgid "Original author"
+msgstr ""
+
+#: main.cpp:259 main.cpp:262
+#, kde-format
+msgid "Pali Rohár"
+msgstr ""
+
+#: main.cpp:259 main.cpp:262
+#, kde-format
+msgid "Contributor"
+msgstr ""
+
+#: main.cpp:267
+#, kde-format
+msgctxt "Name of a prompt for a password"
+msgid "Prompt"
+msgstr ""
+
+#: main.cpp:273
+#, kde-format
+msgid "Please enter passphrase"
+msgstr ""
+
+#: main.cpp:322
+#, kde-format
+msgctxt "@action:button"
+msgid "Accept"
+msgstr ""
