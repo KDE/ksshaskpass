@@ -126,6 +126,3 @@ msgstr "Clau desconeguda de màquina SSH"
 msgctxt "@action:button"
 msgid "Yes"
 msgstr "Sí"
-
-#~ msgid "Ksshaskpass"
-#~ msgstr "Ksshaskpass"
