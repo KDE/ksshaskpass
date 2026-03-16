@@ -7,7 +7,7 @@ Dependencies:
     'frameworks/extra-cmake-modules': '@latest-kf6'
     'frameworks/kcoreaddons': '@latest-kf6'
     'frameworks/ki18n': '@latest-kf6'
-    'frameworks/kwallet': '@latest-kf6'
+    'third-party/qtkeychain': '@latest'
     'frameworks/kwidgetsaddons': '@latest-kf6'
     'frameworks/kdoctools': '@latest-kf6'
 Options:
