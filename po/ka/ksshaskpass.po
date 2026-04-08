@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ksshaskpass\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:53+0000\n"
+"POT-Creation-Date: 2026-04-08 00:47+0000\n"
 "PO-Revision-Date: 2025-10-14 06:11+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -28,23 +28,23 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "Temuri.doghonadze@gmail.com"
 
-#: main.cpp:237 main.cpp:347 main.cpp:390
+#: main.cpp:238 main.cpp:348 main.cpp:391
 #, kde-format
 msgctxt "@title:window"
 msgid "Enter SSH Credentials"
 msgstr "შეიყვანეთ SSH-ის ავტორიზაციის დეტალები"
 
-#: main.cpp:253
+#: main.cpp:254
 #, kde-format
 msgid "SSH Credentials"
 msgstr "SSH-ის ავტორიზაციის დეტალები"
 
-#: main.cpp:255
+#: main.cpp:256
 #, kde-format
 msgid "KDE version of ssh-askpass"
 msgstr "ssh-askpass-ის KDE-ის ვერსია"
 
-#: main.cpp:257
+#: main.cpp:258
 #, kde-format
 msgid ""
 "(c) 2006 Hans van Leeuwen\n"
@@ -55,7 +55,7 @@ msgstr ""
 "(c) 2008-2010 Armin Berres\n"
 "(c) 2013 Pali Rohár"
 
-#: main.cpp:258
+#: main.cpp:259
 #, kde-format
 msgid ""
 "Ksshaskpass allows you to interactively prompt users for a passphrase for "
@@ -64,60 +64,60 @@ msgstr ""
 "Ksshaskpass საშუალებას გაძლევთ მომხმარებლებს ssh-add-ის პაროლი ინტერაქტიულად "
 "მოსთხოვოთ"
 
-#: main.cpp:262
+#: main.cpp:263
 #, kde-format
 msgid "Armin Berres"
 msgstr "Armin Berres"
 
-#: main.cpp:262
+#: main.cpp:263
 #, kde-format
 msgid "Current author"
 msgstr "მიმდინარე ავტორი"
 
-#: main.cpp:263
+#: main.cpp:264
 #, kde-format
 msgid "Hans van Leeuwen"
 msgstr "Hans van Leeuwen"
 
-#: main.cpp:263
+#: main.cpp:264
 #, kde-format
 msgid "Original author"
 msgstr "საწყისი ავტორი"
 
-#: main.cpp:264
+#: main.cpp:265
 #, kde-format
 msgid "Pali Rohár"
 msgstr "Pali Rohár"
 
-#: main.cpp:264
+#: main.cpp:265
 #, kde-format
 msgid "Contributor"
 msgstr "მოხალისე"
 
-#: main.cpp:269
+#: main.cpp:270
 #, kde-format
 msgctxt "Name of a prompt for a password"
 msgid "Prompt"
 msgstr "პაროლის შეყვანა"
 
-#: main.cpp:282
+#: main.cpp:283
 #, kde-format
 msgid "Please enter passphrase"
 msgstr "შეიყვანეთ პაროლი"
 
-#: main.cpp:348
+#: main.cpp:349
 #, kde-format
 msgctxt "@action:button"
 msgid "Accept"
 msgstr "თანხმობა"
 
-#: main.cpp:367
+#: main.cpp:368
 #, kde-format
 msgctxt "@title:window"
 msgid "Unknown SSH Host Key"
 msgstr "უცნობი SSH ჰოსტის გასაღები"
 
-#: main.cpp:368
+#: main.cpp:369
 #, kde-format
 msgctxt "@action:button"
 msgid "Yes"
