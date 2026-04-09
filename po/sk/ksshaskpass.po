@@ -13,8 +13,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 22.12.3\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Generator: Lokalize 22.12.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -30,12 +30,12 @@ msgstr "wizzardsk@gmail.com"
 #, kde-format
 msgctxt "@title:window"
 msgid "Enter SSH Credentials"
-msgstr ""
+msgstr "Zadajte poverenia SSH"
 
 #: main.cpp:254
 #, kde-format
 msgid "SSH Credentials"
-msgstr ""
+msgstr "Poverenia SSH"
 
 #: main.cpp:256
 #, kde-format
@@ -113,13 +113,13 @@ msgstr "Prijať"
 #, kde-format
 msgctxt "@title:window"
 msgid "Unknown SSH Host Key"
-msgstr ""
+msgstr "Neznámy kľúč hostiteľa SSH"
 
 #: main.cpp:369
 #, kde-format
 msgctxt "@action:button"
 msgid "Yes"
-msgstr ""
+msgstr "Roky"
 
 #~ msgid "Ksshaskpass"
 #~ msgstr "Ksshaskpass"
