@@ -390,7 +390,7 @@ int main(int argc, char **argv)
     case DisplayType::Password: {
         // create the password dialog, but only show "Enable Keep" button, if the keychain has a working backend available
         KPasswordDialog::KPasswordDialogFlag flag(KPasswordDialog::NoFlags);
-        if (QKeychain::isAvailable()) {
+        if (!identifier.isNull() && QKeychain::isAvailable()) {
             flag = KPasswordDialog::ShowKeepPassword;
         }
         QPointer<KPasswordDialog> kpd = new KPasswordDialog(nullptr, flag);
