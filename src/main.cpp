@@ -183,6 +183,7 @@ int main(int argc, char **argv)
         item = QStringLiteral("yes\n");
         break;
     }
+    case DisplayType::Unknown: // just in case.
     case DisplayType::ClearText:
     // Should use a dialog with visible input, but KPasswordDialog doesn't support that and
     // other available dialog types don't have a "Keep" checkbox.

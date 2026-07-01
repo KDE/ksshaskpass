@@ -25,6 +25,11 @@ include(ECMQtDeclareLoggingCategory)
 
 find_package(Qt6  ${QT_MIN_VERSION} REQUIRED COMPONENTS Core)
 
+if (BUILD_TESTING)
+    include(ECMAddTests)
+    find_package(Qt6 ${QT_MIN_VERSION} REQUIRED COMPONENTS Test)
+endif()
+
 find_package(Qt6Keychain ${QT_KEYCHAIN_MIN_VERSION} REQUIRED)
 
 add_definitions(-DQT_NO_NARROWING_CONVERSIONS_IN_CONNECT)
@@ -55,6 +60,10 @@ install(FILES org.kde.ksshaskpass.desktop DESTINATION ${KDE_INSTALL_APPDIR})
 
 if (KF6DocTools_FOUND)
     add_subdirectory(doc)
+endif()
+
+if (BUILD_TESTING)
+    add_subdirectory(autotests)
 endif()
 
 ki18n_install(po)

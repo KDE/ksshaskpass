@@ -17,6 +17,7 @@ enum class PromptType {
 
 // Implemented UI display types.
 enum class DisplayType {
+    Unknown,
     Password,
     ClearText,
     Confirm,
