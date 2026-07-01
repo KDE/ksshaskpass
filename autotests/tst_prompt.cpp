@@ -116,6 +116,14 @@ void PromptTest::testPrompt_data()
                                          "This key is not known by any other names.\n"
                                          "Are you sure you want to continue connecting (yes/no/[fingerprint])? ")
                                   << QString() << DisplayType::UnknownSshHost << true;
+
+    QTest::newRow("unknown-host-colon") << PromptType::Entry
+                                        << QStringLiteral(
+                                               "The authenticity of host 'invent.kde.org (1.2.3.4)' can't be established.\n"
+                                               "ED25519 key fingerprint is: SHA256:1234567890abcdef.\n"
+                                               "This key is not known by any other names.\n"
+                                               "Are you sure you want to continue connecting (yes/no/[fingerprint])? ")
+                                        << QString() << DisplayType::UnknownSshHost << true;
 }
 
 void PromptTest::testPrompt()
