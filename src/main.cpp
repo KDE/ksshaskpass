@@ -43,7 +43,6 @@ static void execQKeychainJobBlocking(QKeychain::Job &job)
 void cancelDialog(QWidget *parent, const QString &text)
 {
     QDialog *d = new QDialog(parent);
-    d->setWindowTitle(i18nc("@title:window", "Enter SSH Credentials"));
     d->setObjectName(QStringLiteral("information"));
 
     QDialogButtonBox *buttonBox = new QDialogButtonBox(d);
@@ -153,7 +152,7 @@ int main(int argc, char **argv)
     case DisplayType::Confirm: {
         if (KMessageBox::questionTwoActions(nullptr,
                                             dialog,
-                                            i18nc("@title:window", "Enter SSH Credentials"),
+                                            QString(),
                                             KGuiItem(i18nc("@action:button", "Accept"), QStringLiteral("dialog-ok")),
                                             KStandardGuiItem::cancel())
             != KMessageBox::PrimaryAction) {
@@ -197,7 +196,6 @@ int main(int argc, char **argv)
         QPointer<KPasswordDialog> kpd = new KPasswordDialog(nullptr, flag);
 
         kpd->setPrompt(dialog);
-        kpd->setWindowTitle(i18nc("@title:window", "Enter SSH Credentials"));
         // We don't want to dump core when the password dialog is shown, because it could contain the entered password.
         // KPasswordDialog::disableCoreDumps() seems to be gone in KDE 4 -- do it manually
         struct rlimit rlim;
