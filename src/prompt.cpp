@@ -56,6 +56,36 @@ void parsePrompt(PromptType promptType, const QString &prompt, QString &identifi
         return;
     }
 
+    // openssh ssh-keygen.c
+    // Case: ssh-keygen asking for passphrase, newer ssh-keygen includes the path.
+    match = QRegularExpression(QStringLiteral("^Enter passphrase (for \"(.*?)\" )?\\(empty for no passphrase\\): $")).match(prompt);
+    if (match.hasMatch()) {
+        identifier = QString();
+        displayType = DisplayType::Password;
+        ignoreKeychain = true;
+        return;
+    }
+
+    // openssh ssh-keygen.c
+    // Case: ssh-keygen asking for passphrase when changing existing key
+    match = QRegularExpression(QStringLiteral("^Enter new passphrase \\(empty for no passphrase\\): $")).match(prompt);
+    if (match.hasMatch()) {
+        identifier = QString();
+        displayType = DisplayType::Password;
+        ignoreKeychain = true;
+        return;
+    }
+
+    // openssh ssh-keygen.c
+    // Case: ssh-keygen asking to confirm passphrase
+    match = QRegularExpression(QStringLiteral("^Enter same passphrase again: $")).match(prompt);
+    if (match.hasMatch()) {
+        identifier = QString();
+        displayType = DisplayType::Password;
+        ignoreKeychain = true;
+        return;
+    }
+
     // openssh sshconnect2.c and sshconnect1.c
     // Case: asking for passphrase for a certain keyfile
     match = QRegularExpression(QStringLiteral("^Enter passphrase for( RSA)? key '(.*)': $")).match(prompt);

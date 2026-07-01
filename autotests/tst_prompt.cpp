@@ -72,6 +72,18 @@ void PromptTest::testPrompt_data()
                                            << QStringLiteral("Bad passphrase, try again for /home/test/.ssh/id_ed25519 (will confirm each use): ")
                                            << QStringLiteral("/home/test/.ssh/id_ed25519") << DisplayType::Password << true;
 
+    QTest::newRow("ssh-keygen-new") << PromptType::Entry << QStringLiteral("Enter passphrase (empty for no passphrase): ") << QString() << DisplayType::Password
+                                    << true;
+
+    QTest::newRow("ssh-keygen-new-with-path") << PromptType::Entry
+                                              << QStringLiteral("Enter passphrase for \"/home/konqi/.ssh/id_rsa\" (empty for no passphrase): ") << QString()
+                                              << DisplayType::Password << true;
+
+    QTest::newRow("ssh-keygen-edit") << PromptType::Entry << QStringLiteral("Enter new passphrase (empty for no passphrase): ") << QString()
+                                     << DisplayType::Password << true;
+
+    QTest::newRow("ssh-keygen-confirm") << PromptType::Entry << QStringLiteral("Enter same passphrase again: ") << QString() << DisplayType::Password << true;
+
     // PGP PIN
 
     QTest::newRow("pkcs11-pin") << PromptType::Entry << QStringLiteral("Enter PIN for 'OpenPGP': ") << QStringLiteral("OpenPGP") << DisplayType::Password
