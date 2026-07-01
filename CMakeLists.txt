@@ -21,6 +21,7 @@ include(ECMQtDeclareLoggingCategory)
 include(KDEClangFormat)
 include(KDEGitCommitHooks)
 include(ECMDeprecationSettings)
+include(ECMQtDeclareLoggingCategory)
 
 find_package(Qt6  ${QT_MIN_VERSION} REQUIRED COMPONENTS Core)
 
@@ -42,16 +43,7 @@ ecm_set_disabled_deprecation_versions(QT 6.8.1
     KF 6.27.0
 )
 
-set(ksshaskpass_SRCS src/main.cpp)
- 
-add_executable(ksshaskpass ${ksshaskpass_SRCS})
-target_compile_definitions(ksshaskpass PRIVATE -DPROJECT_VERSION="${PROJECT_VERSION}")
-target_link_libraries(ksshaskpass
-    KF6::CoreAddons
-    KF6::I18n
-    KF6::WidgetsAddons
-    Qt6Keychain::Qt6Keychain
-)
+add_subdirectory(src)
 
 # add clang-format target for all our real source files
 file(GLOB_RECURSE ALL_CLANG_FORMAT_SOURCE_FILES *.cpp *.h)
