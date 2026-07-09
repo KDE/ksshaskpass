@@ -211,7 +211,7 @@ static void parsePrompt(PromptType promptType, const QString &prompt, QString &i
 
     // Case: unknown SSH host
     match = QRegularExpression(QStringLiteral("^The authenticity of host '([^']+)(?: \\(([^)]+)\\))?' can't be established\\.\n"
-                                              "([A-Z0-9_-]+) key fingerprint is:? ([A-Za-z0-9:+/=]+)\\.\n"
+                                              "([A-Z0-9_-]+) key fingerprint is:? ([A-Za-z0-9:+/=]+)\\.?\n"
                                               "This key is not known by any other names\\.\n"
                                               "Are you sure you want to continue connecting \\(yes/no/\\[fingerprint\\]\\)\\?\\s*$"))
                 .match(prompt);
