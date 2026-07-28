@@ -145,6 +145,8 @@ int main(int argc, char **argv)
         return 0;
     }
 
+    std::optional<bool> remember;
+
     // Item could not be retrieved from keychain. Open dialog
     switch (displayType) {
     case DisplayType::ConfirmCancel: {
@@ -219,19 +221,26 @@ int main(int argc, char **argv)
 
         if (dlg.exec() == QDialog::Accepted) {
             item = ui.lineEdit->password();
-            // If “Enable Keep” is enabled, store the password in keychain
-            if ((!identifier.isNull()) && ui.keepCheckBox->isChecked()) {
-                QKeychain::WritePasswordJob job(app.applicationName());
-                job.setKey(identifier);
-                job.setTextData(item);
-                execQKeychainJobBlocking(job);
-            }
+            remember = ui.keepCheckBox->isChecked();
         } else {
             // dialog has been canceled
             return 1;
         }
         break;
     }
+    }
+
+    if (!identifier.isEmpty() && remember.has_value()) {
+        if (remember.value()) {
+            QKeychain::WritePasswordJob job(app.applicationName());
+            job.setKey(identifier);
+            job.setTextData(item);
+            execQKeychainJobBlocking(job);
+        } else {
+            QKeychain::DeletePasswordJob job(app.applicationName());
+            job.setKey(identifier);
+            execQKeychainJobBlocking(job);
+        }
     }
 
     QTextStream out(stdout);
