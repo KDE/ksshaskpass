@@ -37,6 +37,7 @@ find_package(Qt6Keychain ${QT_KEYCHAIN_MIN_VERSION} REQUIRED)
 add_definitions(-DQT_NO_NARROWING_CONVERSIONS_IN_CONNECT)
 
 find_package(KF6 ${KF6_MIN_VERSION} REQUIRED COMPONENTS
+    Config
     CoreAddons
     I18n
     WidgetsAddons
