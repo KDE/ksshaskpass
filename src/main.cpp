@@ -17,12 +17,15 @@
 #include <QInputDialog>
 #include <QPointer>
 #include <QRegularExpression>
+#include <QStyle>
+#include <QStyleOption>
 #include <QTextStream>
 
 #include <qt6keychain/keychain.h>
 
 #include "debug.h"
 #include "prompt.h"
+#include "ui_cleartextinputdialog.h"
 
 constexpr const char *PROMPT_TYPE_ENV_VAR = "SSH_ASKPASS_PROMPT";
 
@@ -184,28 +187,40 @@ int main(int argc, char **argv)
     }
     case DisplayType::Unknown: // just in case.
     case DisplayType::ClearText:
-    // Should use a dialog with visible input, but KPasswordDialog doesn't support that and
-    // other available dialog types don't have a "Keep" checkbox.
-    /* fallthrough */
     case DisplayType::Password: {
-        // create the password dialog, but only show "Enable Keep" button, if the keychain has a working backend available
-        KPasswordDialog::KPasswordDialogFlag flag(KPasswordDialog::NoFlags);
-        if (!identifier.isNull() && QKeychain::isAvailable()) {
-            flag = KPasswordDialog::ShowKeepPassword;
+        // custom dialog inspired by KPasswordDialog, including "Remember" option,
+        // but has the ability to show the password.
+        QDialog dlg;
+
+        Ui_ClearTextInputDialog ui;
+        ui.setupUi(&dlg);
+
+        ui.prompt->setText(dialog);
+        ui.keepCheckBox->setVisible(!identifier.isEmpty() && QKeychain::isAvailable());
+
+        QStyleOption option;
+        option.initFrom(&dlg);
+        const int iconSize = dlg.style()->pixelMetric(QStyle::PM_MessageBoxIconSize, &option, &dlg);
+        ui.pixmapLabel->setPixmap(QIcon::fromTheme(QIcon::ThemeIcon::DialogPassword).pixmap(iconSize));
+
+        if (displayType == DisplayType::Password) {
+            ui.keepCheckBox->setText(i18nc("@option:check", "Remember password"));
+
+            // We don't want to dump core when the password dialog is shown, because it could contain the entered password.
+            // KPasswordDialog::disableCoreDumps() seems to be gone in KDE 4 -- do it manually
+            struct rlimit rlim;
+            rlim.rlim_cur = rlim.rlim_max = 0;
+            setrlimit(RLIMIT_CORE, &rlim);
+        } else {
+            ui.lineEdit->setEchoMode(QLineEdit::Normal);
+            ui.lineEdit->setRevealPasswordMode(KPassword::RevealMode::Never);
+            ui.passwordLabel->hide();
         }
-        QPointer<KPasswordDialog> kpd = new KPasswordDialog(nullptr, flag);
 
-        kpd->setPrompt(dialog);
-        // We don't want to dump core when the password dialog is shown, because it could contain the entered password.
-        // KPasswordDialog::disableCoreDumps() seems to be gone in KDE 4 -- do it manually
-        struct rlimit rlim;
-        rlim.rlim_cur = rlim.rlim_max = 0;
-        setrlimit(RLIMIT_CORE, &rlim);
-
-        if (kpd->exec() == QDialog::Accepted) {
-            item = kpd->password();
+        if (dlg.exec() == QDialog::Accepted) {
+            item = ui.lineEdit->password();
             // If “Enable Keep” is enabled, store the password in keychain
-            if ((!identifier.isNull()) && kpd->keepPassword()) {
+            if ((!identifier.isNull()) && ui.keepCheckBox->isChecked()) {
                 QKeychain::WritePasswordJob job(app.applicationName());
                 job.setKey(identifier);
                 job.setTextData(item);

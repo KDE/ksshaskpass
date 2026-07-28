@@ -3,6 +3,9 @@
 
 add_library(ksshaskpass_prompt OBJECT prompt.cpp prompt.h)
 
+ki18n_wrap_ui(ui_SRCS cleartextinputdialog.ui)
+target_sources(ksshaskpass_prompt PRIVATE ${ui_SRCS})
+
 target_include_directories(ksshaskpass_prompt PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
 ecm_qt_declare_logging_category(ksshaskpass_prompt HEADER debug.h
