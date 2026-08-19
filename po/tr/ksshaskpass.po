@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ksshaskpass\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-04-08 00:47+0000\n"
+"POT-Creation-Date: 2026-08-19 16:07+0000\n"
 "PO-Revision-Date: 2026-05-02 19:53+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -27,23 +27,17 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "kaanozdincer@gmail.com, emir_sari@icloud.com"
 
-#: main.cpp:238 main.cpp:348 main.cpp:391
-#, kde-format
-msgctxt "@title:window"
-msgid "Enter SSH Credentials"
-msgstr "SSH Kimlik Bilgilerini Gir"
-
-#: main.cpp:254
+#: main.cpp:67
 #, kde-format
 msgid "SSH Credentials"
 msgstr "SSH Kimlik Bilgileric"
 
-#: main.cpp:256
+#: main.cpp:69
 #, kde-format
 msgid "KDE version of ssh-askpass"
 msgstr "ssh-askpass uygulamasının KDE sürümü"
 
-#: main.cpp:258
+#: main.cpp:71
 #, kde-format
 msgid ""
 "(c) 2006 Hans van Leeuwen\n"
@@ -54,7 +48,7 @@ msgstr ""
 "© 2008–2010 Armin Berres\n"
 "© 2013 Pali Rohár"
 
-#: main.cpp:259
+#: main.cpp:72
 #, kde-format
 msgid ""
 "Ksshaskpass allows you to interactively prompt users for a passphrase for "
@@ -63,64 +57,74 @@ msgstr ""
 "Ksshaskpass; kullanıcıları ssh-add için bir parolayla etkileşimli olarak "
 "yönlendirmenizi sağlar"
 
-#: main.cpp:263
+#: main.cpp:76
 #, kde-format
 msgid "Armin Berres"
 msgstr "Armin Berres"
 
-#: main.cpp:263
+#: main.cpp:76
 #, kde-format
 msgid "Current author"
 msgstr "Şu Anki yazar"
 
-#: main.cpp:264
+#: main.cpp:77
 #, kde-format
 msgid "Hans van Leeuwen"
 msgstr "Hans van Leeuwen"
 
-#: main.cpp:264
+#: main.cpp:77
 #, kde-format
 msgid "Original author"
 msgstr "Özgün yazar"
 
-#: main.cpp:265
+#: main.cpp:78
 #, kde-format
 msgid "Pali Rohár"
 msgstr "Pali Rohár"
 
-#: main.cpp:265
+#: main.cpp:78
 #, kde-format
 msgid "Contributor"
 msgstr "Katkıcı"
 
-#: main.cpp:270
+#: main.cpp:83
 #, kde-format
 msgctxt "Name of a prompt for a password"
 msgid "Prompt"
 msgstr "Ekran"
 
-#: main.cpp:283
+#: main.cpp:96
 #, kde-format
 msgid "Please enter passphrase"
 msgstr "Lütfen parola metnini girin"
 
-#: main.cpp:349
+#: main.cpp:177
 #, kde-format
 msgctxt "@action:button"
 msgid "Accept"
 msgstr "Kabul Et"
 
-#: main.cpp:368
+#: main.cpp:196
 #, kde-format
 msgctxt "@title:window"
 msgid "Unknown SSH Host Key"
 msgstr "Bilinmeyen SSH Makine Anahtarı"
 
-#: main.cpp:369
+#: main.cpp:197
 #, kde-format
 msgctxt "@action:button"
 msgid "Yes"
 msgstr "Evet"
+
+#: main.cpp:225
+#, kde-format
+msgctxt "@option:check"
+msgid "Remember password"
+msgstr ""
+
+#~ msgctxt "@title:window"
+#~ msgid "Enter SSH Credentials"
+#~ msgstr "SSH Kimlik Bilgilerini Gir"
 
 #~ msgid "Ksshaskpass"
 #~ msgstr "Ksshaskpass"

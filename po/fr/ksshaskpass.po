@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-04-08 00:47+0000\n"
+"POT-Creation-Date: 2026-08-19 16:07+0000\n"
 "PO-Revision-Date: 2025-10-15 09:09+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: French <French <kde-francophone@kde.org>>\n"
@@ -33,23 +33,17 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "thomas.vergnaud@mailo.eu, sdepiets@gmail.com"
 
-#: main.cpp:238 main.cpp:348 main.cpp:391
-#, kde-format
-msgctxt "@title:window"
-msgid "Enter SSH Credentials"
-msgstr "Veuillez saisir les identifiants pour SSH"
-
-#: main.cpp:254
+#: main.cpp:67
 #, kde-format
 msgid "SSH Credentials"
 msgstr "Identifiants pour SSH"
 
-#: main.cpp:256
+#: main.cpp:69
 #, kde-format
 msgid "KDE version of ssh-askpass"
 msgstr "Version KDE de ssh-askpass"
 
-#: main.cpp:258
+#: main.cpp:71
 #, kde-format
 msgid ""
 "(c) 2006 Hans van Leeuwen\n"
@@ -60,7 +54,7 @@ msgstr ""
 "(c) 2008-2010 Armin Berres\n"
 "(c) 2013 Pali Rohár"
 
-#: main.cpp:259
+#: main.cpp:72
 #, kde-format
 msgid ""
 "Ksshaskpass allows you to interactively prompt users for a passphrase for "
@@ -69,64 +63,74 @@ msgstr ""
 "KSSHAskPass vous permet de demander aux utilisateurs de saisir une phrase de "
 "passe pour « ssh-add » de façon interactive."
 
-#: main.cpp:263
+#: main.cpp:76
 #, kde-format
 msgid "Armin Berres"
 msgstr "Armin Berres"
 
-#: main.cpp:263
+#: main.cpp:76
 #, kde-format
 msgid "Current author"
 msgstr "Auteur actuel"
 
-#: main.cpp:264
+#: main.cpp:77
 #, kde-format
 msgid "Hans van Leeuwen"
 msgstr "Hans van Leeuwen"
 
-#: main.cpp:264
+#: main.cpp:77
 #, kde-format
 msgid "Original author"
 msgstr "Auteur original"
 
-#: main.cpp:265
+#: main.cpp:78
 #, kde-format
 msgid "Pali Rohár"
 msgstr "Pali Rohár"
 
-#: main.cpp:265
+#: main.cpp:78
 #, kde-format
 msgid "Contributor"
 msgstr "Contributeur"
 
-#: main.cpp:270
+#: main.cpp:83
 #, kde-format
 msgctxt "Name of a prompt for a password"
 msgid "Prompt"
 msgstr "Invite"
 
-#: main.cpp:283
+#: main.cpp:96
 #, kde-format
 msgid "Please enter passphrase"
 msgstr "Veuillez saisir la phrase de passe"
 
-#: main.cpp:349
+#: main.cpp:177
 #, kde-format
 msgctxt "@action:button"
 msgid "Accept"
 msgstr "Accepter"
 
-#: main.cpp:368
+#: main.cpp:196
 #, kde-format
 msgctxt "@title:window"
 msgid "Unknown SSH Host Key"
 msgstr "Clé SSH de l'hôte inconnue"
 
-#: main.cpp:369
+#: main.cpp:197
 #, kde-format
 msgctxt "@action:button"
 msgid "Yes"
 msgstr "Oui"
+
+#: main.cpp:225
+#, kde-format
+msgctxt "@option:check"
+msgid "Remember password"
+msgstr ""
+
+#~ msgctxt "@title:window"
+#~ msgid "Enter SSH Credentials"
+#~ msgstr "Veuillez saisir les identifiants pour SSH"
 
 #~ msgid "Ksshaskpass"
 #~ msgstr "KSSHAskPass"
