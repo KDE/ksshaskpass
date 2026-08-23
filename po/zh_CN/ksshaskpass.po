@@ -118,4 +118,4 @@ msgstr "是"
 #, kde-format
 msgctxt "@option:check"
 msgid "Remember password"
-msgstr ""
+msgstr "记住密码"
