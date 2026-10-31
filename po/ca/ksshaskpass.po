@@ -126,10 +126,3 @@ msgstr "Sí"
 msgctxt "@option:check"
 msgid "Remember password"
 msgstr "Recorda la contrasenya"
-
-#~ msgctxt "@title:window"
-#~ msgid "Enter SSH Credentials"
-#~ msgstr "Entrada de credencials de SSH"
-
-#~ msgid "Ksshaskpass"
-#~ msgstr "Ksshaskpass"
