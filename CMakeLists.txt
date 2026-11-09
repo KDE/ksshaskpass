@@ -48,7 +48,7 @@ set_package_properties(KF6DocTools PROPERTIES TYPE OPTIONAL
    PURPOSE "Required to build ksshaskpass manpage")
 
 ecm_set_disabled_deprecation_versions(QT 6.8.1
-    KF 6.27.0
+    KF 6.32.0
 )
 
 add_subdirectory(src)
