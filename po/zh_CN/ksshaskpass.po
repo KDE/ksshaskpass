@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-19 16:07+0000\n"
+"POT-Creation-Date: 2026-11-26 01:06+0000\n"
 "PO-Revision-Date: 2024-04-22 15:58\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -26,6 +26,22 @@ msgstr "KDE 中国, Guo Yunhe, Tyson Tan"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "kde-china@kde.org, i@guoyunhe.me, tds00@qq.com"
+
+#. i18n: ectx: property (text), widget (QCheckBox, keepCheckBox)
+#: cleartextinputdialog.ui:96
+#, fuzzy, kde-format
+#| msgctxt "@option:check"
+#| msgid "Remember password"
+msgctxt "@option:check"
+msgid "Remember"
+msgstr "记住密码"
+
+#. i18n: ectx: property (text), widget (QLabel, passwordLabel)
+#: cleartextinputdialog.ui:103
+#, kde-format
+msgctxt "@label:textbox"
+msgid "Password:"
+msgstr ""
 
 #: main.cpp:67
 #, kde-format

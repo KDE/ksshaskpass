@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ksshaskpass\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-19 16:07+0000\n"
+"POT-Creation-Date: 2026-11-26 01:06+0000\n"
 "PO-Revision-Date: 2026-09-14 20:10+0200\n"
 "Last-Translator: Roman Paholík <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
@@ -25,6 +25,22 @@ msgstr "Roman Paholík"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "wizzardsk@gmail.com"
+
+#. i18n: ectx: property (text), widget (QCheckBox, keepCheckBox)
+#: cleartextinputdialog.ui:96
+#, fuzzy, kde-format
+#| msgctxt "@option:check"
+#| msgid "Remember password"
+msgctxt "@option:check"
+msgid "Remember"
+msgstr "Zapamätať heslo"
+
+#. i18n: ectx: property (text), widget (QLabel, passwordLabel)
+#: cleartextinputdialog.ui:103
+#, kde-format
+msgctxt "@label:textbox"
+msgid "Password:"
+msgstr ""
 
 #: main.cpp:67
 #, kde-format

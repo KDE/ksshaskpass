@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-19 16:07+0000\n"
+"POT-Creation-Date: 2026-11-26 01:06+0000\n"
 "PO-Revision-Date: 2015-06-13 22:14+0200\n"
 "Last-Translator: Bjørn Steensrud <bjornst@skogkatt.homelinux.org>\n"
 "Language-Team: Norwegian Bokmål <l10n-no@nuug.no>\n"
@@ -28,6 +28,20 @@ msgstr "Bjørn Steensrud"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "bjornst@skogkatt.homelinux.org"
+
+#. i18n: ectx: property (text), widget (QCheckBox, keepCheckBox)
+#: cleartextinputdialog.ui:96
+#, kde-format
+msgctxt "@option:check"
+msgid "Remember"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QLabel, passwordLabel)
+#: cleartextinputdialog.ui:103
+#, kde-format
+msgctxt "@label:textbox"
+msgid "Password:"
+msgstr ""
 
 #: main.cpp:67
 #, kde-format
