@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: ksshaskpass\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-26 01:06+0000\n"
-"PO-Revision-Date: 2026-08-20 08:36+0200\n"
+"PO-Revision-Date: 2026-11-26 09:23+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Accelerator-Marker: &\n"
-"X-Generator: Lokalize 26.04.3\n"
+"X-Generator: Lokalize 25.04.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -34,19 +34,17 @@ msgstr "txemaq@gmail.com"
 
 #. i18n: ectx: property (text), widget (QCheckBox, keepCheckBox)
 #: cleartextinputdialog.ui:96
-#, fuzzy, kde-format
-#| msgctxt "@option:check"
-#| msgid "Remember password"
+#, kde-format
 msgctxt "@option:check"
 msgid "Remember"
-msgstr "Recorda la contrasenya"
+msgstr "Recorda"
 
 #. i18n: ectx: property (text), widget (QLabel, passwordLabel)
 #: cleartextinputdialog.ui:103
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Password:"
-msgstr ""
+msgstr "Contrasenya:"
 
 #: main.cpp:67
 #, kde-format

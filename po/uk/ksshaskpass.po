@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: ksshaskpass\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-26 01:06+0000\n"
-"PO-Revision-Date: 2026-08-20 09:00+0300\n"
+"PO-Revision-Date: 2026-11-26 08:51+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -32,19 +32,17 @@ msgstr "yurchor@ukr.net"
 
 #. i18n: ectx: property (text), widget (QCheckBox, keepCheckBox)
 #: cleartextinputdialog.ui:96
-#, fuzzy, kde-format
-#| msgctxt "@option:check"
-#| msgid "Remember password"
+#, kde-format
 msgctxt "@option:check"
 msgid "Remember"
-msgstr "Запам'ятати пароль"
+msgstr "Запам'ятати"
 
 #. i18n: ectx: property (text), widget (QLabel, passwordLabel)
 #: cleartextinputdialog.ui:103
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Password:"
-msgstr ""
+msgstr "Пароль:"
 
 #: main.cpp:67
 #, kde-format

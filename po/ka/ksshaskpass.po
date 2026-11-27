@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ksshaskpass\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-26 01:06+0000\n"
-"PO-Revision-Date: 2026-08-20 06:07+0200\n"
+"PO-Revision-Date: 2026-11-26 06:28+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.9\n"
+"X-Generator: Poedit 3.10\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -30,19 +30,17 @@ msgstr "Temuri.doghonadze@gmail.com"
 
 #. i18n: ectx: property (text), widget (QCheckBox, keepCheckBox)
 #: cleartextinputdialog.ui:96
-#, fuzzy, kde-format
-#| msgctxt "@option:check"
-#| msgid "Remember password"
+#, kde-format
 msgctxt "@option:check"
 msgid "Remember"
-msgstr "პაროლის დამახსოვრება"
+msgstr "დამახსოვრება"
 
 #. i18n: ectx: property (text), widget (QLabel, passwordLabel)
 #: cleartextinputdialog.ui:103
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Password:"
-msgstr ""
+msgstr "პაროლი:"
 
 #: main.cpp:67
 #, kde-format

@@ -29,12 +29,10 @@ msgstr "kde-china@kde.org, i@guoyunhe.me, tds00@qq.com"
 
 #. i18n: ectx: property (text), widget (QCheckBox, keepCheckBox)
 #: cleartextinputdialog.ui:96
-#, fuzzy, kde-format
-#| msgctxt "@option:check"
-#| msgid "Remember password"
+#, kde-format
 msgctxt "@option:check"
 msgid "Remember"
-msgstr "记住密码"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, passwordLabel)
 #: cleartextinputdialog.ui:103
