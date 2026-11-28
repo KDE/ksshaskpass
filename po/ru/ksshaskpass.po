@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-26 01:06+0000\n"
-"PO-Revision-Date: 2026-09-06 20:04+0200\n"
-"Last-Translator: Alexander Yavorskiy <kekcuha@gmail.com>\n"
+"PO-Revision-Date: 2026-11-27 07:57+0200\n"
+"Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -32,19 +32,17 @@ msgstr "aspotashev@gmail.com"
 
 #. i18n: ectx: property (text), widget (QCheckBox, keepCheckBox)
 #: cleartextinputdialog.ui:96
-#, fuzzy, kde-format
-#| msgctxt "@option:check"
-#| msgid "Remember password"
+#, kde-format
 msgctxt "@option:check"
 msgid "Remember"
-msgstr "Сохранить пароль"
+msgstr "Запомнить"
 
 #. i18n: ectx: property (text), widget (QLabel, passwordLabel)
 #: cleartextinputdialog.ui:103
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Password:"
-msgstr ""
+msgstr "Пароль:"
 
 #: main.cpp:67
 #, kde-format
